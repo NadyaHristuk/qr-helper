@@ -3,10 +3,11 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  // Путь относительно каталога prisma/ — БД лежит в prisma/dev.db
-  // (уже в .gitignore). Без env, чтобы работало из коробки.
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  // Строка подключения берётся из переменной окружения DATABASE_URL.
+  // Локально — в файле .env, на Vercel — в настройках проекта.
+  // Бесплатный Postgres: neon.tech (см. README, раздел «Деплой»).
+  url      = env("DATABASE_URL")
 }
 
 model Order {
