@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "title": "QR-Helper — QR-code stickers for your business",
+    "description": "A service for small businesses: QR-code stickers — socials, Wi-Fi, contacts, reviews, contactless payment. Order online, delivery by Nova Poshta."
+  },
+  "common": {
+    "siteName": "QR-Helper",
+    "orderCta": "Order stickers",
+    "scanMe": "Scan me",
+    "customize": "Create sticker"
+  },
+  "nav": {
+    "howItWorks": "How it works",
+    "order": "Order stickers",
+    "faq": "FAQ"
+  },
+  "home": {
+    "title": "QR-code stickers for your business",
+    "intro": "We help small businesses handle everyday tasks with QR codes: opening socials, connecting to Wi-Fi, saving a contact, reviews, contactless payment.",
+    "kindsTitle": "12 kinds of stickers",
+    "kindsHint": "Tap a sticker to customize its design and add it to your order",
+    "stickers": {
+      "socials": {
+        "title": "We're on socials",
+        "caption": "Quickly find your pages on social media",
+        "label": "FOLLOW US"
+      },
+      "wifi": {
+        "title": "Wi-Fi connection",
+        "caption": "Fast Wi-Fi connection — just point the scanner, no typing the network name and password",
+        "label": "WI-FI HERE"
+      },
+      "vcard": {
+        "title": "My business card",
+        "caption": "Scan and save the contact in 3 seconds",
+        "label": "SAVE CONTACT"
+      },
+      "email": {
+        "title": "Review / suggestion by email",
+        "caption": "Send us a suggestion by email",
+        "label": "EMAIL US"
+      },
+      "sms": {
+        "title": "Text us an SMS",
+        "caption": "Get reviews, suggestions and any info from a client fast",
+        "label": "TEXT US"
+      },
+      "google": {
+        "title": "Rate us on Google",
+        "caption": "Rate us on Google",
+        "label": "RATE US"
+      },
+      "privat24": {
+        "title": "Contactless payment (Privat24)",
+        "caption": "Pay contactless with a QR code. Place a poster or sticker and receive payment for your goods and services to your bank card",
+        "label": "PAY BY QR"
+      },
+      "carPhone": {
+        "title": "Phone on the car window",
+        "caption": "Scan and call",
+        "label": "SCAN & CALL"
+      },
+      "site": {
+        "title": "Our website",
+        "caption": "Quick access to your website via QR code",
+        "label": "OUR WEBSITE"
+      },
+      "youtube": {
+        "title": "YouTube channel",
+        "caption": "Present and sell your services with YouTube",
+        "label": "OUR YOUTUBE"
+      },
+      "olx": {
+        "title": "My goods on OLX",
+        "caption": "Scan the codes. Sell all your goods on OLX",
+        "label": "WE'RE ON OLX"
+      },
+      "app": {
+        "title": "QR scanner app",
+        "caption": "If a client has no app to read QR codes — let them scan this sticker",
+        "label": "QR SCANNER"
+      }
+    },
+    "ctaHint": "Pick the stickers you need, customize the design and place an order in a few minutes"
+  },
+  "editor": {
+    "backToStickers": "← All stickers",
+    "dataSection": "Sticker data",
+    "fields": {
+      "value": "Link",
+      "ssid": "Wi-Fi network name",
+      "password": "Wi-Fi password",
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "site": "Website",
+      "subject": "Email subject",
+      "message": "Message",
+      "card": "Card number"
+    },
+    "labelField": "Sticker label",
+    "shapeSection": "Sticker shape",
+    "shapes": {
+      "rect": "Rectangle",
+      "circle": "Circle",
+      "phone": "Phone"
+    },
+    "templateSection": "Template",
+    "templateStandard": "Standard",
+    "templateIndividual": "Custom (+100 UAH)",
+    "colorsSection": "Colors",
+    "colors": {
+      "text": "Text",
+      "frame": "Frame",
+      "bg": "Background",
+      "icon": "Icon",
+      "qr": "QR code"
+    },
+    "previewSection": "Preview",
+    "fillHint": "Fill in the data to generate the QR code",
+    "addToOrder": "Add to order",
+    "added": "Sticker added to your order",
+    "goToOrder": "Go to order",
+    "addAnother": "Add another sticker"
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "step1": "Register your business in the QR-Helper service.",
+    "step2": "Get ready-made printed packages of QR-code stickers to place in your venue in a visible spot.",
+    "step3": "Your clients scan the QR codes and can:",
+    "step3Items": {
+      "wifi": "quickly connect to the Wi-Fi access point;",
+      "feedback": "send reviews and suggestions to your email or via SMS;",
+      "contacts": "quickly save your business contacts;",
+      "google": "leave reviews and ratings via Google;",
+      "socials": "quickly find your pages on social media;",
+      "pay": "pay contactless and fast for goods and services;",
+      "car": "scan the QR code on the car window to call you fast;",
+      "site": "open your website and YouTube channel;",
+      "olx": "open your OLX page with all your goods."
+    },
+    "step4": "As a result, the client saves both their time and yours.",
+    "faqTitle": "Frequently asked questions",
+    "faq": {
+      "q1": "What are QR-code stickers and why does my business need them?",
+      "a1": "These are ready-made printed stickers with a QR code containing your data: links to socials, Wi-Fi, phone, payment and more. The client points their smartphone camera and instantly performs the action — no manual typing.",
+      "q2": "Does the client need a special app?",
+      "a2": "No. The camera of any modern smartphone scans QR codes. For older phones there is a sticker linking to a free QR scanner.",
+      "q3": "How is a standard sticker different from a custom template?",
+      "a3": "Standard is a ready-made service layout where only your QR code and text change. A custom template (+100 UAH) lets you tune the colors of the text, background, frame and the QR code itself to match your brand.",
+      "q4": "How fast will I get my order?",
+      "a4": "After payment we produce the stickers and ship them by Nova Poshta — roughly within 24 hours.",
+      "q5": "Can I order just a few kinds of stickers?",
+      "a5": "Yes. Add only the stickers you need to your order — one is enough.",
+      "q6": "What if the data changes (Wi-Fi password, phone number)?",
+      "a6": "The QR code is generated from your data, so a change requires a new sticker. Just place a new order with the updated data."
+    }
+  },
+  "order": {
+    "title": "Order",
+    "intro": "Here are the stickers you created. Fill in your contacts and place the order.",
+    "cartTitle": "Your stickers",
+    "cartEmpty": "You haven't added any stickers yet.",
+    "cartEmptyCta": "Choose stickers",
+    "remove": "Remove",
+    "addMore": "Add another sticker",
+    "sectionCustomer": "Customer details",
+    "templateStandard": "Standard sticker",
+    "templateIndividual": "Custom template (+100 UAH)",
+    "fields": {
+      "customerName": "Name",
+      "customerPhone": "Phone",
+      "customerCity": "City",
+      "customerNpOffice": "Nova Poshta branch"
+    },
+    "placeholders": {
+      "customerName": "Full name",
+      "customerPhone": "+380 50 123 45 67",
+      "customerCity": "Kyiv",
+      "customerNpOffice": "Branch #1"
+    },
+    "pay": "Pay",
+    "submitting": "Submitting…",
+    "success": "Order accepted, number {number}",
+    "successNote": "We'll contact you and ship the order by Nova Poshta, roughly within 24 hours.",
+    "newOrder": "Place another order",
+    "errors": {
+      "required": "Required field",
+      "noItems": "Add at least one sticker first",
+      "submitFailed": "Failed to submit the order. Please try again."
+    }
+  },
+  "footer": {
+    "tagline": "QR-code stickers for small businesses",
+    "rights": "© {year} QR-Helper. All rights reserved."
+  }
+}

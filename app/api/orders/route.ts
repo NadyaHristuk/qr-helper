@@ -19,6 +19,14 @@ import { buildPayload, PayloadError, STICKER_TYPES } from '@/lib/qr/payloads';
 const itemSchema = z.object({
   type: z.enum(STICKER_TYPES),
   value: z.union([z.string(), z.record(z.string(), z.unknown())]),
+  // Оформление макета (форма, надпись, цвета) — сохраняется вместе с заказом
+  // для производства. Необязательно: QR-payload собирается из type+value.
+  label: z.string().optional(),
+  subtitle: z.string().optional(),
+  icon: z.string().optional(),
+  shape: z.enum(['rect', 'circle', 'phone']).optional(),
+  template: z.enum(['standard', 'individual']).optional(),
+  colors: z.record(z.string(), z.string()).optional(),
 });
 
 const orderSchema = z.object({

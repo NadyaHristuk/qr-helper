@@ -1,29 +1,45 @@
-import { QrPreview } from './QrPreview';
-import type { StickerType, StickerValue } from '@/lib/qr/payloads';
+import { Link } from '@/i18n/navigation';
+import { StickerDesign } from './StickerDesign';
+import { getSticker } from '@/lib/stickers/catalog';
 
-/** Карточка вида наклейки на главной: слева QR-превью, справа подпись. */
+/** Кликабельная карточка вида наклейки на главной: ведёт в редактор,
+ *  слева — реальное превью макета, справа — подпись. */
 export function StickerCard({
+  stickerKey,
   title,
   caption,
-  demoType,
-  demoValue,
+  label,
 }: {
+  stickerKey: string;
   title: string;
   caption: string;
-  demoType: StickerType;
-  demoValue: StickerValue;
+  label: string;
 }) {
+  const def = getSticker(stickerKey);
+  if (!def) return null;
+
   return (
-    <li className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-navy/40 hover:shadow-md">
-      <div className="shrink-0">
-        <div className="rounded-lg border-2 border-accent/70 p-1.5">
-          <QrPreview type={demoType} value={demoValue} size={84} />
+    <li>
+      <Link
+        href={`/stickers/${stickerKey}`}
+        className="flex h-full items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-navy hover:shadow-md"
+      >
+        <div className="shrink-0">
+          <StickerDesign
+            type={def.payloadType}
+            value={def.demo}
+            shape={def.defaultShape}
+            colors={{ text: '#d62828', frame: '#1d3557', bg: '#ffffff', icon: '#1d3557', qr: '#101828' }}
+            label={label}
+            icon={def.icon}
+            width={92}
+          />
         </div>
-      </div>
-      <div className="min-w-0">
-        <h3 className="font-semibold text-navy">{title}</h3>
-        <p className="mt-0.5 text-sm text-slate-600">{caption}</p>
-      </div>
+        <div className="min-w-0">
+          <h3 className="font-semibold text-navy">{title}</h3>
+          <p className="mt-0.5 text-sm text-slate-600">{caption}</p>
+        </div>
+      </Link>
     </li>
   );
 }

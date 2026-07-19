@@ -4,7 +4,7 @@ import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 
-const LABELS: Record<string, string> = { ua: 'Укр', ru: 'Рус' };
+const LABELS: Record<string, string> = { ua: 'Укр', en: 'Eng' };
 
 /** Переключатель языка Укр/Рус — сохраняет текущий путь. */
 export function LanguageSwitcher() {

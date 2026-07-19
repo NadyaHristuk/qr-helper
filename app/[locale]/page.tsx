@@ -2,31 +2,7 @@ import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { StickerCard } from '@/components/StickerCard';
-import type { StickerType, StickerValue } from '@/lib/qr/payloads';
-
-/** Порядок и демо-содержимое 12 видов наклеек для превью на главной. */
-const STICKERS: {
-  key: string;
-  demoType: StickerType;
-  demoValue: StickerValue;
-}[] = [
-  { key: 'socials', demoType: 'facebook', demoValue: 'https://facebook.com/qr.pomichnyk' },
-  { key: 'wifi', demoType: 'wifi', demoValue: { ssid: 'Cafe_Guest', password: 'welcome2024' } },
-  {
-    key: 'vcard',
-    demoType: 'vcard',
-    demoValue: { name: 'QR Помічник', company: 'Ваш заклад', phone: '+380501234567', email: 'hello@zaklad.ua' },
-  },
-  { key: 'email', demoType: 'email', demoValue: { email: 'hello@zaklad.ua', subject: 'Відгук' } },
-  { key: 'sms', demoType: 'sms', demoValue: { phone: '+380501234567', message: 'Відгук:' } },
-  { key: 'google', demoType: 'google', demoValue: 'https://g.page/vash-zaklad/review' },
-  { key: 'privat24', demoType: 'privat24', demoValue: '5168755412345678' },
-  { key: 'carPhone', demoType: 'carPhone', demoValue: '+380501234567' },
-  { key: 'site', demoType: 'site', demoValue: 'https://vash-sait.ua' },
-  { key: 'youtube', demoType: 'youtube', demoValue: 'https://youtube.com/@vash-kanal' },
-  { key: 'olx', demoType: 'olx', demoValue: 'https://www.olx.ua/list/user/abcd1234/' },
-  { key: 'app', demoType: 'site', demoValue: 'https://qr-pomichnyk.ua/app' },
-];
+import { CATALOG } from '@/lib/stickers/catalog';
 
 export default async function HomePage({
   params,
@@ -51,23 +27,24 @@ function HomeContent() {
         </h1>
         <p className="mt-4 text-base text-slate-600 sm:text-lg">{t('intro')}</p>
         <div className="mt-6">
-          <Link href="/order" className="btn-accent">
-            {t('kindsTitle')} →
-          </Link>
+          <a href="#kinds" className="btn-accent">
+            {tc('customize')} →
+          </a>
         </div>
       </section>
 
       {/* Список видов наклеек */}
-      <section className="mt-12">
-        <h2 className="section-title mb-5 text-center">{t('kindsTitle')}</h2>
+      <section id="kinds" className="mt-12">
+        <h2 className="section-title mb-1 text-center">{t('kindsTitle')}</h2>
+        <p className="mb-5 text-center text-sm text-slate-500">{t('kindsHint')}</p>
         <ul className="grid gap-4 sm:grid-cols-2">
-          {STICKERS.map((s) => (
+          {CATALOG.map((s) => (
             <StickerCard
               key={s.key}
+              stickerKey={s.key}
               title={t(`stickers.${s.key}.title`)}
               caption={t(`stickers.${s.key}.caption`)}
-              demoType={s.demoType}
-              demoValue={s.demoValue}
+              label={t(`stickers.${s.key}.label`)}
             />
           ))}
         </ul>
