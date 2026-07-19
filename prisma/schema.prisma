@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  // Путь относительно каталога prisma/ — БД лежит в prisma/dev.db
+  // (уже в .gitignore). Без env, чтобы работало из коробки.
+  url      = "file:./dev.db"
+}
+
+model Order {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  // created | paid | in_production | shipped
+  status        String   @default("created")
+  // standard | individual
+  template      String
+  // Цена в копейках UAH
+  priceKop      Int
+  customerName  String
+  customerPhone String
+  city          String
+  npOffice      String
+  // JSON-массив наклеек: [{ type, value }]
+  itemsJson     String
+}

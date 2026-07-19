@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+prisma/dev.db*
+.env
+.env.local
+.DS_Store
+
+# Локальные настройки Claude Code и qodo
+.claude/settings.local.json
+.qodo/
