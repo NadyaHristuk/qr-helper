@@ -61,20 +61,24 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
-      <Link href="/" className="text-sm font-medium text-navy hover:text-accent">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-10">
+      <Link href="/" className="text-sm font-semibold text-slate-500 transition hover:text-accent">
         {t('backToStickers')}
       </Link>
 
-      <h1 className="mt-3 text-2xl font-extrabold text-navy sm:text-3xl">
-        {th(`stickers.${stickerKey}.title`)}
-      </h1>
-      <p className="mt-1 text-slate-600">{th(`stickers.${stickerKey}.caption`)}</p>
+      <div className="mt-4 max-w-3xl">
+        <h1 className="text-3xl font-black tracking-tight text-navy sm:text-4xl">
+          {th(`stickers.${stickerKey}.title`)}
+        </h1>
+        <p className="mt-2 text-base leading-7 text-slate-600">
+          {th(`stickers.${stickerKey}.caption`)}
+        </p>
+      </div>
 
       {added && (
-        <div className="mt-5 rounded-xl border border-green-200 bg-green-50 p-4">
+        <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-green-200 bg-green-50 p-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-semibold text-green-700">✓ {t('added')}</p>
-          <div className="mt-3 flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3">
             <button className="btn-accent" onClick={() => router.push('/order')}>
               {t('goToOrder')}
             </button>
@@ -85,111 +89,121 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
         </div>
       )}
 
-      <div className="mt-6 grid gap-8 md:grid-cols-2">
-        <div className="space-y-6">
-          <section>
-            <h2 className="section-title mb-3">{t('dataSection')}</h2>
-            <div className="space-y-3">
+      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_420px] lg:items-start">
+        <div className="space-y-5">
+          <EditorSection title={t('dataSection')}>
+            <div className="grid gap-4 sm:grid-cols-2">
               {def.fields.map((f) => (
-                <div key={f.name}>
+                <div key={f.name} className={def.fields.length === 1 ? 'sm:col-span-2' : ''}>
                   <label className="label">{t(`fields.${f.name}`)}</label>
                   <input
                     className="input"
                     type={f.kind === 'password' ? 'text' : f.kind === 'url' ? 'url' : f.kind === 'email' ? 'email' : f.kind === 'tel' ? 'tel' : 'text'}
+                    inputMode={f.kind === 'tel' ? 'tel' : f.kind === 'email' ? 'email' : f.kind === 'url' ? 'url' : undefined}
                     value={data[f.name] ?? ''}
                     onChange={(e) => setField(f.name, e.target.value)}
                   />
                 </div>
               ))}
             </div>
-          </section>
+          </EditorSection>
 
-          <section>
-            <label className="label">{t('labelField')}</label>
+          <EditorSection title={t('labelField')}>
             <input
               className="input"
               value={label}
               onChange={(e) => setLabel(e.target.value)}
               maxLength={40}
             />
-          </section>
+          </EditorSection>
 
-          <section>
-            <h2 className="section-title mb-3">{t('shapeSection')}</h2>
-            <div className="flex flex-wrap gap-2">
+          <EditorSection title={t('shapeSection')}>
+            <div className="grid gap-2 sm:grid-cols-3">
               {SHAPES.map((sh) => (
                 <button
                   key={sh}
                   type="button"
                   onClick={() => setShape(sh)}
-                  className={`rounded-lg border-2 px-4 py-2 text-sm font-medium transition ${
+                  className={`rounded-xl border-2 px-4 py-3 text-sm font-semibold transition ${
                     shape === sh
-                      ? 'border-navy bg-navy/5 text-navy'
-                      : 'border-slate-200 text-slate-600 hover:border-navy/40'
+                      ? 'border-navy bg-navy text-white shadow-sm'
+                      : 'border-slate-200 bg-white text-slate-600 hover:border-navy/40 hover:text-navy'
                   }`}
                 >
                   {t(`shapes.${sh}`)}
                 </button>
               ))}
             </div>
-          </section>
+          </EditorSection>
 
-          <section>
-            <h2 className="section-title mb-3">{t('templateSection')}</h2>
-            <div className="grid gap-2 sm:grid-cols-2">
+          <EditorSection title={t('templateSection')}>
+            <div className="grid gap-3 sm:grid-cols-2">
               <button
                 type="button"
                 onClick={() => setTemplate('standard')}
-                className={`rounded-lg border-2 px-4 py-2 text-sm font-medium transition ${
-                  template === 'standard' ? 'border-navy bg-navy/5 text-navy' : 'border-slate-200 text-slate-600 hover:border-navy/40'
+                className={`rounded-2xl border-2 p-4 text-left transition ${
+                  template === 'standard'
+                    ? 'border-navy bg-navy/5'
+                    : 'border-slate-200 bg-white hover:border-navy/30'
                 }`}
               >
-                {t('templateStandard')}
+                <span className="block font-bold text-navy">{t('templateStandard')}</span>
               </button>
               <button
                 type="button"
                 onClick={() => setTemplate('individual')}
-                className={`rounded-lg border-2 px-4 py-2 text-sm font-medium transition ${
-                  template === 'individual' ? 'border-navy bg-navy/5 text-navy' : 'border-slate-200 text-slate-600 hover:border-navy/40'
+                className={`rounded-2xl border-2 p-4 text-left transition ${
+                  template === 'individual'
+                    ? 'border-navy bg-navy/5'
+                    : 'border-slate-200 bg-white hover:border-navy/30'
                 }`}
               >
-                {t('templateIndividual')}
+                <span className="block font-bold text-navy">{t('templateIndividual')}</span>
               </button>
             </div>
 
             {template === 'individual' && (
-              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
                 {COLOR_KEYS.map((k) => (
-                  <label key={k} className="flex items-center gap-2 text-sm text-slate-600">
+                  <label key={k} className="rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-600">
+                    <span className="mb-2 block text-xs font-semibold text-slate-500">{t(`colors.${k}`)}</span>
                     <input
                       type="color"
                       value={colors[k]}
                       onChange={(e) => setColor(k, e.target.value)}
-                      className="h-8 w-10 cursor-pointer rounded border border-slate-300"
+                      className="h-10 w-full cursor-pointer rounded border border-slate-300 bg-white"
                     />
-                    {t(`colors.${k}`)}
                   </label>
                 ))}
               </div>
             )}
-          </section>
+          </EditorSection>
         </div>
 
-        <div>
-          <h2 className="section-title mb-3">{t('previewSection')}</h2>
-          <div className="sticky top-24 flex flex-col items-center rounded-2xl bg-slate-50 p-6">
-            <StickerDesign
-              type={def.payloadType}
-              value={value}
-              shape={shape}
-              colors={effectiveColors}
-              label={label}
-              subtitle={subtitle}
-              icon={def.icon}
-              width={260}
-            />
+        <aside className="lg:sticky lg:top-24">
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/50 sm:p-6">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h2 className="section-title">{t('previewSection')}</h2>
+              <span className={`rounded-full px-3 py-1 text-xs font-semibold ${isPayloadValid ? 'bg-green-50 text-green-700' : 'bg-slate-100 text-slate-500'}`}>
+                {isPayloadValid ? 'QR ✓' : 'QR …'}
+              </span>
+            </div>
+
+            <div className="flex min-h-[390px] items-center justify-center rounded-2xl bg-slate-50 p-4">
+              <StickerDesign
+                type={def.payloadType}
+                value={value}
+                shape={shape}
+                colors={effectiveColors}
+                label={label}
+                subtitle={subtitle}
+                icon={def.icon}
+                width={260}
+              />
+            </div>
+
             {!isPayloadValid && (
-              <p className="mt-4 text-center text-sm text-slate-500">
+              <p className="mt-4 text-center text-sm leading-6 text-slate-500">
                 {t('fillHint')}
               </p>
             )}
@@ -197,13 +211,22 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
               type="button"
               onClick={handleAdd}
               disabled={!isPayloadValid}
-              className="btn-accent mt-6 w-full disabled:cursor-not-allowed disabled:opacity-50"
+              className="btn-accent mt-5 w-full py-3 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {t('addToOrder')}
             </button>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
+  );
+}
+
+function EditorSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+      <h2 className="section-title mb-4">{title}</h2>
+      {children}
+    </section>
   );
 }
