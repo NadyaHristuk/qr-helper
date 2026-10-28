@@ -6,38 +6,45 @@ import { buildPayload, PayloadError, STICKER_TYPES } from '@/lib/qr/payloads';
 
 /**
  * POST /api/orders — создать заказ.
- * Тело: {
- *   customer: { name, phone, city, npOffice },
- *   template: 'standard' | 'individual',
- *   items: [{ type: StickerType, value: string | object }]  // минимум 1
- * }
- * Ответ 201: { id, priceKop, status }
- *
- * GET /api/orders — список заказов (для будущей админки), новые сверху.
+ * Просмотр списка заказов не публикуется без авторизации.
  */
-
 const itemSchema = z.object({
   type: z.enum(STICKER_TYPES),
-  value: z.union([z.string(), z.record(z.string(), z.unknown())]),
-  // Оформление макета (форма, надпись, цвета) — сохраняется вместе с заказом
-  // для производства. Необязательно: QR-payload собирается из type+value.
-  label: z.string().optional(),
-  subtitle: z.string().optional(),
-  icon: z.string().optional(),
+  value: z.union([z.string().max(2000), z.record(z.string(), z.unknown())]),
+  label: z.string().trim().max(80).optional(),
+  subtitle: z.string().trim().max(120).optional(),
+  icon: z.string().max(16).optional(),
   shape: z.enum(['rect', 'circle', 'phone']).optional(),
   template: z.enum(['standard', 'individual']).optional(),
   colors: z.record(z.string(), z.string()).optional(),
 });
 
+const phoneSchema = z
+  .string()
+  .trim()
+  .min(10, 'Укажите телефон')
+  .max(24, 'Слишком длинный номер телефона')
+  .refine(
+    (value) => /^\+?[\d\s().-]{10,24}$/.test(value),
+    'Проверьте формат телефона',
+  );
+
 const orderSchema = z.object({
   customer: z.object({
-    name: z.string().trim().min(1, 'Укажите имя'),
-    phone: z.string().trim().min(3, 'Укажите телефон'),
-    city: z.string().trim().min(1, 'Укажите город'),
-    npOffice: z.string().trim().min(1, 'Укажите отделение Новой Почты'),
+    name: z.string().trim().min(1, 'Укажите имя').max(120),
+    phone: phoneSchema,
+    city: z.string().trim().min(1, 'Укажите город').max(120),
+    npOffice: z
+      .string()
+      .trim()
+      .min(1, 'Укажите отделение Новой Почты')
+      .max(120),
   }),
   template: z.enum(['standard', 'individual']),
-  items: z.array(itemSchema).min(1, 'Добавьте хотя бы одну наклейку'),
+  items: z
+    .array(itemSchema)
+    .min(1, 'Добавьте хотя бы одну наклейку')
+    .max(50, 'Слишком много позиций в одном заказе'),
 });
 
 export async function POST(request: NextRequest) {
@@ -58,7 +65,6 @@ export async function POST(request: NextRequest) {
 
   const { customer, template, items } = parsed.data;
 
-  // Проверяем, что из каждой наклейки собирается корректный QR-payload.
   try {
     for (const item of items) {
       buildPayload(item.type, item.value as never);
@@ -88,12 +94,5 @@ export async function POST(request: NextRequest) {
   return NextResponse.json(
     { id: order.id, priceKop: order.priceKop, status: order.status },
     { status: 201 },
-  );
-}
-
-export async function GET() {
-  const orders = await prisma.order.findMany({ orderBy: { createdAt: 'desc' } });
-  return NextResponse.json(
-    orders.map((o) => ({ ...o, items: JSON.parse(o.itemsJson) })),
   );
 }
