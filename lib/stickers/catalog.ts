@@ -88,7 +88,7 @@ export const CATALOG: StickerDef[] = [
       { name: 'site', kind: 'url' },
     ],
     buildValue: (d) => ({
-      name: s(d, 'name') || 'Контакт',
+      name: s(d, 'name'),
       phone: s(d, 'phone'),
       email: s(d, 'email'),
       site: s(d, 'site'),
