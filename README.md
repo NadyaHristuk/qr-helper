@@ -1,85 +1,165 @@
-# QR-Помічник
+# QR Helper
 
-Сервіс для дрібних підприємців: замовлення наліпок із QR-кодами (візитка/vCard,
-Wi-Fi, соцмережі, відгуки в Google, «скануй і телефонуй», оплата на картку тощо)
-з конструктором шаблонів і відправкою макетів на виробництво.
+QR Helper is a Next.js product configurator for creating and ordering QR-based printed products for small businesses.
 
-Повна розшифровка ідеї та структура сторінок — у [docs/spec.md](docs/spec.md).
+The project started as a sticker-ordering MVP and is being expanded into a production-ready workflow: configurable QR designs, product/material options, quantities, delivery/payment choices, order management and an internal admin dashboard.
 
-## Стек
+## Current product flow
 
-React + Node, які вже знайомі, — цього достатньо. Нічого нового вчити не
-потрібно, але збирати краще не «голий React + Express», а **Next.js** — це
-той самий React, тільки із вбудованим сервером (Node), роутингом і SSR.
+1. Choose a QR use case (Wi-Fi, reviews, contacts, social links, website, car phone, etc.).
+2. Enter the payload data.
+3. Configure the sticker design and shape.
+4. Choose the physical product, size and quantity.
+5. Add one or more products to the cart.
+6. Enter customer, delivery and payment preferences.
+7. Create an order in PostgreSQL.
+8. Manage the order through the protected admin dashboard.
 
-| Шар | Вибір | Чому |
-|-----|-------|------|
-| Фреймворк | **Next.js (App Router) + TypeScript** | Маркетинговий сайт має індексуватися Google → потрібен SSR/SSG. Фронт і API-роути в одному проєкті, деплой одним шматком. |
-| i18n (укр/рос) | **next-intl** | Перемикач мови з макета, локалізовані URL (`/ua`, `/ru`). |
-| БД | **PostgreSQL** через **Prisma** | Замовлення, дані клієнтів, статуси виробництва. Безкоштовний Postgres на [neon.tech](https://neon.tech) — працює і локально, і на Vercel. |
-| Генерація QR | пакет **`qrcode`** | Генерує SVG/PNG. Усі типи наліпок — це просто різні payload-формати: URL, `tel:`, `mailto:`, `sms:`, `WIFI:T:WPA;S:імʼя;P:пароль;;`, vCard 3.0. Окремих сервісів не потрібно. |
-| Друковані макети | SVG-шаблони → PDF/PNG 300 dpi (`sharp` або `@resvg/resvg-js`) | Шаблон наліпки — SVG з плейсхолдерами (QR, текст, кольори з конструктора). Розкладка дрібних шаблонів на спільний аркуш для виробництва — теж SVG-композиція. |
-| Оплата | **LiqPay** (Приват24) або **WayForPay / Fondy / monobank-еквайринг** | Stripe в Україні недоступний. LiqPay логічний, оскільки в ескізах фігурує Приват24. |
-| Форми | react-hook-form + zod | Велика форма замовлення з валідацією за типами полів (URL, телефон, email, номер картки). |
-| Деплой | VPS + nginx + Let's Encrypt (або Vercel) | Купувати Comodo SSL із записів не потрібно — Let's Encrypt безкоштовний. |
+The home page also contains additional product concepts for stakeholder review: menu/price list, booking, directions, promo codes, documents, dynamic QR, QR+NFC, signs, stands, posters and business cards.
 
-## Чому не щось інше
+## Stack
 
-- **Окремий бекенд (Nest/Express) не потрібен**: логіки небагато — замовлення,
-  генерація QR/макетів, платіжний вебхук. API-роутів Next.js достатньо.
-  Якщо зʼявиться адмінка виробництва та обсяги — винести API можна пізніше.
-- **WordPress/Tilda** швидші для вітрини, але конструктор наліпок і
-  генерація друкованих аркушів — кастомний код, там його писати важче.
-- **Мобільний застосунок** (п. 12 із записів) на старті не потрібен — увесь
-  сценарій клієнта працює через камеру телефона.
+- Next.js 15 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- next-intl (Ukrainian / English)
+- Prisma 6
+- PostgreSQL
+- react-hook-form + Zod
+- `qrcode` for QR generation
+- Vercel for preview/production deployments
+- GitHub Actions for typecheck/build CI
 
-## Порядок роботи (MVP)
+## Main features
 
-1. Каркас Next.js + i18n + 4 сторінки: головна, «Як це працює»,
-   «Питання та відповіді», «Замовити наліпки».
-2. Генерація QR за всіма типами payload + попередній перегляд наліпки в браузері.
-3. Форма замовлення → збереження замовлення в БД → оплата (LiqPay sandbox).
-4. Конструктор кольорів (текст/фон/рамка/QR) для індивідуального шаблону.
-5. Генерація друкованого аркуша (розкладка макетів) для виробництва.
+### Customer side
 
-## Локальний запуск
+- Responsive UI down to 320px
+- QR payload validation before adding to cart
+- Live SVG sticker preview
+- Multiple sticker shapes
+- Standard / individual design modes
+- Custom colors
+- Multiple physical product types
+- S / M / L size selection
+- Quantity per position
+- Multi-item cart
+- Delivery selection
+- Payment preference selection
+- Customer note
+- PostgreSQL order persistence
+- Ukrainian and English UI
+
+### Admin side
+
+Admin dashboard: `/<locale>/admin`
+
+Features:
+
+- Password-protected admin session
+- httpOnly admin cookie
+- Order list from PostgreSQL
+- Search and status filtering
+- Operational counters
+- Order/customer/delivery details
+- Production details for every line item
+- Status workflow:
+  - `created`
+  - `confirmed`
+  - `in_production`
+  - `ready`
+  - `shipped`
+  - `completed`
+  - `cancelled`
+
+The public order API does not expose the order list.
+
+## Environment variables
+
+Copy `.env.example` to `.env`:
+
+```bash
+DATABASE_URL="postgresql://user:password@host/dbname?sslmode=require"
+ADMIN_PASSWORD="use-a-strong-private-password"
+```
+
+Never commit the real admin password.
+
+## Local development
 
 ```bash
 npm install
-cp .env.example .env      # вставте рядок підключення до Postgres (див. нижче)
-npm run db:push           # створить таблиці в базі
-npm run dev               # http://localhost:3000 (відкриється /ua)
+cp .env.example .env
+npm run db:push
+npm run dev
 ```
 
-## Деплой безкоштовно (Vercel + Neon)
+Open:
 
-Публічна демоверсія розгортається безкоштовно за кілька хвилин.
+- `/ua` — Ukrainian storefront
+- `/en` — English storefront
+- `/ua/admin` or `/en/admin` — admin dashboard
 
-**1. Безкоштовна база (Neon)**
-1. Зареєструйтеся на [neon.tech](https://neon.tech) → створіть проєкт.
-2. Скопіюйте **Connection string** (рядок на кшталт
-   `postgresql://...@...neon.tech/...?sslmode=require`).
-3. Локально вставте його в `.env` і один раз виконайте `npm run db:push` —
-   це створить таблиці. (Vercel працюватиме з тією самою базою.)
+## Database changes
 
-**2. Код на GitHub**
-1. Створіть порожній репозиторій на [github.com](https://github.com).
-2. У теці проєкту:
-   ```bash
-   git remote add origin https://github.com/<логін>/<репозиторій>.git
-   git push -u origin master
-   ```
+This project currently uses Prisma `db push` rather than a migration history.
 
-**3. Vercel**
-1. Зайдіть на [vercel.com](https://vercel.com) через GitHub → **Add New… →
-   Project** → виберіть репозиторій.
-2. У **Environment Variables** додайте `DATABASE_URL` — той самий рядок із Neon.
-3. Натисніть **Deploy**. За кілька хвилин отримаєте публічне посилання на кшталт
-   `https://<імʼя>.vercel.app` з HTTPS.
+After pulling a version with a changed Prisma schema, run:
 
-Далі за кожного `git push` Vercel оновлюватиме сайт автоматично.
-Клієнт Prisma генерується на етапі збірки (`postinstall` і `build`),
-окремих дій не потрібно.
+```bash
+npm run db:push
+```
 
-> Оплата у формі наразі — заглушка (замовлення зберігається зі статусом
-> `created`). Для реальних платежів пізніше підключається LiqPay/Приват24.
+For Vercel, `DATABASE_URL` must point to the same PostgreSQL database and the schema must be synchronized before using the new runtime fields.
+
+## Quality checks
+
+```bash
+npm run typecheck
+npm run build
+# or
+npm run check
+```
+
+GitHub Actions runs typecheck and build on pushes and pull requests.
+
+## API/security notes
+
+- Order creation is public, but order listing is admin-only.
+- QR image generation uses POST rather than putting QR payloads into public GET query strings.
+- QR image responses are not publicly cached.
+- Customer order fields are validated with Zod.
+- Admin access is isolated behind a server-side password check and httpOnly session cookie.
+
+## Product roadmap
+
+Already represented in the UI for stakeholder discussion:
+
+- Menu / price list QR
+- Location / directions
+- Messenger links
+- Booking / appointments
+- Promo / coupon
+- Instruction / PDF / document
+- Extended review flows
+- QR + NFC
+- Signs / stands / posters / business cards
+
+Next architectural layer after the current order workflow is stable:
+
+- Dynamic QR short links
+- Customer account / QR destination management
+- Scan analytics
+- Online payment gateway + webhook handling
+- Nova Poshta API integration
+- Production PDF/SVG/print-sheet export
+- Notifications
+- Rate limiting / CAPTCHA / idempotency
+- Automated API/QR tests and monitoring
+
+## Development approach
+
+The project is intentionally developed with an AI-assisted engineering workflow. AI is used as an implementation agent for auditing, refactoring, UX iteration, security hardening, deployment work and feature implementation, while product scope, architecture decisions, constraints, review and acceptance remain human-controlled.
+
+That workflow is part of what this repository demonstrates: not only frontend coding, but the ability to direct AI effectively across a real product lifecycle.
