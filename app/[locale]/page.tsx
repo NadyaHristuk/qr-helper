@@ -23,23 +23,23 @@ function HomeContent() {
   return (
     <div>
       <section className="border-b border-slate-200 bg-gradient-to-b from-slate-50 to-white">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[1.15fr_0.85fr] md:items-center md:py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 px-3 py-10 sm:px-4 sm:py-14 md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-10 md:py-20">
           <div>
-            <h1 className="max-w-3xl text-4xl font-black tracking-tight text-navy sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-3xl text-3xl font-black tracking-tight text-navy min-[360px]:text-4xl sm:text-5xl lg:text-6xl">
               {t('title')}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-600 min-[360px]:text-base min-[360px]:leading-7 sm:text-lg">
               {t('intro')}
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a href="#kinds" className="btn-accent">
+            <div className="mt-6 grid gap-3 min-[420px]:flex min-[420px]:flex-wrap">
+              <a href="#kinds" className="btn-accent w-full min-[420px]:w-auto">
                 {tc('customize')} →
               </a>
-              <Link href="/how-it-works" className="btn-outline">
+              <Link href="/how-it-works" className="btn-outline w-full min-[420px]:w-auto">
                 {th('title')}
               </Link>
             </div>
-            <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3">
+            <div className="mt-7 grid max-w-2xl gap-3 sm:grid-cols-3">
               <ValuePoint icon="📶" text={th('step3Items.wifi')} />
               <ValuePoint icon="⭐" text={th('step3Items.google')} />
               <ValuePoint icon="👤" text={th('step3Items.contacts')} />
@@ -47,10 +47,10 @@ function HomeContent() {
           </div>
 
           <div className="relative mx-auto w-full max-w-md">
-            <div className="absolute -left-6 -top-6 h-28 w-28 rounded-full bg-red-100 blur-2xl" />
-            <div className="absolute -bottom-10 -right-6 h-32 w-32 rounded-full bg-blue-100 blur-2xl" />
-            <div className="relative rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/70">
-              <div className="rounded-2xl bg-slate-50 p-5">
+            <div className="absolute -left-3 -top-4 h-24 w-24 rounded-full bg-red-100 blur-2xl sm:-left-6 sm:-top-6 sm:h-28 sm:w-28" />
+            <div className="absolute -bottom-6 -right-3 h-28 w-28 rounded-full bg-blue-100 blur-2xl sm:-bottom-10 sm:-right-6 sm:h-32 sm:w-32" />
+            <div className="relative rounded-3xl border border-slate-200 bg-white p-3 shadow-xl shadow-slate-200/70 sm:p-5">
+              <div className="rounded-2xl bg-slate-50 p-3 sm:p-5">
                 <StickerCard
                   stickerKey="wifi"
                   title={t('stickers.wifi.title')}
@@ -64,11 +64,11 @@ function HomeContent() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14">
+      <section className="mx-auto max-w-6xl px-3 py-10 sm:px-4 sm:py-14">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-black text-navy">{th('title')}</h2>
+          <h2 className="text-2xl font-black text-navy min-[360px]:text-3xl">{th('title')}</h2>
         </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:mt-8 md:grid-cols-3">
           <Step number="1" title={tc('customize')} text={t('kindsHint')} />
           <Step number="2" title={te('dataSection')} text={te('fillHint')} />
           <Step number="3" title={tc('orderCta')} text={t('ctaHint')} />
@@ -76,12 +76,12 @@ function HomeContent() {
       </section>
 
       <section id="kinds" className="border-y border-slate-200 bg-slate-50/70">
-        <div className="mx-auto max-w-6xl px-4 py-14">
+        <div className="mx-auto max-w-6xl px-3 py-10 sm:px-4 sm:py-14">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-black text-navy">{t('kindsTitle')}</h2>
+            <h2 className="text-2xl font-black text-navy min-[360px]:text-3xl">{t('kindsTitle')}</h2>
             <p className="mt-2 text-sm leading-6 text-slate-500 sm:text-base">{t('kindsHint')}</p>
           </div>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 lg:grid-cols-3">
             {CATALOG.map((s) => (
               <StickerCard
                 key={s.key}
@@ -95,14 +95,14 @@ function HomeContent() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14">
-        <div className="overflow-hidden rounded-3xl bg-navy px-6 py-10 text-center text-white sm:px-10 sm:py-12">
-          <p className="mx-auto max-w-2xl text-xl font-semibold leading-8">{t('ctaHint')}</p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a href="#kinds" className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-semibold text-navy transition hover:bg-slate-100">
+      <section className="mx-auto max-w-6xl px-3 py-10 sm:px-4 sm:py-14">
+        <div className="overflow-hidden rounded-3xl bg-navy px-4 py-8 text-center text-white sm:px-10 sm:py-12">
+          <p className="mx-auto max-w-2xl text-lg font-semibold leading-7 sm:text-xl sm:leading-8">{t('ctaHint')}</p>
+          <div className="mt-6 grid gap-3 min-[420px]:flex min-[420px]:flex-wrap min-[420px]:justify-center">
+            <a href="#kinds" className="inline-flex w-full items-center justify-center rounded-lg bg-white px-5 py-3 font-semibold text-navy transition hover:bg-slate-100 min-[420px]:w-auto sm:px-6">
               {tc('customize')}
             </a>
-            <Link href="/order" className="inline-flex items-center justify-center rounded-lg border border-white/40 px-6 py-3 font-semibold text-white transition hover:bg-white/10">
+            <Link href="/order" className="inline-flex w-full items-center justify-center rounded-lg border border-white/40 px-5 py-3 font-semibold text-white transition hover:bg-white/10 min-[420px]:w-auto sm:px-6">
               {tc('orderCta')}
             </Link>
           </div>
@@ -123,7 +123,7 @@ function ValuePoint({ icon, text }: { icon: string; text: string }) {
 
 function Step({ number, title, text }: { number: string; title: string; text: string }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
       <div className="flex h-9 w-9 items-center justify-center rounded-full bg-navy text-sm font-bold text-white">{number}</div>
       <h3 className="mt-4 text-lg font-bold text-navy">{title}</h3>
       <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
