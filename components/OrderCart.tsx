@@ -123,9 +123,6 @@ export function OrderCart() {
           {t('success', { number: result.id })}
         </h2>
         <p className="mt-3 leading-7 text-slate-600">{t('successNote')}</p>
-        <div className="mt-5 inline-flex rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-600">
-          {(result.priceKop / 100).toFixed(0)} грн · {result.status}
-        </div>
         <div className="mt-6">
           <Link href="/" className="btn-outline">
             {t('newOrder')}
