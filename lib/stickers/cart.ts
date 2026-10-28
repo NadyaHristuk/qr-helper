@@ -3,7 +3,10 @@
 import type { StickerType, StickerValue } from '@/lib/qr/payloads';
 import type { DesignColors, StickerShape, TemplateKind } from './catalog';
 
-/** Одна созданная наклейка в корзине заказа. */
+export type ProductType = 'sticker' | 'vinyl' | 'transparent' | 'sign' | 'stand' | 'poster' | 'business_card' | 'qr_nfc';
+export type StickerSize = 'S' | 'M' | 'L';
+
+/** Одна созданная позиция в корзине заказа. */
 export interface CartItem {
   id: string;
   key: string;
@@ -15,17 +18,28 @@ export interface CartItem {
   shape: StickerShape;
   template: TemplateKind;
   colors: DesignColors;
+  productType: ProductType;
+  size: StickerSize;
+  quantity: number;
 }
 
 const STORAGE_KEY = 'qr-helper-cart';
-/** Событие для оповещения компонентов в той же вкладке. */
 const EVENT = 'qr-helper-cart-change';
 
 export function getCart(): CartItem[] {
   if (typeof window === 'undefined') return [];
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as CartItem[]) : [];
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as Partial<CartItem>[];
+    if (!Array.isArray(parsed)) return [];
+
+    return parsed.map((item) => ({
+      ...item,
+      productType: item.productType ?? 'sticker',
+      size: item.size ?? 'M',
+      quantity: Math.max(1, Number(item.quantity ?? 1)),
+    })) as CartItem[];
   } catch {
     return [];
   }
@@ -49,7 +63,6 @@ export function clearCart(): void {
   save([]);
 }
 
-/** Подписка на изменения корзины (в текущей вкладке и между вкладками). */
 export function subscribeCart(cb: () => void): () => void {
   window.addEventListener(EVENT, cb);
   window.addEventListener('storage', cb);
