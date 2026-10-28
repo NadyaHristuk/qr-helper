@@ -43,14 +43,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-3 py-3 sm:gap-4 sm:px-4">
         <Link
           href="/"
-          className="flex items-center gap-2 text-lg font-extrabold text-navy"
+          className="flex min-w-0 items-center gap-2 font-extrabold text-navy"
           onClick={() => setOpen(false)}
         >
           <Logo />
-          <span>{t('common.siteName')}</span>
+          <span className="truncate text-sm min-[360px]:text-base sm:text-lg">
+            {t('common.siteName')}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -67,8 +69,10 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          <LanguageSwitcher />
+        <div className="flex shrink-0 items-center gap-1.5 min-[360px]:gap-2 sm:gap-3">
+          <div className="hidden min-[350px]:block">
+            <LanguageSwitcher />
+          </div>
           <Link href="/order" className="btn-accent hidden sm:inline-flex">
             {orderLabel}
           </Link>
@@ -98,7 +102,10 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-slate-200 bg-white px-4 py-3 md:hidden">
+        <nav className="border-t border-slate-200 bg-white px-3 py-3 sm:px-4 md:hidden">
+          <div className="mb-3 min-[350px]:hidden">
+            <LanguageSwitcher />
+          </div>
           <ul className="flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.label}>
