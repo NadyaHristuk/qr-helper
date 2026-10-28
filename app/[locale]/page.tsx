@@ -18,6 +18,7 @@ function HomeContent() {
   const t = useTranslations('home');
   const tc = useTranslations('common');
   const th = useTranslations('howItWorks');
+  const te = useTranslations('editor');
 
   return (
     <div>
@@ -35,13 +36,13 @@ function HomeContent() {
                 {tc('customize')} →
               </a>
               <Link href="/how-it-works" className="btn-outline">
-                {tc('orderCta')}
+                {th('title')}
               </Link>
             </div>
             <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3">
-              <ValuePoint icon="⚡" text={th('step1')} />
-              <ValuePoint icon="🎨" text={th('step2')} />
-              <ValuePoint icon="📦" text={th('step4')} />
+              <ValuePoint icon="📶" text={th('step3Items.wifi')} />
+              <ValuePoint icon="⭐" text={th('step3Items.google')} />
+              <ValuePoint icon="👤" text={th('step3Items.contacts')} />
             </div>
           </div>
 
@@ -68,9 +69,9 @@ function HomeContent() {
           <h2 className="text-3xl font-black text-navy">{th('title')}</h2>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
-          <Step number="1" title={th('step1')} text={th('step3Items.wifi')} />
-          <Step number="2" title={th('step2')} text={th('step3Items.contacts')} />
-          <Step number="3" title={th('step3')} text={th('step4')} />
+          <Step number="1" title={tc('customize')} text={t('kindsHint')} />
+          <Step number="2" title={te('dataSection')} text={te('fillHint')} />
+          <Step number="3" title={tc('orderCta')} text={t('ctaHint')} />
         </div>
       </section>
 
