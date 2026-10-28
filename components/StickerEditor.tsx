@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/navigation';
 import { StickerDesign } from './StickerDesign';
 import { getSticker, DEFAULT_COLORS, type DesignColors, type StickerShape, type TemplateKind } from '@/lib/stickers/catalog';
 import { addToCart } from '@/lib/stickers/cart';
+import { buildPayload } from '@/lib/qr/payloads';
 
 const SHAPES: StickerShape[] = ['rect', 'circle', 'phone'];
 const COLOR_KEYS: (keyof DesignColors)[] = ['text', 'frame', 'bg', 'icon', 'qr'];
@@ -27,12 +28,23 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
   const subtitle = def.subtitle?.(data);
   const effectiveColors = template === 'individual' ? colors : DEFAULT_COLORS;
 
+  const isPayloadValid = useMemo(() => {
+    try {
+      buildPayload(def.payloadType, value);
+      return true;
+    } catch {
+      return false;
+    }
+  }, [def.payloadType, value]);
+
   const setField = (name: string, v: string) =>
     setData((d) => ({ ...d, [name]: v }));
   const setColor = (k: keyof DesignColors, v: string) =>
     setColors((c) => ({ ...c, [k]: v }));
 
   function handleAdd() {
+    if (!isPayloadValid) return;
+
     addToCart({
       key: def.key,
       payloadType: def.payloadType,
@@ -74,9 +86,7 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
       )}
 
       <div className="mt-6 grid gap-8 md:grid-cols-2">
-        {/* Панель настроек */}
         <div className="space-y-6">
-          {/* Данные наклейки */}
           <section>
             <h2 className="section-title mb-3">{t('dataSection')}</h2>
             <div className="space-y-3">
@@ -94,7 +104,6 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
             </div>
           </section>
 
-          {/* Надпись */}
           <section>
             <label className="label">{t('labelField')}</label>
             <input
@@ -105,7 +114,6 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
             />
           </section>
 
-          {/* Форма */}
           <section>
             <h2 className="section-title mb-3">{t('shapeSection')}</h2>
             <div className="flex flex-wrap gap-2">
@@ -126,7 +134,6 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
             </div>
           </section>
 
-          {/* Шаблон */}
           <section>
             <h2 className="section-title mb-3">{t('templateSection')}</h2>
             <div className="grid gap-2 sm:grid-cols-2">
@@ -150,7 +157,6 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
               </button>
             </div>
 
-            {/* Конструктор цветов (только индивидуальный) */}
             {template === 'individual' && (
               <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {COLOR_KEYS.map((k) => (
@@ -169,7 +175,6 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
           </section>
         </div>
 
-        {/* Живой предпросмотр */}
         <div>
           <h2 className="section-title mb-3">{t('previewSection')}</h2>
           <div className="sticky top-24 flex flex-col items-center rounded-2xl bg-slate-50 p-6">
@@ -183,7 +188,17 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
               icon={def.icon}
               width={260}
             />
-            <button type="button" onClick={handleAdd} className="btn-accent mt-6 w-full">
+            {!isPayloadValid && (
+              <p className="mt-4 text-center text-sm text-slate-500">
+                {t('fillHint')}
+              </p>
+            )}
+            <button
+              type="button"
+              onClick={handleAdd}
+              disabled={!isPayloadValid}
+              className="btn-accent mt-6 w-full disabled:cursor-not-allowed disabled:opacity-50"
+            >
               {t('addToOrder')}
             </button>
           </div>
