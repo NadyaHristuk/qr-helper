@@ -5,73 +5,30 @@ import {
   buildPayload,
   PayloadError,
   STICKER_TYPES,
-  type StickerType,
   type StickerValue,
 } from '@/lib/qr/payloads';
 
 /**
- * GET /api/qr?type=<StickerType>&scale=<n>&...поля значения
+ * POST /api/qr
+ * Body: { type: StickerType, value: StickerValue, scale?: number }
  *
- * Отдаёт PNG QR-кода наклейки. Форма полей значения зависит от типа:
- *  - wifi:   ssid, password, security?, hidden?
- *  - vcard:  name, company?, phone?, email?, address?, site?, notes?
- *  - email:  value|email, subject?
- *  - sms:    value|phone, message?
- *  - остальные: value
+ * Sensitive QR values must not be sent in query parameters.
  */
-
-const querySchema = z.object({
+const bodySchema = z.object({
   type: z.enum(STICKER_TYPES),
-  scale: z.coerce.number().int().min(1).max(20).optional().default(8),
+  value: z.union([z.string(), z.record(z.string(), z.unknown())]),
+  scale: z.number().int().min(1).max(20).optional().default(8),
 });
 
-/** Собирает StickerValue из query-параметров под конкретный тип наклейки. */
-function valueFromParams(type: StickerType, params: URLSearchParams): StickerValue {
-  switch (type) {
-    case 'wifi': {
-      const security = params.get('security');
-      return {
-        ssid: params.get('ssid') ?? '',
-        password: params.get('password') ?? undefined,
-        security:
-          security === 'WPA' || security === 'WEP' || security === 'nopass'
-            ? security
-            : undefined,
-        hidden: params.get('hidden') === 'true' || undefined,
-      };
-    }
-    case 'vcard':
-      return {
-        name: params.get('name') ?? '',
-        company: params.get('company') ?? undefined,
-        phone: params.get('phone') ?? undefined,
-        email: params.get('email') ?? undefined,
-        address: params.get('address') ?? undefined,
-        site: params.get('site') ?? undefined,
-        notes: params.get('notes') ?? undefined,
-      };
-    case 'email':
-      return {
-        email: params.get('email') ?? params.get('value') ?? '',
-        subject: params.get('subject') ?? undefined,
-      };
-    case 'sms':
-      return {
-        phone: params.get('phone') ?? params.get('value') ?? '',
-        message: params.get('message') ?? undefined,
-      };
-    default:
-      return params.get('value') ?? '';
+export async function POST(request: NextRequest) {
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Некорректный JSON' }, { status: 400 });
   }
-}
 
-export async function GET(request: NextRequest) {
-  const params = request.nextUrl.searchParams;
-
-  const parsed = querySchema.safeParse({
-    type: params.get('type'),
-    scale: params.get('scale') ?? undefined,
-  });
+  const parsed = bodySchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
       { error: 'Неверные параметры запроса', details: parsed.error.flatten() },
@@ -80,8 +37,10 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const value = valueFromParams(parsed.data.type, params);
-    const payload = buildPayload(parsed.data.type, value);
+    const payload = buildPayload(
+      parsed.data.type,
+      parsed.data.value as StickerValue,
+    );
 
     const png = await QRCode.toBuffer(payload, {
       type: 'png',
@@ -95,7 +54,7 @@ export async function GET(request: NextRequest) {
       status: 200,
       headers: {
         'Content-Type': 'image/png',
-        'Cache-Control': 'public, max-age=3600',
+        'Cache-Control': 'no-store, max-age=0',
       },
     });
   } catch (err) {
@@ -103,6 +62,9 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: err.message }, { status: 400 });
     }
     console.error('QR generation failed:', err);
-    return NextResponse.json({ error: 'Не удалось сгенерировать QR-код' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Не удалось сгенерировать QR-код' },
+      { status: 500 },
+    );
   }
 }
