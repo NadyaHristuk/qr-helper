@@ -17,16 +17,14 @@ export default async function HomePage({
 function HomeContent() {
   const t = useTranslations('home');
   const tc = useTranslations('common');
+  const th = useTranslations('howItWorks');
 
   return (
     <div>
       <section className="border-b border-slate-200 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[1.15fr_0.85fr] md:items-center md:py-20">
           <div>
-            <span className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 shadow-sm">
-              QR stickers for everyday business tasks
-            </span>
-            <h1 className="mt-5 max-w-3xl text-4xl font-black tracking-tight text-navy sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-3xl text-4xl font-black tracking-tight text-navy sm:text-5xl lg:text-6xl">
               {t('title')}
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
@@ -37,13 +35,13 @@ function HomeContent() {
                 {tc('customize')} →
               </a>
               <Link href="/how-it-works" className="btn-outline">
-                {t('kindsHint')}
+                {tc('orderCta')}
               </Link>
             </div>
             <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3">
-              <ValuePoint icon="⚡" text="QR генерується одразу" />
-              <ValuePoint icon="🎨" text="Макет видно до замовлення" />
-              <ValuePoint icon="📦" text="Кілька наліпок в одному замовленні" />
+              <ValuePoint icon="⚡" text={th('step1')} />
+              <ValuePoint icon="🎨" text={th('step2')} />
+              <ValuePoint icon="📦" text={th('step4')} />
             </div>
           </div>
 
@@ -51,13 +49,6 @@ function HomeContent() {
             <div className="absolute -left-6 -top-6 h-28 w-28 rounded-full bg-red-100 blur-2xl" />
             <div className="absolute -bottom-10 -right-6 h-32 w-32 rounded-full bg-blue-100 blur-2xl" />
             <div className="relative rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/70">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Preview</p>
-                  <p className="mt-1 font-bold text-navy">{t('stickers.wifi.title')}</p>
-                </div>
-                <span className="rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">Live QR</span>
-              </div>
               <div className="rounded-2xl bg-slate-50 p-5">
                 <StickerCard
                   stickerKey="wifi"
@@ -74,13 +65,12 @@ function HomeContent() {
 
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">3 steps</p>
-          <h2 className="mt-2 text-3xl font-black text-navy">Від ідеї до готового макета за кілька хвилин</h2>
+          <h2 className="text-3xl font-black text-navy">{th('title')}</h2>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
-          <Step number="1" title="Оберіть дію" text="Wi-Fi, Google-відгук, сайт, телефон, візитка або інший сценарій." />
-          <Step number="2" title="Заповніть дані" text="Введіть посилання або контактні дані й одразу побачте справжній QR-код." />
-          <Step number="3" title="Налаштуйте вигляд" text="Оберіть форму, напис і кольори, додайте макет до замовлення." />
+          <Step number="1" title={th('step1')} text={th('step3Items.wifi')} />
+          <Step number="2" title={th('step2')} text={th('step3Items.contacts')} />
+          <Step number="3" title={th('step3')} text={th('step4')} />
         </div>
       </section>
 
@@ -123,8 +113,8 @@ function HomeContent() {
 
 function ValuePoint({ icon, text }: { icon: string; text: string }) {
   return (
-    <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-600 shadow-sm">
-      <span aria-hidden>{icon}</span>
+    <div className="flex items-start gap-2 rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm leading-5 text-slate-600 shadow-sm">
+      <span aria-hidden className="mt-0.5">{icon}</span>
       <span>{text}</span>
     </div>
   );
