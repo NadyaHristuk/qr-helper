@@ -4,10 +4,6 @@ import { prisma } from '@/lib/db';
 import { priceForTemplate } from '@/lib/pricing';
 import { buildPayload, PayloadError, STICKER_TYPES } from '@/lib/qr/payloads';
 
-/**
- * POST /api/orders — создать заказ.
- * Просмотр списка заказов не публикуется без авторизации.
- */
 const itemSchema = z.object({
   type: z.enum(STICKER_TYPES),
   value: z.union([z.string().max(2000), z.record(z.string(), z.unknown())]),
@@ -17,6 +13,9 @@ const itemSchema = z.object({
   shape: z.enum(['rect', 'circle', 'phone']).optional(),
   template: z.enum(['standard', 'individual']).optional(),
   colors: z.record(z.string(), z.string()).optional(),
+  productType: z.enum(['sticker', 'vinyl', 'transparent', 'sign', 'stand', 'poster', 'business_card', 'qr_nfc']).default('sticker'),
+  size: z.enum(['S', 'M', 'L']).default('M'),
+  quantity: z.number().int().min(1).max(999).default(1),
 });
 
 const phoneSchema = z
@@ -24,27 +23,20 @@ const phoneSchema = z
   .trim()
   .min(10, 'Укажите телефон')
   .max(24, 'Слишком длинный номер телефона')
-  .refine(
-    (value) => /^\+?[\d\s().-]{10,24}$/.test(value),
-    'Проверьте формат телефона',
-  );
+  .refine((value) => /^\+?[\d\s().-]{10,24}$/.test(value), 'Проверьте формат телефона');
 
 const orderSchema = z.object({
   customer: z.object({
     name: z.string().trim().min(1, 'Укажите имя').max(120),
     phone: phoneSchema,
     city: z.string().trim().min(1, 'Укажите город').max(120),
-    npOffice: z
-      .string()
-      .trim()
-      .min(1, 'Укажите отделение Новой Почты')
-      .max(120),
+    npOffice: z.string().trim().min(1, 'Укажите отделение Новой Почты').max(120),
+    note: z.string().trim().max(500).optional().default(''),
   }),
   template: z.enum(['standard', 'individual']),
-  items: z
-    .array(itemSchema)
-    .min(1, 'Добавьте хотя бы одну наклейку')
-    .max(50, 'Слишком много позиций в одном заказе'),
+  deliveryMethod: z.enum(['nova_poshta', 'pickup', 'courier']).default('nova_poshta'),
+  paymentMethod: z.enum(['manager', 'online']).default('manager'),
+  items: z.array(itemSchema).min(1, 'Добавьте хотя бы одну наклейку').max(50, 'Слишком много позиций в одном заказе'),
 });
 
 export async function POST(request: NextRequest) {
@@ -57,13 +49,10 @@ export async function POST(request: NextRequest) {
 
   const parsed = orderSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json(
-      { error: 'Проверьте заполнение формы', details: parsed.error.flatten() },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: 'Проверьте заполнение формы', details: parsed.error.flatten() }, { status: 400 });
   }
 
-  const { customer, template, items } = parsed.data;
+  const { customer, template, deliveryMethod, paymentMethod, items } = parsed.data;
 
   try {
     for (const item of items) {
@@ -87,12 +76,12 @@ export async function POST(request: NextRequest) {
       customerPhone: customer.phone,
       city: customer.city,
       npOffice: customer.npOffice,
+      customerNote: customer.note,
+      deliveryMethod,
+      paymentMethod,
       itemsJson: JSON.stringify(items),
     },
   });
 
-  return NextResponse.json(
-    { id: order.id, priceKop: order.priceKop, status: order.status },
-    { status: 201 },
-  );
+  return NextResponse.json({ id: order.id, priceKop: order.priceKop, status: order.status }, { status: 201 });
 }
