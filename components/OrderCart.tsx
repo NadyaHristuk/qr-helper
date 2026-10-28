@@ -16,9 +16,11 @@ import {
 } from '@/lib/stickers/cart';
 
 type OrderResponse = { id: number; priceKop: number; status: string };
+type OrderErrorResponse = { error?: string };
 
 export function OrderCart() {
   const t = useTranslations('order');
+  const tc = useTranslations('common');
   const [items, setItems] = useState<CartItem[]>([]);
   const [mounted, setMounted] = useState(false);
   const [result, setResult] = useState<OrderResponse | null>(null);
@@ -33,10 +35,14 @@ export function OrderCart() {
   const schema = useMemo(
     () =>
       z.object({
-        customerName: z.string().trim().min(1, t('errors.required')),
-        customerPhone: z.string().trim().min(1, t('errors.required')),
-        customerCity: z.string().trim().min(1, t('errors.required')),
-        customerNpOffice: z.string().trim().min(1, t('errors.required')),
+        customerName: z.string().trim().min(1, t('errors.required')).max(120),
+        customerPhone: z
+          .string()
+          .trim()
+          .min(1, t('errors.required'))
+          .regex(/^\+?[\d\s().-]{10,24}$/, t('errors.required')),
+        customerCity: z.string().trim().min(1, t('errors.required')).max(120),
+        customerNpOffice: z.string().trim().min(1, t('errors.required')).max(120),
       }),
     [t],
   );
@@ -54,9 +60,11 @@ export function OrderCart() {
       setServerError(t('errors.noItems'));
       return;
     }
+
     const template = items.some((i) => i.template === 'individual')
       ? 'individual'
       : 'standard';
+
     try {
       const res = await fetch('/api/orders', {
         method: 'POST',
@@ -79,16 +87,32 @@ export function OrderCart() {
           })),
         }),
       });
-      if (!res.ok) throw new Error(String(res.status));
-      setResult((await res.json()) as OrderResponse);
+
+      const payload = (await res.json().catch(() => null)) as
+        | OrderResponse
+        | OrderErrorResponse
+        | null;
+
+      if (!res.ok) {
+        throw new Error(
+          payload && 'error' in payload && payload.error
+            ? payload.error
+            : t('errors.submitFailed'),
+        );
+      }
+
+      setResult(payload as OrderResponse);
       clearCart();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch {
-      setServerError(t('errors.submitFailed'));
+    } catch (error) {
+      setServerError(
+        error instanceof Error && error.message
+          ? error.message
+          : t('errors.submitFailed'),
+      );
     }
   };
 
-  // Успех
   if (result) {
     return (
       <div className="mx-auto max-w-xl rounded-2xl border border-green-200 bg-green-50 p-8 text-center">
@@ -109,7 +133,6 @@ export function OrderCart() {
     );
   }
 
-  // Пустая корзина (после монтирования, чтобы не мигало на SSR)
   if (mounted && items.length === 0) {
     return (
       <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center">
@@ -125,7 +148,6 @@ export function OrderCart() {
     <div className="space-y-8">
       <p className="text-slate-600">{t('intro')}</p>
 
-      {/* Корзина наклеек */}
       <section>
         <h2 className="section-title mb-4">{t('cartTitle')}</h2>
         <ul className="grid gap-4 sm:grid-cols-2">
@@ -165,14 +187,13 @@ export function OrderCart() {
         </Link>
       </section>
 
-      {/* Контакты */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
         <section>
           <h2 className="section-title mb-4">{t('sectionCustomer')}</h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            <CartField label={t('fields.customerName')} placeholder={t('placeholders.customerName')} error={errors.customerName?.message} {...register('customerName')} />
-            <CartField label={t('fields.customerPhone')} placeholder={t('placeholders.customerPhone')} error={errors.customerPhone?.message} {...register('customerPhone')} />
-            <CartField label={t('fields.customerCity')} placeholder={t('placeholders.customerCity')} error={errors.customerCity?.message} {...register('customerCity')} />
+            <CartField autoComplete="name" label={t('fields.customerName')} placeholder={t('placeholders.customerName')} error={errors.customerName?.message} {...register('customerName')} />
+            <CartField type="tel" inputMode="tel" autoComplete="tel" label={t('fields.customerPhone')} placeholder={t('placeholders.customerPhone')} error={errors.customerPhone?.message} {...register('customerPhone')} />
+            <CartField autoComplete="address-level2" label={t('fields.customerCity')} placeholder={t('placeholders.customerCity')} error={errors.customerCity?.message} {...register('customerCity')} />
             <CartField label={t('fields.customerNpOffice')} placeholder={t('placeholders.customerNpOffice')} error={errors.customerNpOffice?.message} {...register('customerNpOffice')} />
           </div>
         </section>
@@ -182,7 +203,7 @@ export function OrderCart() {
         )}
 
         <button type="submit" disabled={isSubmitting} className="btn-accent w-full text-base disabled:opacity-60">
-          {isSubmitting ? t('submitting') : t('pay')}
+          {isSubmitting ? t('submitting') : tc('orderCta')}
         </button>
       </form>
     </div>
