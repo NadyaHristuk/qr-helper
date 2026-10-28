@@ -115,7 +115,7 @@ export function OrderCart() {
 
   if (result) {
     return (
-      <div className="mx-auto max-w-xl rounded-3xl border border-green-200 bg-white p-8 text-center shadow-xl shadow-slate-200/50 sm:p-10">
+      <div className="mx-auto max-w-xl rounded-3xl border border-green-200 bg-white p-5 text-center shadow-xl shadow-slate-200/50 sm:p-10">
         <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-green-600 text-3xl text-white shadow-lg shadow-green-100">
           ✓
         </div>
@@ -124,7 +124,7 @@ export function OrderCart() {
         </h2>
         <p className="mt-3 leading-7 text-slate-600">{t('successNote')}</p>
         <div className="mt-6">
-          <Link href="/" className="btn-outline">
+          <Link href="/" className="btn-outline w-full sm:w-auto">
             {t('newOrder')}
           </Link>
         </div>
@@ -134,10 +134,10 @@ export function OrderCart() {
 
   if (mounted && items.length === 0) {
     return (
-      <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-10 text-center shadow-sm">
+      <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-6 text-center shadow-sm sm:p-10">
         <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-xl">🧾</div>
         <p className="text-slate-600">{t('cartEmpty')}</p>
-        <Link href="/" className="btn-accent mt-5">
+        <Link href="/" className="btn-accent mt-5 w-full sm:w-auto">
           {t('cartEmptyCta')}
         </Link>
       </div>
@@ -145,9 +145,9 @@ export function OrderCart() {
   }
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-      <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <div className="flex items-center justify-between gap-4">
+    <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-8">
+      <section className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+        <div className="flex flex-col gap-2 min-[360px]:flex-row min-[360px]:items-center min-[360px]:justify-between min-[360px]:gap-4">
           <div>
             <h2 className="section-title">{t('cartTitle')}</h2>
             <p className="mt-1 text-sm text-slate-500">{items.length}</p>
@@ -161,9 +161,9 @@ export function OrderCart() {
           {items.map((i) => (
             <li
               key={i.id}
-              className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50/70 p-3"
+              className="grid grid-cols-[64px_minmax(0,1fr)] gap-3 rounded-2xl border border-slate-200 bg-slate-50/70 p-3 min-[420px]:grid-cols-[72px_minmax(0,1fr)_auto] min-[420px]:items-center min-[420px]:gap-4"
             >
-              <div className="shrink-0 rounded-xl bg-white p-2 shadow-sm">
+              <div className="rounded-xl bg-white p-2 shadow-sm">
                 <StickerDesign
                   type={i.payloadType}
                   value={i.value}
@@ -175,8 +175,8 @@ export function OrderCart() {
                   width={72}
                 />
               </div>
-              <div className="min-w-0 flex-1">
-                <p className="truncate font-bold text-navy">{i.label}</p>
+              <div className="min-w-0 self-center">
+                <p className="break-words font-bold text-navy">{i.label}</p>
                 <p className="mt-1 text-xs text-slate-500">
                   {t(i.template === 'individual' ? 'templateIndividual' : 'templateStandard')}
                 </p>
@@ -184,7 +184,7 @@ export function OrderCart() {
               <button
                 type="button"
                 onClick={() => removeFromCart(i.id)}
-                className="shrink-0 rounded-lg px-3 py-2 text-sm font-semibold text-accent transition hover:bg-red-50"
+                className="col-span-2 rounded-lg px-3 py-2 text-left text-sm font-semibold text-accent transition hover:bg-red-50 min-[420px]:col-span-1 min-[420px]:text-center"
               >
                 {t('remove')}
               </button>
@@ -193,7 +193,7 @@ export function OrderCart() {
         </ul>
       </section>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/40 sm:p-6" noValidate>
+      <form onSubmit={handleSubmit(onSubmit)} className="rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/40 sm:p-6" noValidate>
         <h2 className="section-title">{t('sectionCustomer')}</h2>
         <p className="mt-2 text-sm leading-6 text-slate-500">{t('intro')}</p>
 
