@@ -61,36 +61,36 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:py-10">
+    <div className="mx-auto max-w-6xl px-3 py-6 sm:px-4 sm:py-10">
       <Link href="/" className="text-sm font-semibold text-slate-500 transition hover:text-accent">
         {t('backToStickers')}
       </Link>
 
       <div className="mt-4 max-w-3xl">
-        <h1 className="text-3xl font-black tracking-tight text-navy sm:text-4xl">
+        <h1 className="text-2xl font-black tracking-tight text-navy min-[360px]:text-3xl sm:text-4xl">
           {th(`stickers.${stickerKey}.title`)}
         </h1>
-        <p className="mt-2 text-base leading-7 text-slate-600">
+        <p className="mt-2 text-sm leading-6 text-slate-600 min-[360px]:text-base min-[360px]:leading-7">
           {th(`stickers.${stickerKey}.caption`)}
         </p>
       </div>
 
       {added && (
-        <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-green-200 bg-green-50 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-green-200 bg-green-50 p-4 sm:mt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-semibold text-green-700">✓ {t('added')}</p>
-          <div className="flex flex-wrap gap-3">
-            <button className="btn-accent" onClick={() => router.push('/order')}>
+          <div className="grid gap-2 min-[420px]:flex min-[420px]:flex-wrap min-[420px]:gap-3">
+            <button className="btn-accent w-full min-[420px]:w-auto" onClick={() => router.push('/order')}>
               {t('goToOrder')}
             </button>
-            <Link href="/" className="btn-outline">
+            <Link href="/" className="btn-outline w-full min-[420px]:w-auto">
               {t('addAnother')}
             </Link>
           </div>
         </div>
       )}
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_420px] lg:items-start">
-        <div className="space-y-5">
+      <div className="mt-6 grid gap-6 sm:mt-8 lg:grid-cols-[1fr_420px] lg:items-start lg:gap-8">
+        <div className="space-y-4 sm:space-y-5">
           <EditorSection title={t('dataSection')}>
             <div className="grid gap-4 sm:grid-cols-2">
               {def.fields.map((f) => (
@@ -118,13 +118,13 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
           </EditorSection>
 
           <EditorSection title={t('shapeSection')}>
-            <div className="grid gap-2 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-2 min-[360px]:grid-cols-3">
               {SHAPES.map((sh) => (
                 <button
                   key={sh}
                   type="button"
                   onClick={() => setShape(sh)}
-                  className={`rounded-xl border-2 px-4 py-3 text-sm font-semibold transition ${
+                  className={`rounded-xl border-2 px-3 py-3 text-sm font-semibold transition sm:px-4 ${
                     shape === sh
                       ? 'border-navy bg-navy text-white shadow-sm'
                       : 'border-slate-200 bg-white text-slate-600 hover:border-navy/40 hover:text-navy'
@@ -166,7 +166,7 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
               <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
                 {COLOR_KEYS.map((k) => (
                   <label key={k} className="rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-600">
-                    <span className="mb-2 block text-xs font-semibold text-slate-500">{t(`colors.${k}`)}</span>
+                    <span className="mb-2 block break-words text-xs font-semibold text-slate-500">{t(`colors.${k}`)}</span>
                     <input
                       type="color"
                       value={colors[k]}
@@ -180,16 +180,16 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
           </EditorSection>
         </div>
 
-        <aside className="lg:sticky lg:top-24">
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/50 sm:p-6">
+        <aside className="min-w-0 lg:sticky lg:top-24">
+          <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/50 sm:p-6">
             <div className="mb-4 flex items-center justify-between gap-3">
-              <h2 className="section-title">{t('previewSection')}</h2>
-              <span className={`rounded-full px-3 py-1 text-xs font-semibold ${isPayloadValid ? 'bg-green-50 text-green-700' : 'bg-slate-100 text-slate-500'}`}>
+              <h2 className="section-title min-w-0">{t('previewSection')}</h2>
+              <span className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${isPayloadValid ? 'bg-green-50 text-green-700' : 'bg-slate-100 text-slate-500'}`}>
                 {isPayloadValid ? 'QR ✓' : 'QR …'}
               </span>
             </div>
 
-            <div className="flex min-h-[390px] items-center justify-center rounded-2xl bg-slate-50 p-4">
+            <div className="flex min-h-[300px] items-center justify-center overflow-hidden rounded-2xl bg-slate-50 p-3 min-[360px]:min-h-[340px] sm:min-h-[390px] sm:p-4">
               <StickerDesign
                 type={def.payloadType}
                 value={value}
@@ -224,7 +224,7 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
 
 function EditorSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+    <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
       <h2 className="section-title mb-4">{title}</h2>
       {children}
     </section>
