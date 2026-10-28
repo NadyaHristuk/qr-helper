@@ -87,13 +87,12 @@ export function StickerDesign({
       viewBox={`0 0 ${geom.w} ${geom.h}`}
       width={width}
       height={height}
-      className={className}
+      className={`h-auto max-w-full ${className}`}
       role="img"
       aria-label={label}
     >
       {geom.frame(colors)}
 
-      {/* Значок */}
       <text
         x={geom.w / 2}
         y={geom.iconY}
@@ -103,7 +102,6 @@ export function StickerDesign({
         {icon}
       </text>
 
-      {/* Надпись (1–2 строки) */}
       <text
         x={geom.w / 2}
         y={geom.labelY}
@@ -120,7 +118,6 @@ export function StickerDesign({
         ))}
       </text>
 
-      {/* QR */}
       {qr ? (
         <image
           href={qr}
@@ -143,7 +140,6 @@ export function StickerDesign({
         />
       )}
 
-      {/* Подпись под QR */}
       {subtitle ? (
         <text
           x={geom.w / 2}
