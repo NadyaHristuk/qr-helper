@@ -3,6 +3,7 @@ import { AdminDashboard } from '@/components/AdminDashboard';
 import { AdminLogin } from '@/components/AdminLogin';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { prisma } from '@/lib/db';
+import { canonicalPublicOrigin } from '@/lib/dynamic-qr/destination';
 
 export default async function AdminPage({
   params,
@@ -23,6 +24,7 @@ export default async function AdminPage({
 
   return (
     <AdminDashboard
+      dynamicQrPublicOrigin={canonicalPublicOrigin()}
       initialOrders={orders.map((order) => ({
         ...order,
         createdAt: order.createdAt.toISOString(),

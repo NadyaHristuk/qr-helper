@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { parseOrderItems } from '@/lib/orders/items';
+import { DynamicQrAdmin } from '@/components/DynamicQrAdmin';
 
 type AdminOrder = {
   id: number;
@@ -34,7 +35,7 @@ const statusClass: Record<string, string> = {
   cancelled: 'bg-red-50 text-red-700',
 };
 
-export function AdminDashboard({ initialOrders }: { initialOrders: AdminOrder[] }) {
+export function AdminDashboard({ initialOrders, dynamicQrPublicOrigin }: { initialOrders: AdminOrder[]; dynamicQrPublicOrigin?: string }) {
   const locale = useLocale();
   const ua = locale === 'ua';
   const [orders, setOrders] = useState(initialOrders);
@@ -185,6 +186,8 @@ export function AdminDashboard({ initialOrders }: { initialOrders: AdminOrder[] 
             {ua ? 'Замовлень за цим фільтром немає.' : 'No orders match this filter.'}
           </div>
         )}
+
+        <DynamicQrAdmin publicOrigin={dynamicQrPublicOrigin} />
       </div>
     </main>
   );
