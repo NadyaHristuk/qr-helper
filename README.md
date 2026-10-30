@@ -117,12 +117,15 @@ For Vercel, `DATABASE_URL` must point to the same PostgreSQL database and the sc
 
 ```bash
 npm run typecheck
+npm test
 npm run build
 # or
 npm run check
 ```
 
-GitHub Actions runs typecheck and build on pushes and pull requests.
+GitHub Actions runs typecheck, regression tests and build on pushes and pull requests.
+
+See [pre-demo QA findings and verification limits](docs/qa-hardening.md) and the [Dynamic QR proposal](docs/dynamic-qr-proposal.md). Payment QR remains a disabled concept pending merchant integration. Demo pricing is 1 UAH; no card details are collected.
 
 ## API/security notes
 
