@@ -8,29 +8,38 @@ datasource db {
 }
 
 model Order {
-  id            Int      @id @default(autoincrement())
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   // created | confirmed | in_production | ready | shipped | completed | cancelled
-  status        String   @default("created")
+  status String @default("created")
 
   // standard | individual
-  template      String
+  template String
   // Demo price in kopecks until commercial pricing is approved.
-  priceKop      Int
+  priceKop Int
 
   customerName  String
   customerPhone String
   city          String
   npOffice      String
-  customerNote  String   @default("")
+  customerNote  String @default("")
 
   // nova_poshta | pickup | courier
-  deliveryMethod String  @default("nova_poshta")
+  deliveryMethod String @default("nova_poshta")
   // manager | online
-  paymentMethod  String  @default("manager")
+  paymentMethod  String @default("manager")
 
   // JSON array of production-ready items: QR payload + design + carrier/size/quantity.
-  itemsJson     String
+  itemsJson String
+}
+
+model DynamicQr {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  targetUrl String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
