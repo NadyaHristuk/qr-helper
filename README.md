@@ -64,6 +64,8 @@ Features:
 - Operational counters
 - Order/customer/delivery details
 - Production details for every line item
+- Dynamic QR infrastructure: admin-managed editable destinations with stable printed URLs
+- Dynamic QR creation, destination editing, activation/deactivation and public URL copying
 - Status workflow:
   - `created`
   - `confirmed`
@@ -82,9 +84,14 @@ Copy `.env.example` to `.env`:
 ```bash
 DATABASE_URL="postgresql://user:password@host/dbname?sslmode=require"
 ADMIN_PASSWORD="use-a-strong-private-password"
+APP_URL="https://qr-helper-two.vercel.app"
+# Optional comma-separated extra origins serving this application:
+DYNAMIC_QR_SERVICE_ORIGINS=""
 ```
 
 Never commit the real admin password.
+
+Set `APP_URL` to the durable HTTPS origin used on printed Dynamic QR products. Vercel defaults to the existing production host when it is omitted; local development without it copies the current host for testing and shows a printing reminder. Add any other application host aliases to `DYNAMIC_QR_SERVICE_ORIGINS` to prevent redirect loops across domains.
 
 ## Local development
 
@@ -125,7 +132,7 @@ npm run check
 
 GitHub Actions runs typecheck, regression tests and build on pushes and pull requests.
 
-See [pre-demo QA findings and verification limits](docs/qa-hardening.md) and the [Dynamic QR proposal](docs/dynamic-qr-proposal.md). Payment QR remains a disabled concept pending merchant integration. Demo pricing is 1 UAH; no card details are collected.
+See [pre-demo QA findings and verification limits](docs/qa-hardening.md) and the [implemented Dynamic QR infrastructure and future work](docs/dynamic-qr-proposal.md). Payment QR remains a disabled concept pending merchant integration. Demo pricing is 1 UAH; no card details are collected.
 
 ## API/security notes
 
@@ -134,6 +141,10 @@ See [pre-demo QA findings and verification limits](docs/qa-hardening.md) and the
 - QR image responses are not publicly cached.
 - Customer order fields are validated with Zod.
 - Admin access is isolated behind a server-side password check and httpOnly session cookie.
+- Admin mutations require an `Origin` header matching the exact request origin; CLI clients must provide it explicitly.
+- Public `/q/:slug` routes resolve admin-created records and return uncached `302` redirects. No scan analytics or destination preview requests are performed.
+
+To order a product with an editable destination, create its Dynamic QR in the admin dashboard and paste the copied public URL into an existing URL-based sticker input. The editor and checkout retain their existing flow; customer Dynamic QR creation and ownership are future work.
 
 ## Product roadmap
 
@@ -151,8 +162,7 @@ Already represented in the UI for stakeholder discussion:
 
 Next architectural layer after the current order workflow is stable:
 
-- Dynamic QR short links
-- Customer account / QR destination management
+- Customer ownership and self-service management of Dynamic QR destinations
 - Scan analytics
 - Online payment gateway + webhook handling
 - Nova Poshta API integration
