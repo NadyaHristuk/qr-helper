@@ -4,18 +4,20 @@ QR Helper is a Next.js product configurator for creating and ordering QR-based p
 
 The project started as a sticker-ordering MVP and is being expanded into a production-ready workflow: configurable QR designs, product/material options, quantities, delivery/payment choices, order management and an internal admin dashboard.
 
-## Current product flow
+## Product V2 comparison branch
 
-1. Choose a QR use case (Wi-Fi, reviews, contacts, social links, website, car phone, etc.).
-2. Enter the payload data.
-3. Configure the sticker design and shape.
-4. Choose the physical product, size and quantity.
-5. Add one or more products to the cart.
-6. Enter customer, delivery and payment preferences.
-7. Create an order in PostgreSQL.
-8. Manage the order through the protected admin dashboard.
+`product-redesign-v2` presents ready-made customer interaction tools for offline businesses. The original `master` remains separate; V2 is based on `pre-demo-hardening` and includes its existing hardened backend. No deployment or database migration is part of the redesign.
 
-The home page also contains additional product concepts for stakeholder review: menu/price list, booking, directions, promo codes, documents, dynamic QR, QR+NFC, signs, stands, posters and business cards.
+1. Choose a business goal: reviews, Wi-Fi, menu, contacts, social, location, booking or documents.
+2. Choose the customer action and physical format.
+3. Add content and customize the printed design, size and quantity.
+4. Review physical products in the cart.
+5. Complete the existing delivery/payment checkout.
+6. Confirm the order with the business through the existing PostgreSQL/admin workflow.
+
+All twelve legacy QR capabilities remain. Published menu/document/map/booking links use the existing URL engine. NFC is visibly unavailable; customer Smart controls are deferred until ownership and management are designed. Demo pricing remains 1 UAH per order.
+
+See [product scope, roadmap and A/B presentation guidance](docs/product-roadmap.md) and [V2 implementation and visual QA](docs/product-redesign-v2.md).
 
 ## Stack
 
