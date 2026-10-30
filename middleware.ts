@@ -5,5 +5,5 @@ export default createMiddleware(routing);
 
 export const config = {
   // Все пути, кроме api, служебных файлов Next.js и статики (файлы с точкой)
-  matcher: "/((?!api|_next|_vercel|.*\\..*).*)",
+  matcher: "/((?!api|_next|_vercel|q(?:/|$)|.*\\..*).*)",
 };
