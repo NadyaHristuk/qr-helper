@@ -1,24 +1,31 @@
 {
   "meta": {
-    "title": "QR-Helper — QR-code stickers for your business",
-    "description": "A service for small businesses: QR-code stickers — socials, Wi-Fi, contacts, reviews, contactless payment. Order online, delivery by Nova Poshta."
+    "title": "QR Helper — customer interactions, made physical",
+    "description": "Help customers review, connect, browse and stay in touch. Personalized stickers, table stands and signs for your offline business."
   },
   "common": {
     "siteName": "QR-Helper",
-    "orderCta": "Order stickers",
+    "orderCta": "Place your order",
     "scanMe": "Scan me",
-    "customize": "Create sticker"
+    "customize": "Find your solution"
   },
   "nav": {
     "howItWorks": "How it works",
-    "order": "Order stickers",
-    "faq": "FAQ"
+    "order": "Your order",
+    "faq": "FAQ",
+    "solutions": "Solutions",
+    "formats": "Formats",
+    "skipToContent": "Skip to content",
+    "primary": "Main navigation",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "home": {
-    "title": "QR-code stickers for your business",
-    "intro": "We help small businesses handle everyday tasks with QR codes: opening socials, connecting to Wi-Fi, saving a contact, reviews, contactless payment.",
-    "kindsTitle": "12 kinds of stickers",
-    "kindsHint": "Tap a sticker to customize its design and add it to your order",
+    "title": "Make the next step easy for your customers.",
+    "intro": "Useful customer interactions, on physical products made for your business.",
+    "kindsTitle": "Choose the customer action",
+    "kindsHint": "Start with the goal, then choose an interaction and physical format.",
     "stickers": {
       "socials": {
         "title": "We're on socials",
@@ -52,7 +59,7 @@
       },
       "privat24": {
         "title": "Contactless payment (Privat24)",
-        "caption": "Concept for discussion: payment QR requires a merchant integration. Card details are not collected.",
+        "caption": "Coming later. Payments require a separate integration; this option cannot be ordered.",
         "label": "PAY BY QR"
       },
       "carPhone": {
@@ -76,16 +83,16 @@
         "label": "WE'RE ON OLX"
       },
       "app": {
-        "title": "QR scanner app",
-        "caption": "If a client has no app to read QR codes — let them scan this sticker",
-        "label": "QR SCANNER"
+        "title": "Open an app link",
+        "caption": "Open your existing link to an app.",
+        "label": "OUR APP"
       }
     },
-    "ctaHint": "Pick the stickers you need, customize the design and place an order in a few minutes"
+    "ctaHint": "Add your content, choose the design and order a physical product."
   },
   "editor": {
-    "backToStickers": "← All stickers",
-    "dataSection": "Sticker data",
+    "backToStickers": "← All solutions",
+    "dataSection": "Your content",
     "fields": {
       "value": "Link",
       "ssid": "Wi-Fi network name",
@@ -97,7 +104,7 @@
       "subject": "Email subject",
       "message": "Message"
     },
-    "labelField": "Sticker label",
+    "labelField": "Product message",
     "shapeSection": "Sticker shape",
     "shapes": {
       "rect": "Rectangle",
@@ -118,22 +125,22 @@
     "previewSection": "Preview",
     "fillHint": "Fill in the data to generate the QR code",
     "addToOrder": "Add to order",
-    "added": "Sticker added to your order",
+    "added": "Product added to your order",
     "goToOrder": "Go to order",
-    "addAnother": "Add another sticker"
+    "addAnother": "Choose another solution"
   },
   "howItWorks": {
     "title": "How it works",
-    "step1": "Register your business in the QR-Helper service.",
-    "step2": "Get ready-made printed packages of QR-code stickers to place in your venue in a visible spot.",
-    "step3": "Your clients scan the QR codes and can:",
+    "step1": "Invite a review, a Wi-Fi connection, a visit to your menu or a saved contact.",
+    "step2": "Add your content and choose colors, a physical format, size and quantity.",
+    "step3": "Leave your contact details and preferences. We’ll get in touch to confirm your order.",
     "step3Items": {
       "wifi": "quickly connect to the Wi-Fi access point;",
       "feedback": "send reviews and suggestions to your email or via SMS;",
       "contacts": "quickly save your business contacts;",
       "google": "leave reviews and ratings via Google;",
       "socials": "quickly find your pages on social media;",
-      "pay": "pay contactless and fast for goods and services;",
+      "pay": "Payment QR is not available yet.",
       "car": "scan the QR code on the car window to call you fast;",
       "site": "open your website and YouTube channel;",
       "olx": "open your OLX page with all your goods."
@@ -141,31 +148,52 @@
     "step4": "As a result, the client saves both their time and yours.",
     "faqTitle": "Frequently asked questions",
     "faq": {
-      "q1": "What are QR-code stickers and why does my business need them?",
-      "a1": "These are ready-made printed stickers with a QR code containing your data: links to socials, Wi-Fi, phone, payment and more. The client points their smartphone camera and instantly performs the action — no manual typing.",
-      "q2": "Does the client need a special app?",
-      "a2": "No. The camera of any modern smartphone scans QR codes. For older phones there is a sticker linking to a free QR scanner.",
-      "q3": "How is a standard sticker different from a custom template?",
-      "a3": "Standard is a ready-made service layout where only your QR code and text change. A custom template lets you tune the colors of the text, background, frame and the QR code itself to match your brand.",
-      "q4": "How fast will I get my order?",
-      "a4": "After payment we produce the stickers and ship them by Nova Poshta — roughly within 24 hours.",
-      "q5": "Can I order just a few kinds of stickers?",
-      "a5": "Yes. Add only the stickers you need to your order — one is enough.",
-      "q6": "What if the data changes (Wi-Fi password, phone number)?",
-      "a6": "The QR code is generated from your data, so a change requires a new sticker. Just place a new order with the updated data."
+      "q1": "What can I order?",
+      "a1": "A physical product with your QR: a sticker, stand, sign, card or poster. Materials and exact dimensions are confirmed before production.",
+      "q2": "Does the customer need an app?",
+      "a2": "Modern iPhone and Android cameras generally scan QR codes. The action available depends on the device and its settings.",
+      "q3": "What do I need for a menu, document or booking?",
+      "a3": "An existing link to your published content or service. This flow does not host files or manage reservations.",
+      "q4": "When and how do I pay?",
+      "a4": "This is a demo storefront with a UAH 1 order price. A manager confirms production, payment and delivery. An online payment gateway is not connected.",
+      "q5": "Can I order just one product?",
+      "a5": "Yes. Choose the format, size and quantity in the editor.",
+      "q6": "Can the details change after printing?",
+      "a6": "Changing the information encoded in a QR requires a reprint. Editable-destination links are currently managed separately by an administrator; customer self-service is not available here."
+    },
+    "eyebrow": "From an idea to your space",
+    "intro": "Start with what your customer needs to do. Give that interaction a physical place in your business.",
+    "cta": "Find a solution",
+    "stepsLabel": "Three steps to your product",
+    "readyTitle": "A product for your space, beyond a file.",
+    "readyBody": "A sticker for the door, a stand for the table or a card after a conversation. We’ll confirm materials, dimensions, delivery and payment before production.",
+    "faqIntro": "A few useful details about content, design and ordering.",
+    "steps": {
+      "1": {
+        "title": "Choose the customer action",
+        "body": "Invite a review, a Wi-Fi connection, a visit to your menu or a saved contact."
+      },
+      "2": {
+        "title": "Choose a design and format",
+        "body": "Add your content and choose colors, a physical format, size and quantity."
+      },
+      "3": {
+        "title": "Receive a ready-to-use product",
+        "body": "Leave your contact details and preferences. We’ll get in touch to confirm your order."
+      }
     }
   },
   "order": {
-    "title": "Order",
-    "intro": "Here are the stickers you created. Fill in your contacts and place the order.",
-    "cartTitle": "Your stickers",
-    "cartEmpty": "You haven't added any stickers yet.",
-    "cartEmptyCta": "Choose stickers",
+    "title": "Your order",
+    "intro": "Review your products and leave your details. We’ll confirm production, delivery and payment with you.",
+    "cartTitle": "Your products",
+    "cartEmpty": "Choose a solution for your business and your product will appear here.",
+    "cartEmptyCta": "Find a solution",
     "remove": "Remove",
-    "addMore": "Add another sticker",
+    "addMore": "Add another product",
     "sectionCustomer": "Customer details",
-    "templateStandard": "Standard sticker",
-    "templateIndividual": "Custom template",
+    "templateStandard": "Standard design",
+    "templateIndividual": "Custom colors",
     "fields": {
       "customerName": "Name",
       "customerPhone": "Phone",
@@ -185,12 +213,13 @@
     "newOrder": "Place another order",
     "errors": {
       "required": "Required field",
-      "noItems": "Add at least one sticker first",
+      "noItems": "Add at least one product first.",
       "submitFailed": "Failed to submit the order. Please try again."
     }
   },
   "footer": {
-    "tagline": "QR-code stickers for small businesses",
-    "rights": "© {year} QR-Helper. All rights reserved."
+    "tagline": "Customer interactions, made physical.",
+    "rights": "© {year} QR-Helper. All rights reserved.",
+    "navigation": "Footer navigation"
   }
 }
