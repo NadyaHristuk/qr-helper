@@ -11,6 +11,7 @@ import { addToCart, type ProductType, type StickerSize } from '@/lib/stickers/ca
 import { buildPayload } from '@/lib/qr/payloads';
 import { findSolution, solutionForCatalog, PHYSICAL_PRODUCTS, localized } from '@/lib/products/solutions';
 import { qrContrast } from '@/lib/products/quality';
+import { productMessage } from '@/lib/products/presentation';
 
 const SHAPES: StickerShape[] = ['rect', 'circle', 'phone'];
 const COLOR_KEYS: (keyof DesignColors)[] = ['text', 'frame', 'bg', 'icon', 'qr'];
@@ -35,9 +36,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
     ? requestedGoal : solutionForCatalog(stickerKey);
   const interaction = goal?.variants.find((variant) => variant.catalogKey === stickerKey);
   const [data, setData] = useState<Record<string, string>>({});
-  const [label, setLabel] = useState(() => requestedGoal === goal && goal
-    ? localized(goal.title, locale).toLocaleUpperCase().slice(0, 40)
-    : th(`stickers.${stickerKey}.label`));
+  const [label, setLabel] = useState(() => productMessage(goal?.key, locale, th(`stickers.${stickerKey}.label`)));
   const [shape, setShape] = useState<StickerShape>(def.defaultShape);
   const [template, setTemplate] = useState<TemplateKind>('standard');
   const [colors, setColors] = useState<DesignColors>(DEFAULT_COLORS);

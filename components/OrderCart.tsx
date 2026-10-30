@@ -69,12 +69,19 @@ export function OrderCart() {
 
   const deliveryMethod = watch('deliveryMethod');
 
+  const hasUnavailableProducts = items.some((item) => PHYSICAL_PRODUCTS.find((product) => product.key === item.productType)?.available === false);
+
   const totalUnits = items.reduce((sum, item) => sum + (item.quantity || 1), 0);
 
   const onSubmit: SubmitHandler<FormValues> = async (d) => {
     setServerError(null);
     if (items.length === 0) {
       setServerError(t('errors.noItems'));
+      return;
+    }
+
+    if (hasUnavailableProducts) {
+      setServerError(ua ? 'Приберіть недоступний формат, щоб продовжити.' : 'Remove the unavailable format to continue.');
       return;
     }
 
@@ -168,7 +175,7 @@ export function OrderCart() {
                 <div className="min-w-0"><p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{ua ? 'Дія клієнта' : 'Customer action'}</p><h3 className="mt-1 break-words text-base font-bold text-navy">{goal ? localized(goal.title, locale) : ua ? 'Ваш виріб' : 'Your product'}</h3><p className="mt-2 break-words text-xs leading-5 text-slate-500">{ua ? 'Напис' : 'Message'}: {i.label}</p></div>
               </div>
               <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-3 border-t border-slate-100 pt-3 text-xs leading-5">
-                <div><dt className="text-slate-500">{ua ? 'Формат' : 'Format'}</dt><dd className="font-semibold text-navy">{physical ? localized(physical.title, locale) : ua ? 'Наліпка' : 'Sticker'}</dd></div>
+                <div><dt className="text-slate-500">{ua ? 'Формат' : 'Format'}</dt><dd className="font-semibold text-navy">{physical ? localized(physical.title, locale) : ua ? 'Наліпка' : 'Sticker'}{physical && !physical.available && <span className="block font-normal text-accent">{ua ? 'Поки недоступно' : 'Not available yet'}</span>}</dd></div>
                 <div><dt className="text-slate-500">{ua ? 'Розмір · кількість' : 'Size · quantity'}</dt><dd className="font-semibold text-navy">{i.size} · ×{i.quantity}</dd></div>
                 <div className="col-span-2"><dt className="text-slate-500">{ua ? 'Дизайн' : 'Design'}</dt><dd className="text-navy">{t(i.template === 'individual' ? 'templateIndividual' : 'templateStandard')}</dd></div>
                 <div className="col-span-2 min-w-0"><dt className="text-slate-500">{ua ? 'Призначення QR' : 'QR destination'}</dt><dd className="break-all font-medium text-navy">{destinationSummary(i.payloadType, i.value, locale)}</dd></div>
@@ -177,6 +184,7 @@ export function OrderCart() {
             </li>;
           })}
         </ul>
+        {hasUnavailableProducts && <p role="alert" className="mt-4 text-sm leading-6 text-accent">{ua ? 'У кошику є недоступний формат. Приберіть його, щоб оформити замовлення.' : 'Your cart contains a format that is not available yet. Remove it to place the order.'}</p>}
       </section>
 
       <form onSubmit={handleSubmit(onSubmit)} className="rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/40 sm:p-6" noValidate>
@@ -215,7 +223,7 @@ export function OrderCart() {
 
         {serverError && <p className="mt-5 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-accent">{serverError}</p>}
 
-        <button type="submit" disabled={isSubmitting} className="btn-accent mt-6 w-full py-3 text-base disabled:cursor-not-allowed disabled:opacity-60">{isSubmitting ? t('submitting') : tc('orderCta')}</button>
+        <button type="submit" disabled={isSubmitting || hasUnavailableProducts} className="btn-accent mt-6 w-full py-3 text-base disabled:cursor-not-allowed disabled:opacity-60">{isSubmitting ? t('submitting') : tc('orderCta')}</button>
       </form>
     </div>
   );

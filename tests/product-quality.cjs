@@ -52,3 +52,12 @@ test('business solutions preserve catalog capabilities and expose only implement
   assert.equal(findSolution('constructor'), undefined);
   assert.equal(findSolution('unknown'), undefined);
 });
+
+test('printed calls to action address the visitor and preserve legacy capability messages', () => {
+  const { productMessage } = load('presentation');
+  assert.equal(productMessage('menu', 'en', 'OUR WEBSITE'), 'VIEW OUR MENU');
+  assert.equal(productMessage('documents', 'en', 'OUR WEBSITE'), 'OPEN THE GUIDE');
+  assert.equal(productMessage('reviews', 'en', 'RATE US'), 'RATE US');
+  assert.equal(productMessage('menu', 'ua', 'НАШ САЙТ'), 'ПЕРЕГЛЯНЬТЕ МЕНЮ');
+  assert.equal(productMessage('constructor', 'en', 'OUR WEBSITE'), 'OUR WEBSITE');
+});

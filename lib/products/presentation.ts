@@ -31,3 +31,15 @@ export function destinationSummary(type: StickerType, value: StickerValue, local
     return fallback;
   }
 }
+
+/** Printed copy addresses the visitor, rather than repeating a business-owner goal. */
+export function productMessage(goal: string | undefined, locale: string, fallback: string): string {
+  const messages: Record<string, { ua: string; en: string }> = {
+    menu: { ua: 'ПЕРЕГЛЯНЬТЕ МЕНЮ', en: 'VIEW OUR MENU' },
+    location: { ua: 'ЯК НАС ЗНАЙТИ', en: 'FIND US' },
+    booking: { ua: 'ЗАПИСАТИСЯ НА ВІЗИТ', en: 'BOOK YOUR VISIT' },
+    documents: { ua: 'КОРИСНА ІНФОРМАЦІЯ', en: 'OPEN THE GUIDE' },
+  };
+  if (!goal || !Object.hasOwn(messages, goal)) return fallback;
+  return locale === 'ua' ? messages[goal].ua : messages[goal].en;
+}
