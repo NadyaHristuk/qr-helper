@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server';
+import { requestOrigin } from './request-origin';
 
-// No proxy/forwarded headers: compare the browser's Origin with this request URL.
+// Compare the browser's Origin with the addressed request origin.
 // Missing Origin is rejected too; API clients must send it explicitly.
 export function isSameOriginRequest(request: Request): boolean {
   const origin = request.headers.get('origin');
   if (!origin || request.headers.get('sec-fetch-site') === 'cross-site') return false;
   try {
-    return new URL(origin).origin === origin && origin === new URL(request.url).origin;
+    return new URL(origin).origin === origin && origin === requestOrigin(request);
   } catch {
     return false;
   }

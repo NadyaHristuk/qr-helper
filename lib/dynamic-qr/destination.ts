@@ -1,3 +1,5 @@
+import { requestOrigin } from '@/lib/request-origin';
+
 const MAX_URL_LENGTH = 2048;
 const DEFAULT_ORIGIN = 'https://qr-helper-two.vercel.app';
 
@@ -13,7 +15,7 @@ export function canonicalPublicOrigin(): string | undefined {
 
 export function serviceOrigins(request: Request): string[] {
   return [
-    new URL(request.url).origin,
+    requestOrigin(request),
     DEFAULT_ORIGIN,
     ...(process.env.APP_URL ? [process.env.APP_URL] : []),
     ...[process.env.VERCEL_URL, process.env.VERCEL_BRANCH_URL, process.env.VERCEL_PROJECT_PRODUCTION_URL]
