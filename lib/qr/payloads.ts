@@ -87,9 +87,16 @@ function expectString(value: StickerValue, type: StickerType): string {
 /** Добавляет https://, если схема не указана. */
 export function normalizeUrl(raw: string): string {
   const url = raw.trim();
-  // уже есть схема вида "https:", "tel:", "viber:" и т.п.
-  if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return url;
-  return `https://${url}`;
+  const normalized = /^[a-z][a-z0-9+.-]*:/i.test(url) ? url : `https://${url}`;
+  try {
+    const parsed = new URL(normalized);
+    if (!['https:', 'http:'].includes(parsed.protocol) || !parsed.hostname || parsed.username || parsed.password) {
+      throw new Error('Unsafe URL');
+    }
+    return parsed.href;
+  } catch {
+    throw new PayloadError('Enter a valid HTTP or HTTPS URL without credentials');
+  }
 }
 
 /** Убирает из номера всё, кроме цифр и ведущего «+». */
@@ -178,15 +185,9 @@ function buildVCard(value: StickerValue): string {
   return lines.join('\r\n');
 }
 
-/**
- * Приват24: в форме заказа — номер карты, но может быть и платёжная ссылка.
- * Номер карты кодируем как есть (текстом), всё остальное — как URL.
- */
-function buildPrivat24(value: StickerValue): string {
-  const raw = expectString(value, 'privat24');
-  const digits = raw.replace(/[\s-]/g, '');
-  if (/^\d{16}$/.test(digits)) return digits;
-  return normalizeUrl(raw);
+/** Payment QR remains a concept until a merchant integration is available. */
+function buildPrivat24(_value: StickerValue): string {
+  throw new PayloadError('Payment QR is a concept awaiting merchant integration. Do not enter card details.');
 }
 
 /* ------------------------------------------------------------------ */
@@ -198,6 +199,17 @@ function buildPrivat24(value: StickerValue): string {
  * @throws PayloadError если значение не подходит по форме.
  */
 export function buildPayload(type: StickerType, value: StickerValue): string {
+  if (typeof value !== 'string') {
+    if (!value || typeof value !== 'object' || Array.isArray(value) ||
+        Object.entries(value).some(([key, field]) =>
+          key === 'hidden' ? typeof field !== 'boolean' : typeof field !== 'string')) {
+      throw new PayloadError('Invalid QR field types');
+    }
+  }
+  if (type === 'wifi' && typeof value !== 'string' && 'security' in value &&
+      !['WPA', 'WEP', 'nopass'].includes(value.security ?? '')) {
+    throw new PayloadError('Invalid Wi-Fi security');
+  }
   if (URL_TYPES.has(type)) return normalizeUrl(expectString(value, type));
 
   switch (type) {

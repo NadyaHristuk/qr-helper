@@ -1,4 +1,6 @@
+import { readJson } from '@/lib/request-json';
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import {
   ADMIN_COOKIE_NAME,
   adminSessionToken,
@@ -6,8 +8,8 @@ import {
 } from '@/lib/admin-auth';
 
 export async function POST(request: NextRequest) {
-  const body = (await request.json().catch(() => null)) as { password?: string } | null;
-  const password = body?.password ?? '';
+  const parsed = z.object({ password: z.string().max(1024) }).safeParse(await readJson(request).catch(() => null));
+  const password = parsed.success ? parsed.data.password : '';
 
   if (!isValidAdminPassword(password)) {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });

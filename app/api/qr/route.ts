@@ -1,3 +1,4 @@
+import { readJson, invalidJson } from '@/lib/request-json';
 import { NextRequest, NextResponse } from 'next/server';
 import QRCode from 'qrcode';
 import { z } from 'zod';
@@ -16,23 +17,23 @@ import {
  */
 const bodySchema = z.object({
   type: z.enum(STICKER_TYPES),
-  value: z.union([z.string(), z.record(z.string(), z.unknown())]),
+  value: z.union([z.string().max(2000), z.record(z.string(), z.unknown())]),
   scale: z.number().int().min(1).max(20).optional().default(8),
 });
 
 export async function POST(request: NextRequest) {
   let body: unknown;
   try {
-    body = await request.json();
+    body = await readJson(request);
   } catch {
-    return NextResponse.json({ error: 'Некорректный JSON' }, { status: 400 });
+    return invalidJson();
   }
 
   const parsed = bodySchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
       { error: 'Неверные параметры запроса', details: parsed.error.flatten() },
-      { status: 400 },
+      { status: 400, headers: { 'Cache-Control': 'no-store' } },
     );
   }
 
@@ -59,12 +60,12 @@ export async function POST(request: NextRequest) {
     });
   } catch (err) {
     if (err instanceof PayloadError) {
-      return NextResponse.json({ error: err.message }, { status: 400 });
+      return NextResponse.json({ error: err.message }, { status: 400, headers: { 'Cache-Control': 'no-store' } });
     }
     console.error('QR generation failed:', err);
     return NextResponse.json(
       { error: 'Не удалось сгенерировать QR-код' },
-      { status: 500 },
+      { status: 500, headers: { 'Cache-Control': 'no-store' } },
     );
   }
 }

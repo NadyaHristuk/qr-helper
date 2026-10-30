@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
+import { parseOrderItems } from '@/lib/orders/items';
 
 type AdminOrder = {
   id: number;
@@ -20,17 +21,6 @@ type AdminOrder = {
   itemsJson: string;
 };
 
-type OrderItem = {
-  type?: string;
-  label?: string;
-  subtitle?: string;
-  icon?: string;
-  shape?: string;
-  template?: string;
-  productType?: string;
-  size?: string;
-  quantity?: number;
-};
 
 const STATUSES = ['created', 'confirmed', 'in_production', 'ready', 'shipped', 'completed', 'cancelled'] as const;
 
@@ -51,6 +41,7 @@ export function AdminDashboard({ initialOrders }: { initialOrders: AdminOrder[] 
   const [filter, setFilter] = useState('all');
   const [query, setQuery] = useState('');
   const [savingId, setSavingId] = useState<number | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -70,14 +61,21 @@ export function AdminDashboard({ initialOrders }: { initialOrders: AdminOrder[] 
 
   async function updateStatus(id: number, status: string) {
     setSavingId(id);
-    const res = await fetch('/api/admin/orders', {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, status }),
-    });
-    setSavingId(null);
-    if (!res.ok) return;
-    setOrders((all) => all.map((o) => (o.id === id ? { ...o, status } : o)));
+    setSaveError(null);
+    try {
+      const res = await fetch('/api/admin/orders', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status }),
+      });
+      if (!res.ok) throw new Error('Status update failed');
+      const { order } = await res.json();
+      setOrders((all) => all.map((o) => (o.id === id ? order : o)));
+    } catch {
+      setSaveError(ua ? 'Не вдалося змінити статус. Спробуйте ще раз.' : 'Could not update status. Please try again.');
+    } finally {
+      setSavingId(null);
+    }
   }
 
   async function logout() {
@@ -119,15 +117,16 @@ export function AdminDashboard({ initialOrders }: { initialOrders: AdminOrder[] 
           </div>
         </section>
 
+        {saveError && <p role="alert" className="mt-4 rounded-xl bg-red-50 p-4 text-sm text-red-700">{saveError}</p>}
         <div className="mt-6 space-y-4">
           {visible.map((order) => {
-            const items = parseItems(order.itemsJson);
+            const items = parseOrderItems(order.itemsJson);
             return (
               <article key={order.id} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
                 <div className="grid gap-4 border-b border-slate-200 p-4 sm:p-5 lg:grid-cols-[1fr_auto] lg:items-start">
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <h2 className="text-xl font-black text-navy">#{order.id} · {order.customerName}</h2>
+                      <h2 className="break-all text-xl font-black text-navy">#{order.id} · {order.customerName}</h2>
                       <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${statusClass[order.status] ?? 'bg-slate-100 text-slate-700'}`}>
                         {statusLabel(order.status, ua)}
                       </span>
@@ -139,7 +138,7 @@ export function AdminDashboard({ initialOrders }: { initialOrders: AdminOrder[] 
                   <select
                     className="input min-w-0 lg:w-52"
                     value={order.status}
-                    disabled={savingId === order.id}
+                    disabled={savingId !== null}
                     onChange={(e) => updateStatus(order.id, e.target.value)}
                   >
                     {STATUSES.map((status) => <option key={status} value={status}>{statusLabel(status, ua)}</option>)}
@@ -159,7 +158,7 @@ export function AdminDashboard({ initialOrders }: { initialOrders: AdminOrder[] 
                     <h3 className="text-sm font-bold text-navy">{ua ? `Позиції (${items.length})` : `Items (${items.length})`}</h3>
                     <div className="mt-3 grid gap-2">
                       {items.map((item, index) => (
-                        <div key={index} className="rounded-2xl bg-slate-50 p-3 text-sm">
+                        <div key={index} className="min-w-0 break-words rounded-2xl bg-slate-50 p-3 text-sm">
                           <div className="flex items-start gap-3">
                             <span className="text-xl" aria-hidden>{item.icon ?? '🏷️'}</span>
                             <div className="min-w-0 flex-1">
@@ -191,14 +190,6 @@ export function AdminDashboard({ initialOrders }: { initialOrders: AdminOrder[] 
   );
 }
 
-function parseItems(raw: string): OrderItem[] {
-  try {
-    const value = JSON.parse(raw);
-    return Array.isArray(value) ? value : [];
-  } catch {
-    return [];
-  }
-}
 
 function Stat({ label, value }: { label: string; value: number }) {
   return <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"><p className="text-sm text-slate-500">{label}</p><p className="mt-2 text-3xl font-black text-navy">{value}</p></div>;

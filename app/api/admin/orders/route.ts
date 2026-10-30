@@ -1,5 +1,7 @@
+import { readJson } from '@/lib/request-json';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { Prisma } from '@prisma/client';
 import { isAdminAuthenticated } from '@/lib/admin-auth';
 import { prisma } from '@/lib/db';
 
@@ -28,7 +30,7 @@ export async function GET() {
     take: 200,
   });
 
-  return NextResponse.json({ orders });
+  return NextResponse.json({ orders }, { headers: { 'Cache-Control': 'no-store' } });
 }
 
 export async function PATCH(request: NextRequest) {
@@ -36,15 +38,21 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const parsed = updateSchema.safeParse(await request.json().catch(() => null));
+  const parsed = updateSchema.safeParse(await readJson(request).catch(() => null));
   if (!parsed.success) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
   }
 
-  const order = await prisma.order.update({
-    where: { id: parsed.data.id },
-    data: { status: parsed.data.status },
-  });
-
-  return NextResponse.json({ order });
+  try {
+    const order = await prisma.order.update({
+      where: { id: parsed.data.id },
+      data: { status: parsed.data.status },
+    });
+    return NextResponse.json({ order }, { headers: { 'Cache-Control': 'no-store' } });
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
+      return NextResponse.json({ error: 'Order not found' }, { status: 404 });
+    }
+    throw error;
+  }
 }

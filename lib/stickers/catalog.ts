@@ -136,10 +136,9 @@ export const CATALOG: StickerDef[] = [
     payloadType: 'privat24',
     icon: '💳',
     defaultShape: 'rect',
-    fields: [{ name: 'card', kind: 'text' }],
-    buildValue: (d) => s(d, 'card'),
-    subtitle: (d) => s(d, 'card').replace(/(\d{4})(?=\d)/g, '$1 ').trim(),
-    demo: '5168755412345678',
+    fields: [],
+    buildValue: () => '',
+    demo: '',
   },
   {
     key: 'carPhone',
@@ -194,5 +193,5 @@ export const CATALOG_BY_KEY: Record<string, StickerDef> = Object.fromEntries(
 );
 
 export function getSticker(key: string): StickerDef | undefined {
-  return CATALOG_BY_KEY[key];
+  return Object.hasOwn(CATALOG_BY_KEY, key) ? CATALOG_BY_KEY[key] : undefined;
 }
