@@ -60,3 +60,46 @@ button {
     @apply text-xl font-bold tracking-tight text-navy;
   }
 }
+
+/* Product V2: public storefront only; admin keeps its existing presentation. */
+.product-storefront { background: #fffefa; }
+.product-container { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 24px; }
+.product-hero { background: #f7f5ef; }
+.product-eyebrow, .product-kicker { color: #526070; font-size: 10px; line-height: 1.6; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+.product-eyebrow { display: flex; align-items: center; gap: 10px; }
+.product-eyebrow > span { width: 22px; height: 2px; background: #d62828; flex-shrink: 0; }
+.product-headline { max-width: 610px; color: #1d3557; font-size: clamp(34px, 4.4vw, 64px); line-height: 1.06; font-weight: 750; letter-spacing: -.045em; text-wrap: balance; }
+.product-headline em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+.product-section-heading { color: #1d3557; font-size: clamp(28px, 3vw, 42px); font-weight: 650; line-height: 1.15; letter-spacing: -.035em; text-wrap: balance; }
+.product-button, .product-button-secondary { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 16px; padding: 13px 22px; font-size: 13px; line-height: 1.5; font-weight: 650; border-radius: 6px; transition: background-color .2s, transform .2s; }
+.product-button { background: #d62828; color: #fff; }
+.product-button:hover { background: #b91f1f; transform: translateY(-1px); }
+.product-button-secondary { color: #1d3557; border: 1px solid #1d355733; background: transparent; }
+.product-button-secondary:hover { background: #fffefa; }
+.hero-products-art { display: block; width: 100%; height: auto; }
+.product-hero-scene { position: relative; max-width: 600px; width: 100%; margin-inline: auto; }
+.product-scene-caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; border-top: 1px solid #1d35571f; padding-top: 12px; font-size: 9px; line-height: 1.6; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #607080; }
+.product-flagship { display: flex; min-width: 0; flex-direction: column; padding: 28px; border-radius: 8px; transition: transform .2s; }
+.product-flagship:hover { transform: translateY(-4px); }
+.product-flagship-dark { background: #1d3557; color: #fffdf7; }
+.product-flagship-cream { background: #eee8da; color: #1d3557; }
+.product-flagship-red { background: #f3e6df; color: #1d3557; }
+.product-flagship p { flex: 1; }
+.product-solution-row { display: flex; align-items: center; gap: 15px; min-width: 0; min-height: 112px; border-bottom: 1px solid #1d35571a; padding-block: 20px; }
+.product-format-section { background: #f0eee7; }
+.product-material-study { display: flex; align-items: center; justify-content: center; min-width: 0; background: #e8e4da; aspect-ratio: 1.2; border-radius: 4px; }
+.product-final-cta { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 40px; border-radius: 8px; background: #1d3557; color: #fffdf7; }
+.product-choice { display: flex; min-width: 0; width: 100%; flex-direction: column; border: 1px solid #1d355724; border-radius: 8px; padding: 18px; text-align: left; color: #1d3557; background: #fff; transition: border-color .2s, background .2s; }
+.product-choice:hover { border-color: #1d3557; }
+.product-choice[aria-pressed=true] { background: #f0eee7; border-color: #1d3557; box-shadow: inset 0 0 0 1px #1d3557; }
+.product-choice:disabled { opacity: .55; cursor: not-allowed; }
+.product-choice:disabled:hover { border-color: #1d355724; }
+@media (min-width: 640px) { .product-container { padding-inline: 32px; } }
+@media (max-width: 639px) { .product-container { padding-inline: 20px; } .product-flagship { padding: 24px; } .product-final-cta { flex-direction: column; align-items: flex-start; padding: 28px 24px; } .product-headline { max-width: 500px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .product-flagship:hover, .product-button:hover { transform: none; } }
+.product-storefront :is(a, button, input, select, textarea):focus-visible,
+.product-editor :is(a, button, input, select, textarea):focus-visible,
+.product-checkout :is(a, button, input, select, textarea):focus-visible,
+.product-how :is(a, button, summary):focus-visible,
+header :is(a, button):focus-visible,
+footer a:focus-visible { outline: 3px solid #d62828; outline-offset: 4px; }
