@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { parseOrderItems } from '@/lib/orders/items';
+import { Icon, isIconName } from '@/components/product/Icon';
 import { DynamicQrAdmin } from '@/components/DynamicQrAdmin';
 
 type AdminOrder = {
@@ -161,7 +162,7 @@ export function AdminDashboard({ initialOrders, dynamicQrPublicOrigin }: { initi
                       {items.map((item, index) => (
                         <div key={index} className="min-w-0 break-words rounded-2xl bg-slate-50 p-3 text-sm">
                           <div className="flex items-start gap-3">
-                            <span className="text-xl" aria-hidden>{item.icon ?? '🏷️'}</span>
+                            <span className="text-xl" aria-hidden>{isIconName(item.icon) ? <Icon name={item.icon} className="h-6 w-6" /> : item.icon ?? '🏷️'}</span>
                             <div className="min-w-0 flex-1">
                               <p className="font-bold text-navy">{item.label || item.type || (ua ? 'Наліпка' : 'Sticker')}</p>
                               <p className="mt-1 text-xs leading-5 text-slate-500">

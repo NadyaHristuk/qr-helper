@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
 import { buildPayload, type StickerType, type StickerValue } from '@/lib/qr/payloads';
-import { Icon, type IconName } from './product/Icon';
+import { Icon, isIconName, type IconName } from './product/Icon';
 import type { DesignColors, StickerShape } from '@/lib/stickers/catalog';
 
 export interface StickerDesignProps {
@@ -81,6 +81,7 @@ export function StickerDesign({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, valueKey, colors.qr, colors.bg]);
 
+  const resolvedIcon = visualIcon ?? (isIconName(icon) ? icon : undefined);
   const geom = SHAPES[shape];
   const lines = wrapLabel(label, geom.maxChars);
   const height = width * (geom.h / geom.w);
@@ -96,7 +97,7 @@ export function StickerDesign({
     >
       {geom.frame(colors)}
 
-      {visualIcon ? <svg x={(geom.w - geom.iconSize) / 2} y={geom.iconY - geom.iconSize} width={geom.iconSize} height={geom.iconSize} viewBox="0 0 24 24" color={colors.icon}><Icon name={visualIcon} /></svg> : <text x={geom.w / 2} y={geom.iconY} textAnchor="middle" fontSize={geom.iconSize}>{icon}</text>}
+      {resolvedIcon ? <svg x={(geom.w - geom.iconSize) / 2} y={geom.iconY - geom.iconSize} width={geom.iconSize} height={geom.iconSize} viewBox="0 0 24 24" color={colors.icon}><Icon name={resolvedIcon} /></svg> : <text x={geom.w / 2} y={geom.iconY} textAnchor="middle" fontSize={geom.iconSize}>{icon}</text>}
 
       <text
         x={geom.w / 2}

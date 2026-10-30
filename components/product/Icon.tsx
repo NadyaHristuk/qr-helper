@@ -45,6 +45,10 @@ const icons = {
 
 export type IconName = keyof typeof icons;
 
+export function isIconName(value: unknown): value is IconName {
+  return typeof value === 'string' && Object.hasOwn(icons, value);
+}
+
 type IconProps = SVGProps<SVGSVGElement> & { name: IconName };
 
 /** Shared line icons for product choices and interface actions. */

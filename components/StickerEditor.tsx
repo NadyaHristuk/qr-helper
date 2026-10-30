@@ -65,7 +65,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
     addToCart({
       key: def.key,
       ...(goal ? { businessGoal: goal.key } : {}),
-      payloadType: def.payloadType, value, label, subtitle, icon: def.icon,
+      payloadType: def.payloadType, value, label, subtitle, icon: goal?.icon ?? 'scan',
       shape, template, colors: effectiveColors, productType, size, quantity,
     });
     setAdded(true);
