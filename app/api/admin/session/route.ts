@@ -1,3 +1,4 @@
+import { isSameOriginRequest, forbiddenOrigin } from '@/lib/admin-origin';
 import { readJson } from '@/lib/request-json';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
@@ -8,6 +9,7 @@ import {
 } from '@/lib/admin-auth';
 
 export async function POST(request: NextRequest) {
+  if (!isSameOriginRequest(request)) return forbiddenOrigin();
   const parsed = z.object({ password: z.string().max(1024) }).safeParse(await readJson(request).catch(() => null));
   const password = parsed.success ? parsed.data.password : '';
 
@@ -31,7 +33,8 @@ export async function POST(request: NextRequest) {
   return response;
 }
 
-export async function DELETE() {
+export async function DELETE(request: NextRequest) {
+  if (!isSameOriginRequest(request)) return forbiddenOrigin();
   const response = NextResponse.json({ ok: true });
   response.cookies.set(ADMIN_COOKIE_NAME, '', {
     httpOnly: true,

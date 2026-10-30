@@ -1,3 +1,4 @@
+import { isSameOriginRequest, forbiddenOrigin } from '@/lib/admin-origin';
 import { readJson } from '@/lib/request-json';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
@@ -37,6 +38,8 @@ export async function PATCH(request: NextRequest) {
   if (!(await isAdminAuthenticated())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+
+  if (!isSameOriginRequest(request)) return forbiddenOrigin();
 
   const parsed = updateSchema.safeParse(await readJson(request).catch(() => null));
   if (!parsed.success) {
