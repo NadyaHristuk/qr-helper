@@ -79,7 +79,7 @@ export function Header() {
           <Link
             href="/order"
             aria-label={t('common.orderCta')}
-            className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-300 text-navy sm:hidden"
+            className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300 text-navy sm:hidden"
             onClick={() => setOpen(false)}
           >
             <span aria-hidden>🛒</span>
@@ -93,7 +93,7 @@ export function Header() {
             type="button"
             aria-label="menu"
             aria-expanded={open}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-300 text-navy md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300 text-navy md:hidden"
             onClick={() => setOpen((v) => !v)}
           >
             <span className="text-xl leading-none">{open ? '✕' : '☰'}</span>

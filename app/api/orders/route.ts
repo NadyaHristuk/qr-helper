@@ -1,3 +1,4 @@
+import { readJson, invalidJson } from '@/lib/request-json';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/db';
@@ -30,21 +31,25 @@ const orderSchema = z.object({
     name: z.string().trim().min(1, 'Укажите имя').max(120),
     phone: phoneSchema,
     city: z.string().trim().min(1, 'Укажите город').max(120),
-    npOffice: z.string().trim().min(1, 'Укажите отделение Новой Почты').max(120),
+    npOffice: z.string().trim().max(120).default(''),
     note: z.string().trim().max(500).optional().default(''),
   }),
   template: z.enum(['standard', 'individual']),
   deliveryMethod: z.enum(['nova_poshta', 'pickup', 'courier']).default('nova_poshta'),
   paymentMethod: z.enum(['manager', 'online']).default('manager'),
   items: z.array(itemSchema).min(1, 'Добавьте хотя бы одну наклейку').max(50, 'Слишком много позиций в одном заказе'),
+}).superRefine((order, ctx) => {
+  if (order.deliveryMethod !== 'pickup' && !order.customer.npOffice) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['customer', 'npOffice'], message: 'Укажите отделение или адрес доставки' });
+  }
 });
 
 export async function POST(request: NextRequest) {
   let body: unknown;
   try {
-    body = await request.json();
+    body = await readJson(request);
   } catch {
-    return NextResponse.json({ error: 'Некорректный JSON' }, { status: 400 });
+    return invalidJson();
   }
 
   const parsed = orderSchema.safeParse(body);

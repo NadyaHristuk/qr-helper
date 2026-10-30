@@ -1,10 +1,11 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { notFound } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/navigation';
 import { StickerDesign } from './StickerDesign';
-import { getSticker, DEFAULT_COLORS, type DesignColors, type StickerShape, type TemplateKind } from '@/lib/stickers/catalog';
+import { getSticker, DEFAULT_COLORS, type StickerDef, type DesignColors, type StickerShape, type TemplateKind } from '@/lib/stickers/catalog';
 import { addToCart, type ProductType, type StickerSize } from '@/lib/stickers/cart';
 import { buildPayload } from '@/lib/qr/payloads';
 
@@ -25,7 +26,12 @@ const PRODUCT_LABELS: Record<ProductType, [string, string]> = {
 };
 
 export function StickerEditor({ stickerKey }: { stickerKey: string }) {
-  const def = getSticker(stickerKey)!;
+  const def = getSticker(stickerKey);
+  if (!def) notFound();
+  return <ConfiguredStickerEditor key={stickerKey} stickerKey={stickerKey} def={def} />;
+}
+
+function ConfiguredStickerEditor({ stickerKey, def }: { stickerKey: string; def: StickerDef }) {
   const t = useTranslations('editor');
   const th = useTranslations('home');
   const locale = useLocale();
@@ -101,6 +107,7 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
       <div className="mt-6 grid gap-6 sm:mt-8 lg:grid-cols-[1fr_420px] lg:items-start lg:gap-8">
         <div className="space-y-4 sm:space-y-5">
           <EditorSection title={t('dataSection')}>
+            {def.payloadType === 'privat24' && <p role="status" className="text-sm leading-6 text-slate-600">{ua ? 'Концепт для обговорення. Платіжний QR буде доступний після інтеграції з платіжним сервісом. Не вводьте реквізити картки.' : 'Concept for discussion. Payment QR requires a merchant integration. Do not enter card details.'}</p>}
             <div className="grid gap-4 sm:grid-cols-2">
               {def.fields.map((f) => (
                 <div key={f.name} className={def.fields.length === 1 ? 'sm:col-span-2' : ''}>
@@ -145,7 +152,7 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
                 {COLOR_KEYS.map((k) => (
                   <label key={k} className="rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-600">
                     <span className="mb-2 block break-words text-xs font-semibold text-slate-500">{t(`colors.${k}`)}</span>
-                    <input type="color" value={colors[k]} onChange={(e) => setColor(k, e.target.value)} className="h-10 w-full cursor-pointer rounded border border-slate-300 bg-white" />
+                    <input type="color" value={colors[k]} onChange={(e) => setColor(k, e.target.value)} className="h-11 w-full cursor-pointer rounded border border-slate-300 bg-white" />
                   </label>
                 ))}
               </div>
@@ -172,7 +179,7 @@ export function StickerEditor({ stickerKey }: { stickerKey: string }) {
                 </div>
                 <div>
                   <label className="label">{ua ? 'Кількість' : 'Quantity'}</label>
-                  <input className="input" type="number" min={1} max={999} value={quantity} onChange={(e) => setQuantity(Math.max(1, Math.min(999, Number(e.target.value) || 1)))} />
+                  <input className="input" type="number" min={1} max={999} value={quantity} onChange={(e) => setQuantity(Math.max(1, Math.min(999, Math.floor(Number(e.target.value)) || 1)))} />
                 </div>
               </div>
               <p className="text-xs leading-5 text-slate-500">{ua ? 'Розміри та ціни поки демонстраційні — Юра зможе затвердити реальні варіанти після перегляду концепту.' : 'Sizes and pricing are demo options until the real product range is approved.'}</p>

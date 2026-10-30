@@ -51,10 +51,14 @@ export function OrderCart() {
         customerName: z.string().trim().min(1, t('errors.required')).max(120),
         customerPhone: z.string().trim().min(1, t('errors.required')).regex(/^\+?[\d\s().-]{10,24}$/, t('errors.required')),
         customerCity: z.string().trim().min(1, t('errors.required')).max(120),
-        customerNpOffice: z.string().trim().min(1, t('errors.required')).max(120),
+        customerNpOffice: z.string().trim().max(120),
         customerNote: z.string().trim().max(500).optional(),
         deliveryMethod: z.enum(['nova_poshta', 'pickup', 'courier']),
         paymentMethod: z.enum(['manager', 'online']),
+      }).superRefine((data, ctx) => {
+        if (data.deliveryMethod !== 'pickup' && !data.customerNpOffice) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['customerNpOffice'], message: t('errors.required') });
+        }
       }),
     [t],
   );
@@ -62,12 +66,15 @@ export function OrderCart() {
 
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { deliveryMethod: 'nova_poshta', paymentMethod: 'manager' },
+    defaultValues: { customerNpOffice: '', deliveryMethod: 'nova_poshta', paymentMethod: 'manager' },
   });
+
+  const deliveryMethod = watch('deliveryMethod');
 
   const totalUnits = items.reduce((sum, item) => sum + (item.quantity || 1), 0);
 
@@ -182,7 +189,7 @@ export function OrderCart() {
           <CartField autoComplete="name" label={t('fields.customerName')} placeholder={t('placeholders.customerName')} error={errors.customerName?.message} {...register('customerName')} />
           <CartField type="tel" inputMode="tel" autoComplete="tel" label={t('fields.customerPhone')} placeholder={t('placeholders.customerPhone')} error={errors.customerPhone?.message} {...register('customerPhone')} />
           <CartField autoComplete="address-level2" label={t('fields.customerCity')} placeholder={t('placeholders.customerCity')} error={errors.customerCity?.message} {...register('customerCity')} />
-          <CartField label={t('fields.customerNpOffice')} placeholder={t('placeholders.customerNpOffice')} error={errors.customerNpOffice?.message} {...register('customerNpOffice')} />
+          {deliveryMethod !== 'pickup' && <CartField label={deliveryMethod === 'courier' ? (ua ? 'Адреса доставки' : 'Delivery address') : t('fields.customerNpOffice')} placeholder={deliveryMethod === 'courier' ? undefined : t('placeholders.customerNpOffice')} error={errors.customerNpOffice?.message} {...register('customerNpOffice')} />}
         </div>
 
         <div className="mt-6 border-t border-slate-200 pt-5">

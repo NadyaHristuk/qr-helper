@@ -6,7 +6,7 @@ import { routing } from '@/i18n/routing';
 
 const LABELS: Record<string, string> = { ua: 'Укр', en: 'Eng' };
 
-/** Переключатель языка Укр/Рус — сохраняет текущий путь. */
+/** Переключатель языка Укр/Eng — сохраняет текущий путь. */
 export function LanguageSwitcher() {
   const locale = useLocale();
   const pathname = usePathname();
@@ -20,7 +20,7 @@ export function LanguageSwitcher() {
           type="button"
           onClick={() => router.replace(pathname, { locale: loc })}
           aria-current={loc === locale}
-          className={`px-2.5 py-1 font-medium transition ${
+          className={`min-h-11 min-w-11 px-2.5 py-1 font-medium transition ${
             loc === locale
               ? 'bg-navy text-white'
               : 'bg-white text-navy hover:bg-slate-50'

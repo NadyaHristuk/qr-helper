@@ -52,7 +52,7 @@
       },
       "privat24": {
         "title": "Contactless payment (Privat24)",
-        "caption": "Pay contactless with a QR code. Place a poster or sticker and receive payment for your goods and services to your bank card",
+        "caption": "Concept for discussion: payment QR requires a merchant integration. Card details are not collected.",
         "label": "PAY BY QR"
       },
       "carPhone": {
@@ -95,8 +95,7 @@
       "email": "Email",
       "site": "Website",
       "subject": "Email subject",
-      "message": "Message",
-      "card": "Card number"
+      "message": "Message"
     },
     "labelField": "Sticker label",
     "shapeSection": "Sticker shape",
@@ -107,7 +106,7 @@
     },
     "templateSection": "Template",
     "templateStandard": "Standard",
-    "templateIndividual": "Custom (+100 UAH)",
+    "templateIndividual": "Custom",
     "colorsSection": "Colors",
     "colors": {
       "text": "Text",
@@ -147,7 +146,7 @@
       "q2": "Does the client need a special app?",
       "a2": "No. The camera of any modern smartphone scans QR codes. For older phones there is a sticker linking to a free QR scanner.",
       "q3": "How is a standard sticker different from a custom template?",
-      "a3": "Standard is a ready-made service layout where only your QR code and text change. A custom template (+100 UAH) lets you tune the colors of the text, background, frame and the QR code itself to match your brand.",
+      "a3": "Standard is a ready-made service layout where only your QR code and text change. A custom template lets you tune the colors of the text, background, frame and the QR code itself to match your brand.",
       "q4": "How fast will I get my order?",
       "a4": "After payment we produce the stickers and ship them by Nova Poshta — roughly within 24 hours.",
       "q5": "Can I order just a few kinds of stickers?",
@@ -166,7 +165,7 @@
     "addMore": "Add another sticker",
     "sectionCustomer": "Customer details",
     "templateStandard": "Standard sticker",
-    "templateIndividual": "Custom template (+100 UAH)",
+    "templateIndividual": "Custom template",
     "fields": {
       "customerName": "Name",
       "customerPhone": "Phone",
@@ -182,7 +181,7 @@
     "pay": "Pay",
     "submitting": "Submitting…",
     "success": "Order accepted, number {number}",
-    "successNote": "We'll contact you and ship the order by Nova Poshta, roughly within 24 hours.",
+    "successNote": "We will contact you to confirm production, delivery and payment details.",
     "newOrder": "Place another order",
     "errors": {
       "required": "Required field",
