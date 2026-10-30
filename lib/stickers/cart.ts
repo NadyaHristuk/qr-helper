@@ -10,6 +10,8 @@ export type StickerSize = 'S' | 'M' | 'L';
 export interface CartItem {
   id: string;
   key: string;
+  /** Optional storefront context; never sent to the existing order API. */
+  businessGoal?: string;
   payloadType: StickerType;
   value: StickerValue;
   label: string;

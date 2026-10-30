@@ -7,6 +7,9 @@ import { z } from 'zod';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { StickerDesign } from './StickerDesign';
+import { Icon } from './product/Icon';
+import { PHYSICAL_PRODUCTS, findSolution, solutionForCatalog, localized } from '@/lib/products/solutions';
+import { destinationSummary } from '@/lib/products/presentation';
 import {
   getCart,
   removeFromCart,
@@ -18,16 +21,6 @@ import {
 type OrderResponse = { id: number; priceKop: number; status: string };
 type OrderErrorResponse = { error?: string };
 
-const PRODUCT_LABELS: Record<string, [string, string]> = {
-  sticker: ['Звичайна наліпка', 'Standard sticker'],
-  vinyl: ['Вінілова / вологостійка', 'Vinyl / water-resistant'],
-  transparent: ['Прозора на скло', 'Transparent glass sticker'],
-  sign: ['Табличка', 'Rigid sign'],
-  stand: ['Настільний стенд', 'Table stand'],
-  poster: ['Постер', 'Poster'],
-  business_card: ['Візитка з QR', 'QR business card'],
-  qr_nfc: ['QR + NFC', 'QR + NFC'],
-};
 
 export function OrderCart() {
   const t = useTranslations('order');
@@ -146,7 +139,7 @@ export function OrderCart() {
   if (mounted && items.length === 0) {
     return (
       <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-6 text-center shadow-sm sm:p-10">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-xl">🧾</div>
+        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-navy"><Icon name="shoppingBag" /></div>
         <p className="text-slate-600">{t('cartEmpty')}</p>
         <Link href="/" className="btn-accent mt-5 w-full sm:w-auto">{t('cartEmptyCta')}</Link>
       </div>
@@ -165,24 +158,30 @@ export function OrderCart() {
         </div>
 
         <ul className="mt-5 space-y-3">
-          {items.map((i) => (
-            <li key={i.id} className="grid grid-cols-[64px_minmax(0,1fr)] gap-3 rounded-2xl border border-slate-200 bg-slate-50/70 p-3 min-[420px]:grid-cols-[72px_minmax(0,1fr)_auto] min-[420px]:items-center min-[420px]:gap-4">
-              <div className="rounded-xl bg-white p-2 shadow-sm">
-                <StickerDesign type={i.payloadType} value={i.value} shape={i.shape} colors={i.colors} label={i.label} subtitle={i.subtitle} icon={i.icon} width={72} />
+          {items.map((i) => {
+            const requestedGoal = i.businessGoal ? findSolution(i.businessGoal) : undefined;
+            const goal = requestedGoal?.variants.some((variant) => variant.catalogKey === i.key) ? requestedGoal : solutionForCatalog(i.key);
+            const physical = PHYSICAL_PRODUCTS.find((product) => product.key === i.productType);
+            return <li key={i.id} className="rounded-2xl border border-slate-200 p-3 sm:p-4">
+              <div className="grid grid-cols-[72px_minmax(0,1fr)] items-start gap-4">
+                <div className="flex items-center justify-center rounded-xl bg-[#f0ede8] p-2"><StickerDesign type={i.payloadType} value={i.value} shape={i.shape} colors={i.colors} label={i.label} subtitle={i.subtitle} icon={i.icon} visualIcon={goal?.icon ?? 'scan'} width={72} /></div>
+                <div className="min-w-0"><p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{ua ? 'Дія клієнта' : 'Customer action'}</p><h3 className="mt-1 break-words text-base font-bold text-navy">{goal ? localized(goal.title, locale) : ua ? 'Ваш виріб' : 'Your product'}</h3><p className="mt-2 break-words text-xs leading-5 text-slate-500">{ua ? 'Напис' : 'Message'}: {i.label}</p></div>
               </div>
-              <div className="min-w-0 self-center">
-                <p className="break-words font-bold text-navy">{i.label}</p>
-                <p className="mt-1 text-xs leading-5 text-slate-500">{PRODUCT_LABELS[i.productType]?.[ua ? 0 : 1] ?? i.productType} · {i.size} · ×{i.quantity}</p>
-                <p className="text-xs leading-5 text-slate-400">{t(i.template === 'individual' ? 'templateIndividual' : 'templateStandard')}</p>
-              </div>
-              <button type="button" onClick={() => removeFromCart(i.id)} className="col-span-2 rounded-lg px-3 py-2 text-left text-sm font-semibold text-accent transition hover:bg-red-50 min-[420px]:col-span-1 min-[420px]:text-center">{t('remove')}</button>
-            </li>
-          ))}
+              <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-3 border-t border-slate-100 pt-3 text-xs leading-5">
+                <div><dt className="text-slate-500">{ua ? 'Формат' : 'Format'}</dt><dd className="font-semibold text-navy">{physical ? localized(physical.title, locale) : ua ? 'Наліпка' : 'Sticker'}</dd></div>
+                <div><dt className="text-slate-500">{ua ? 'Розмір · кількість' : 'Size · quantity'}</dt><dd className="font-semibold text-navy">{i.size} · ×{i.quantity}</dd></div>
+                <div className="col-span-2"><dt className="text-slate-500">{ua ? 'Дизайн' : 'Design'}</dt><dd className="text-navy">{t(i.template === 'individual' ? 'templateIndividual' : 'templateStandard')}</dd></div>
+                <div className="col-span-2 min-w-0"><dt className="text-slate-500">{ua ? 'Призначення QR' : 'QR destination'}</dt><dd className="break-all font-medium text-navy">{destinationSummary(i.payloadType, i.value, locale)}</dd></div>
+              </dl>
+              <button type="button" onClick={() => removeFromCart(i.id)} className="mt-3 min-h-11 rounded-lg px-2 text-sm font-semibold text-accent hover:bg-red-50">{t('remove')}</button>
+            </li>;
+          })}
         </ul>
       </section>
 
       <form onSubmit={handleSubmit(onSubmit)} className="rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/40 sm:p-6" noValidate>
         <h2 className="section-title">{t('sectionCustomer')}</h2>
+        <p className="mt-3 rounded-lg bg-slate-50 p-3 text-xs leading-5 text-slate-600">{ua ? 'Демонстраційна ціна замовлення — 1 грн. Деталі виготовлення та оплати узгодимо з вами.' : 'Demo order price: UAH 1. We will confirm production and payment details with you.'}</p>
         <p className="mt-2 text-sm leading-6 text-slate-500">{t('intro')}</p>
 
         <div className="mt-5 grid gap-4">
@@ -205,13 +204,13 @@ export function OrderCart() {
           <h3 className="font-bold text-navy">{ua ? 'Оплата' : 'Payment'}</h3>
           <div className="mt-3 grid gap-2">
             <RadioOption label={ua ? 'Після підтвердження менеджером' : 'After manager confirmation'} value="manager" {...register('paymentMethod')} />
-            <RadioOption label={ua ? 'Онлайн (підключається)' : 'Online (integration planned)'} value="online" {...register('paymentMethod')} />
+            <RadioOption disabled label={ua ? 'Онлайн-оплата — згодом' : 'Online payment — coming later'} value="online" {...register('paymentMethod')} />
           </div>
         </div>
 
         <div className="mt-6 border-t border-slate-200 pt-5">
-          <label className="label">{ua ? 'Коментар до замовлення' : 'Order note'}</label>
-          <textarea className="input min-h-24 resize-y" maxLength={500} placeholder={ua ? 'Побажання щодо друку, доставки або замовлення' : 'Printing, delivery or order notes'} {...register('customerNote')} />
+          <label htmlFor="order-note" className="label">{ua ? 'Коментар до замовлення' : 'Order note'}</label>
+          <textarea id="order-note" className="input min-h-24 resize-y" maxLength={500} placeholder={ua ? 'Побажання щодо друку, доставки або замовлення' : 'Printing, delivery or order notes'} {...register('customerNote')} />
         </div>
 
         {serverError && <p className="mt-5 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-accent">{serverError}</p>}
@@ -223,7 +222,7 @@ export function OrderCart() {
 }
 
 const CartField = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string }>(function CartField({ label, error, ...props }, ref) {
-  return <div><label className="label">{label}</label><input ref={ref} className={`input ${error ? 'border-accent focus:border-accent focus:ring-accent/10' : ''}`} {...props} />{error && <p className="mt-1 text-xs font-medium text-accent">{error}</p>}</div>;
+  return <div><label htmlFor={props.name} className="label">{label}</label><input id={props.name} ref={ref} className={`input ${error ? 'border-accent focus:border-accent focus:ring-accent/10' : ''}`} {...props} />{error && <p className="mt-1 text-xs font-medium text-accent">{error}</p>}</div>;
 });
 
 const RadioOption = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement> & { label: string }>(function RadioOption({ label, ...props }, ref) {

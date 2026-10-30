@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
 import { buildPayload, type StickerType, type StickerValue } from '@/lib/qr/payloads';
+import { Icon, type IconName } from './product/Icon';
 import type { DesignColors, StickerShape } from '@/lib/stickers/catalog';
 
 export interface StickerDesignProps {
@@ -13,6 +14,7 @@ export interface StickerDesignProps {
   label: string;
   subtitle?: string;
   icon: string;
+  visualIcon?: IconName;
   /** Ширина в пикселях (высота — по пропорции формы). */
   width?: number;
   className?: string;
@@ -48,6 +50,7 @@ export function StickerDesign({
   label,
   subtitle,
   icon,
+  visualIcon,
   width = 260,
   className = '',
 }: StickerDesignProps) {
@@ -93,14 +96,7 @@ export function StickerDesign({
     >
       {geom.frame(colors)}
 
-      <text
-        x={geom.w / 2}
-        y={geom.iconY}
-        textAnchor="middle"
-        fontSize={geom.iconSize}
-      >
-        {icon}
-      </text>
+      {visualIcon ? <svg x={(geom.w - geom.iconSize) / 2} y={geom.iconY - geom.iconSize} width={geom.iconSize} height={geom.iconSize} viewBox="0 0 24 24" color={colors.icon}><Icon name={visualIcon} /></svg> : <text x={geom.w / 2} y={geom.iconY} textAnchor="middle" fontSize={geom.iconSize}>{icon}</text>}
 
       <text
         x={geom.w / 2}

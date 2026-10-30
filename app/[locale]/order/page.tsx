@@ -16,7 +16,7 @@ function OrderPageContent() {
   const t = useTranslations('order');
 
   return (
-    <div className="bg-slate-50/60">
+    <div className="product-checkout bg-slate-50/60">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
         <div className="mb-8 max-w-3xl">
           <h1 className="text-3xl font-black tracking-tight text-navy sm:text-4xl">

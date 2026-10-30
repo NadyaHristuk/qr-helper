@@ -12,11 +12,13 @@ export function generateStaticParams() {
 
 export default async function StickerEditorPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; type: string }>;
+  searchParams: Promise<{ goal?: string | string[]; productType?: string | string[] }>;
 }) {
-  const { locale, type } = await params;
+  const [{ locale, type }, query] = await Promise.all([params, searchParams]);
   setRequestLocale(locale);
   if (!getSticker(type)) notFound();
-  return <StickerEditor stickerKey={type} />;
+  return <StickerEditor stickerKey={type} initialGoal={typeof query.goal === 'string' ? query.goal : undefined} initialProductType={typeof query.productType === 'string' ? query.productType : undefined} />;
 }
