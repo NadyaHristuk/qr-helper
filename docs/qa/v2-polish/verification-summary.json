@@ -1,0 +1,14 @@
+{
+  "combinations": 198,
+  "viewports": 22,
+  "pages": 9,
+  "runtimeExceptions": 0,
+  "errorLevelLogs": 0,
+  "verboseRecommendations": 3,
+  "mockedCheckout": {
+    "productType": "sign",
+    "icon": "reviews",
+    "businessGoalOmittedFromOrderAPI": true,
+    "databaseWrites": false
+  }
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "page": "Homepage UA",
+    "file": "home-ua-1440x900.png",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "page": "Homepage UA",
+    "file": "home-ua-390x844.png",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "page": "Homepage UA",
+    "file": "home-ua-844x390.png",
+    "viewport": [
+      844,
+      390
+    ]
+  },
+  {
+    "page": "Homepage EN",
+    "file": "home-en-1440x900.png",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "page": "Editor UA",
+    "file": "editor-ua-1440x900.png",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "page": "Editor UA",
+    "file": "editor-ua-390x844.png",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "page": "Editor UA",
+    "file": "editor-ua-844x390.png",
+    "viewport": [
+      844,
+      390
+    ]
+  },
+  {
+    "page": "Editor EN",
+    "file": "editor-en-1440x900.png",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "page": "Cart UA",
+    "file": "cart-ua-390x844.png",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "page": "Cart UA",
+    "file": "cart-ua-844x390.png",
+    "viewport": [
+      844,
+      390
+    ]
+  },
+  {
+    "page": "Cart UA",
+    "file": "cart-ua-1440x900.png",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "page": "Homepage UA — full page",
+    "file": "home-ua-1440x900-full.png",
+    "viewport": [
+      1440,
+      900
+    ]
+  },
+  {
+    "page": "Editor UA — full page",
+    "file": "editor-ua-390x844-full.png",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "page": "Cart UA — full page",
+    "file": "cart-ua-1440x900-full.png",
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+]

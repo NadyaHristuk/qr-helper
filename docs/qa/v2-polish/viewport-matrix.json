@@ -1,0 +1,2378 @@
+[
+  {
+    "path": "/ua",
+    "width": 320,
+    "height": 740,
+    "scrollWidth": 305,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 345,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 360,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 430,
+    "height": 932,
+    "scrollWidth": 415,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 768,
+    "height": 1024,
+    "scrollWidth": 753,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1024,
+    "height": 768,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1440,
+    "height": 1000,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1600,
+    "height": 900,
+    "scrollWidth": 1585,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 568,
+    "height": 320,
+    "scrollWidth": 553,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 667,
+    "height": 375,
+    "scrollWidth": 652,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 740,
+    "height": 360,
+    "scrollWidth": 725,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 812,
+    "height": 375,
+    "scrollWidth": 797,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 844,
+    "height": 390,
+    "scrollWidth": 829,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 896,
+    "height": 414,
+    "scrollWidth": 881,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1024,
+    "height": 600,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1180,
+    "height": 820,
+    "scrollWidth": 1165,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1280,
+    "height": 720,
+    "scrollWidth": 1265,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1366,
+    "height": 768,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1920,
+    "height": 1080,
+    "scrollWidth": 1905,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua",
+    "width": 1366,
+    "height": 600,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 320,
+    "height": 740,
+    "scrollWidth": 305,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 345,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 360,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 430,
+    "height": 932,
+    "scrollWidth": 415,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 768,
+    "height": 1024,
+    "scrollWidth": 753,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1024,
+    "height": 768,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1440,
+    "height": 1000,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1600,
+    "height": 900,
+    "scrollWidth": 1585,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 568,
+    "height": 320,
+    "scrollWidth": 553,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 667,
+    "height": 375,
+    "scrollWidth": 652,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 740,
+    "height": 360,
+    "scrollWidth": 725,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 812,
+    "height": 375,
+    "scrollWidth": 797,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 844,
+    "height": 390,
+    "scrollWidth": 829,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 896,
+    "height": 414,
+    "scrollWidth": 881,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1024,
+    "height": 600,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1180,
+    "height": 820,
+    "scrollWidth": 1165,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1280,
+    "height": 720,
+    "scrollWidth": 1265,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1366,
+    "height": 768,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1920,
+    "height": 1080,
+    "scrollWidth": 1905,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en",
+    "width": 1366,
+    "height": 600,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 320,
+    "height": 740,
+    "scrollWidth": 305,
+    "header": 65,
+    "preview": {
+      "h": 613,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3461.796875
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 345,
+    "header": 65,
+    "preview": {
+      "h": 610,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3400.390625
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 360,
+    "header": 65,
+    "preview": {
+      "h": 617,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3387.765625
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "header": 65,
+    "preview": {
+      "h": 617,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3331.6875
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 430,
+    "height": 932,
+    "scrollWidth": 415,
+    "header": 65,
+    "preview": {
+      "h": 599,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3271.6875
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 768,
+    "height": 1024,
+    "scrollWidth": 753,
+    "header": 73,
+    "preview": {
+      "h": 624,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3107.78125
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1024,
+    "height": 768,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "static",
+      "top": "auto",
+      "x": 537,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 992.78125
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1440,
+    "height": 1000,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "sticky",
+      "top": "88px",
+      "x": 880.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 1002.96875
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1600,
+    "height": 900,
+    "scrollWidth": 1585,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "sticky",
+      "top": "88px",
+      "x": 960.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 1002.96875
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 568,
+    "height": 320,
+    "scrollWidth": 553,
+    "header": 57,
+    "preview": {
+      "h": 505,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3021.3125
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 667,
+    "height": 375,
+    "scrollWidth": 652,
+    "header": 57,
+    "preview": {
+      "h": 505,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2931.234375
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 740,
+    "height": 360,
+    "scrollWidth": 725,
+    "header": 57,
+    "preview": {
+      "h": 487,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2903.234375
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 812,
+    "height": 375,
+    "scrollWidth": 797,
+    "header": 57,
+    "preview": {
+      "h": 487,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2903.234375
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 844,
+    "height": 390,
+    "scrollWidth": 829,
+    "header": 57,
+    "preview": {
+      "h": 487,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2903.234375
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 896,
+    "height": 414,
+    "scrollWidth": 881,
+    "header": 57,
+    "preview": {
+      "h": 487,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2903.234375
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1024,
+    "height": 600,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "static",
+      "top": "auto",
+      "x": 537,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 992.78125
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1180,
+    "height": 820,
+    "scrollWidth": 1165,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "static",
+      "top": "auto",
+      "x": 693,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 999.4375
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1280,
+    "height": 720,
+    "scrollWidth": 1265,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "static",
+      "top": "auto",
+      "x": 793,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 1002.96875
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1366,
+    "height": 768,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "static",
+      "top": "auto",
+      "x": 843.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 1002.96875
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "sticky",
+      "top": "88px",
+      "x": 880.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 1002.96875
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1920,
+    "height": 1080,
+    "scrollWidth": 1905,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "sticky",
+      "top": "88px",
+      "x": 1120.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 1002.96875
+    }
+  },
+  {
+    "path": "/ua/stickers/wifi",
+    "width": 1366,
+    "height": 600,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": {
+      "h": 732,
+      "position": "static",
+      "top": "auto",
+      "x": 843.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 1002.96875
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 320,
+    "height": 740,
+    "scrollWidth": 305,
+    "header": 65,
+    "preview": {
+      "h": 589,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3415.796875
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 345,
+    "header": 65,
+    "preview": {
+      "h": 592,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3344.390625
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 360,
+    "header": 65,
+    "preview": {
+      "h": 599,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3351.765625
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "header": 65,
+    "preview": {
+      "h": 599,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3351.765625
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 430,
+    "height": 932,
+    "scrollWidth": 415,
+    "header": 65,
+    "preview": {
+      "h": 599,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3351.765625
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 768,
+    "height": 1024,
+    "scrollWidth": 753,
+    "header": 73,
+    "preview": {
+      "h": 624,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3107.78125
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1024,
+    "height": 768,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "static",
+      "top": "auto",
+      "x": 537,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 974.78125
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1440,
+    "height": 1000,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "sticky",
+      "top": "88px",
+      "x": 880.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 984.96875
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1600,
+    "height": 900,
+    "scrollWidth": 1585,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "sticky",
+      "top": "88px",
+      "x": 960.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 984.96875
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 568,
+    "height": 320,
+    "scrollWidth": 553,
+    "header": 57,
+    "preview": {
+      "h": 505,
+      "position": "static",
+      "top": "auto",
+      "x": 24,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 3021.3125
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 667,
+    "height": 375,
+    "scrollWidth": 652,
+    "header": 57,
+    "preview": {
+      "h": 487,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2913.234375
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 740,
+    "height": 360,
+    "scrollWidth": 725,
+    "header": 57,
+    "preview": {
+      "h": 487,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2903.234375
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 812,
+    "height": 375,
+    "scrollWidth": 797,
+    "header": 57,
+    "preview": {
+      "h": 487,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2903.234375
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 844,
+    "height": 390,
+    "scrollWidth": 829,
+    "header": 57,
+    "preview": {
+      "h": 487,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2903.234375
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 896,
+    "height": 414,
+    "scrollWidth": 881,
+    "header": 57,
+    "preview": {
+      "h": 487,
+      "position": "static",
+      "top": "auto",
+      "x": 32,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 2903.234375
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1024,
+    "height": 600,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "static",
+      "top": "auto",
+      "x": 537,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 974.78125
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1180,
+    "height": 820,
+    "scrollWidth": 1165,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "sticky",
+      "top": "88px",
+      "x": 693,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 981.4375
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1280,
+    "height": 720,
+    "scrollWidth": 1265,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "static",
+      "top": "auto",
+      "x": 793,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 984.96875
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1366,
+    "height": 768,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "static",
+      "top": "auto",
+      "x": 843.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 984.96875
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "sticky",
+      "top": "88px",
+      "x": 880.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 984.96875
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1920,
+    "height": 1080,
+    "scrollWidth": 1905,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "sticky",
+      "top": "88px",
+      "x": 1120.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 984.96875
+    }
+  },
+  {
+    "path": "/en/stickers/wifi",
+    "width": 1366,
+    "height": 600,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": {
+      "h": 714,
+      "position": "static",
+      "top": "auto",
+      "x": 843.5,
+      "beforeForm": true
+    },
+    "internalScroll": [],
+    "button": {
+      "disabled": false,
+      "y": 984.96875
+    }
+  },
+  {
+    "path": "/ua/order",
+    "width": 320,
+    "height": 740,
+    "scrollWidth": 305,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 345,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 360,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 430,
+    "height": 932,
+    "scrollWidth": 415,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 768,
+    "height": 1024,
+    "scrollWidth": 753,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1024,
+    "height": 768,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1440,
+    "height": 1000,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1600,
+    "height": 900,
+    "scrollWidth": 1585,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 568,
+    "height": 320,
+    "scrollWidth": 553,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 667,
+    "height": 375,
+    "scrollWidth": 652,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 740,
+    "height": 360,
+    "scrollWidth": 725,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 812,
+    "height": 375,
+    "scrollWidth": 797,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 844,
+    "height": 390,
+    "scrollWidth": 829,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 896,
+    "height": 414,
+    "scrollWidth": 881,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1024,
+    "height": 600,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1180,
+    "height": 820,
+    "scrollWidth": 1165,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1280,
+    "height": 720,
+    "scrollWidth": 1265,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1366,
+    "height": 768,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1920,
+    "height": 1080,
+    "scrollWidth": 1905,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/order",
+    "width": 1366,
+    "height": 600,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 320,
+    "height": 740,
+    "scrollWidth": 305,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 345,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 360,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 430,
+    "height": 932,
+    "scrollWidth": 415,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 768,
+    "height": 1024,
+    "scrollWidth": 753,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1024,
+    "height": 768,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1440,
+    "height": 1000,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1600,
+    "height": 900,
+    "scrollWidth": 1585,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 568,
+    "height": 320,
+    "scrollWidth": 553,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 667,
+    "height": 375,
+    "scrollWidth": 652,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 740,
+    "height": 360,
+    "scrollWidth": 725,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 812,
+    "height": 375,
+    "scrollWidth": 797,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 844,
+    "height": 390,
+    "scrollWidth": 829,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 896,
+    "height": 414,
+    "scrollWidth": 881,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1024,
+    "height": 600,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1180,
+    "height": 820,
+    "scrollWidth": 1165,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1280,
+    "height": 720,
+    "scrollWidth": 1265,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1366,
+    "height": 768,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1920,
+    "height": 1080,
+    "scrollWidth": 1905,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/order",
+    "width": 1366,
+    "height": 600,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 320,
+    "height": 740,
+    "scrollWidth": 305,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 345,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 360,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 430,
+    "height": 932,
+    "scrollWidth": 415,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 768,
+    "height": 1024,
+    "scrollWidth": 753,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1024,
+    "height": 768,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1440,
+    "height": 1000,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1600,
+    "height": 900,
+    "scrollWidth": 1585,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 568,
+    "height": 320,
+    "scrollWidth": 553,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 667,
+    "height": 375,
+    "scrollWidth": 652,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 740,
+    "height": 360,
+    "scrollWidth": 725,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 812,
+    "height": 375,
+    "scrollWidth": 797,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 844,
+    "height": 390,
+    "scrollWidth": 829,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 896,
+    "height": 414,
+    "scrollWidth": 881,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1024,
+    "height": 600,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1180,
+    "height": 820,
+    "scrollWidth": 1165,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1280,
+    "height": 720,
+    "scrollWidth": 1265,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1366,
+    "height": 768,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1920,
+    "height": 1080,
+    "scrollWidth": 1905,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/solutions/reviews",
+    "width": 1366,
+    "height": 600,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 320,
+    "height": 740,
+    "scrollWidth": 305,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 345,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 360,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 430,
+    "height": 932,
+    "scrollWidth": 415,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 768,
+    "height": 1024,
+    "scrollWidth": 753,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1024,
+    "height": 768,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1440,
+    "height": 1000,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1600,
+    "height": 900,
+    "scrollWidth": 1585,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 568,
+    "height": 320,
+    "scrollWidth": 553,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 667,
+    "height": 375,
+    "scrollWidth": 652,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 740,
+    "height": 360,
+    "scrollWidth": 725,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 812,
+    "height": 375,
+    "scrollWidth": 797,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 844,
+    "height": 390,
+    "scrollWidth": 829,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 896,
+    "height": 414,
+    "scrollWidth": 881,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1024,
+    "height": 600,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1180,
+    "height": 820,
+    "scrollWidth": 1165,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1280,
+    "height": 720,
+    "scrollWidth": 1265,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1366,
+    "height": 768,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1920,
+    "height": 1080,
+    "scrollWidth": 1905,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/en/how-it-works",
+    "width": 1366,
+    "height": 600,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 320,
+    "height": 740,
+    "scrollWidth": 305,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 360,
+    "height": 800,
+    "scrollWidth": 345,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 375,
+    "height": 812,
+    "scrollWidth": 360,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 430,
+    "height": 932,
+    "scrollWidth": 415,
+    "header": 65,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 768,
+    "height": 1024,
+    "scrollWidth": 753,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1024,
+    "height": 768,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1440,
+    "height": 1000,
+    "scrollWidth": 1440,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1600,
+    "height": 900,
+    "scrollWidth": 1585,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 568,
+    "height": 320,
+    "scrollWidth": 553,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 667,
+    "height": 375,
+    "scrollWidth": 652,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 740,
+    "height": 360,
+    "scrollWidth": 725,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 812,
+    "height": 375,
+    "scrollWidth": 797,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 844,
+    "height": 390,
+    "scrollWidth": 829,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 896,
+    "height": 414,
+    "scrollWidth": 881,
+    "header": 57,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1024,
+    "height": 600,
+    "scrollWidth": 1009,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1180,
+    "height": 820,
+    "scrollWidth": 1165,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1280,
+    "height": 720,
+    "scrollWidth": 1265,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1366,
+    "height": 768,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1425,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1920,
+    "height": 1080,
+    "scrollWidth": 1920,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  },
+  {
+    "path": "/ua/admin",
+    "width": 1366,
+    "height": 600,
+    "scrollWidth": 1351,
+    "header": 73,
+    "preview": null,
+    "internalScroll": [],
+    "button": null
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "recommendation",
+        "level": "verbose",
+        "text": "[DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o",
+        "timestamp": 1793435787531.717,
+        "url": "http://localhost:3000/ua/stickers/wifi",
+        "args": [
+          {
+            "type": "object",
+            "subtype": "node",
+            "className": "HTMLInputElement",
+            "description": "input#editor-password.input",
+            "objectId": "7254946694406858676.45.1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "recommendation",
+        "level": "verbose",
+        "text": "[DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o",
+        "timestamp": 1793435795565.367,
+        "url": "http://localhost:3000/en/stickers/wifi",
+        "args": [
+          {
+            "type": "object",
+            "subtype": "node",
+            "className": "HTMLInputElement",
+            "description": "input#editor-password.input",
+            "objectId": "7254946694406858676.46.1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "recommendation",
+        "level": "verbose",
+        "text": "[DOM] Password forms should have (optionally hidden) username fields for accessibility: (More info: https://goo.gl/9p2vKq) %o",
+        "timestamp": 1793435827542.307,
+        "url": "http://localhost:3000/ua/admin",
+        "args": [
+          {
+            "type": "object",
+            "subtype": "node",
+            "className": "HTMLFormElement",
+            "description": "form.mx-auto.max-w-md.rounded-3xl.border.border-slate-200.bg-white.p-5.shadow-xl.shadow-slate-200/50.sm:p-8",
+            "objectId": "7254946694406858676.53.1"
+          }
+        ]
+      }
+    }
+  }
+]
