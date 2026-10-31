@@ -1,0 +1,14 @@
+[
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "javascript",
+        "level": "warning",
+        "text": "The resource http://localhost:3000/_next/static/css/601b350404de80dd.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "timestamp": 1793443588055.884,
+        "url": "http://localhost:3000/ua/order"
+      }
+    }
+  }
+]

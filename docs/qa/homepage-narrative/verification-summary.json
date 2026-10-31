@@ -1,0 +1,39 @@
+{
+  "locales": [
+    "ua",
+    "en"
+  ],
+  "viewportCombinations": 22,
+  "runtimeExceptions": 0,
+  "errorLevelLogs": 0,
+  "semanticOrder": [
+    "hero",
+    "trust",
+    "solutions",
+    "formats",
+    "how-it-works",
+    "industries",
+    "cta"
+  ],
+  "visibleStepNumbers": [
+    1,
+    2,
+    3
+  ],
+  "anchors": [
+    "solutions",
+    "formats",
+    "how-it-works"
+  ],
+  "heroSSR": [
+    "SVG fallback",
+    "local image",
+    "desktop/mobile crop positions",
+    "localized overlay"
+  ],
+  "commands": [
+    "npm run typecheck",
+    "npm test",
+    "npm run build"
+  ]
+}
