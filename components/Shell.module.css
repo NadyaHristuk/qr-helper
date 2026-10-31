@@ -1,0 +1,415 @@
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.header {
+  --header-height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid #1d355719;
+  background: #fffefaF5;
+  backdrop-filter: blur(12px);
+  color: #1d3557;
+}
+
+.headerInner {
+  display: flex;
+  min-height: var(--header-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  gap: 12px;
+  color: #1d3557;
+  font-weight: 750;
+  letter-spacing: -.035em;
+}
+
+.brandMark,
+.brandMark > span {
+  flex-shrink: 0;
+}
+
+.brandMark > span {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.brandName {
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.desktopNav,
+.desktopLanguage,
+.desktopOrder {
+  display: none;
+}
+
+.navLink,
+.footerLink {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  color: #304360;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: color 150ms;
+}
+
+.navLink:hover,
+.navLink[aria-current='page'],
+.footerLink:hover {
+  color: #d62828;
+}
+
+.actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.desktopLanguage > div,
+.menuToolbar > div {
+  overflow: visible;
+  border-color: #1d355726;
+}
+
+.desktopLanguage button:first-child,
+.menuToolbar button:first-child {
+  border-radius: 7px 0 0 7px;
+}
+
+.desktopLanguage button:last-child,
+.menuToolbar button:last-child {
+  border-radius: 0 7px 7px 0;
+}
+
+.orderButton {
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border: 1px solid #d62828;
+  border-radius: 8px;
+  background: #d62828;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background 150ms, border-color 150ms;
+}
+
+.orderButton:hover {
+  border-color: #b91c1c;
+  background: #b91c1c;
+}
+
+.orderContent {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.orderContent > svg,
+.orderCount {
+  flex-shrink: 0;
+}
+
+.orderCount {
+  display: inline-flex;
+  min-width: 20px;
+  min-height: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #ffffff26;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.iconButton {
+  position: relative;
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1d355726;
+  border-radius: 8px;
+  color: #1d3557;
+  transition: background 150ms;
+}
+
+.iconButton:hover,
+.iconButton[aria-expanded='true'] {
+  background: #f0eee7;
+}
+
+.cartCount {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: inline-flex;
+  min-width: 20px;
+  min-height: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #d62828;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mobileNav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  max-height: calc(100vh - var(--header-height));
+  max-height: calc(100dvh - var(--header-height));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-bottom: 1px solid #1d35571f;
+  border-top: 1px solid #1d355714;
+  background: #fffefa;
+}
+
+.mobileNav[hidden] {
+  display: none;
+}
+
+.menuInner {
+  padding-top: 8px;
+  padding-bottom: 16px;
+}
+
+.menuLinks {
+  display: grid;
+  gap: 4px;
+}
+
+.menuLink {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-inline: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.menuLink:hover {
+  background: #f0eee7;
+}
+
+.menuToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #1d355714;
+}
+
+.menuToolbar > div {
+  flex-shrink: 0;
+}
+
+.menuOrder {
+  display: inline-flex;
+  min-width: 0;
+}
+
+.skipLink {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skipLink:focus {
+  top: 8px;
+  left: 16px;
+  z-index: 50;
+  width: auto;
+  height: auto;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #1d3557;
+  color: white;
+  clip-path: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.header :is(a, button):focus-visible,
+.footer a:focus-visible {
+  outline: 3px solid #d62828;
+  outline-offset: 4px;
+}
+
+.footer {
+  border-top: 1px solid #1d355721;
+  background: #f1efe8;
+}
+
+.footerInner {
+  padding-top: 32px;
+  padding-bottom: 24px;
+}
+
+.footerMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footerBrand {
+  max-width: 400px;
+}
+
+.footerTagline {
+  margin-top: 12px;
+  color: #526070;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.footerNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: 24px;
+  row-gap: 4px;
+}
+
+.footerLegal {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #1d35571a;
+  color: #5b6573;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: 32px;
+  }
+
+  .header {
+    --header-height: 72px;
+  }
+
+  .brandName {
+    font-size: 18px;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+
+  .desktopLanguage {
+    display: block;
+  }
+
+  .menuToolbar {
+    display: none;
+  }
+
+  .footerInner {
+    padding-top: 48px;
+  }
+}
+
+@media (min-width: 768px) {
+  .desktopOrder {
+    display: inline-flex;
+    white-space: nowrap;
+  }
+
+  .mobileCart {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .headerInner {
+    gap: 24px;
+  }
+
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .menuToggle,
+  .mobileNav {
+    display: none;
+  }
+
+  .footerMain {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 48px;
+  }
+
+  .footerNav {
+    gap: 32px;
+  }
+
+  .footerLegal {
+    margin-top: 32px;
+  }
+}
+
+@media (max-height: 500px) {
+  .header {
+    --header-height: 56px;
+  }
+
+  .brandMark > span {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navLink,
+  .footerLink,
+  .orderButton,
+  .iconButton {
+    transition: none;
+  }
+}
