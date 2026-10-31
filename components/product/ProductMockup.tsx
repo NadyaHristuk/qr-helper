@@ -186,7 +186,7 @@ function ProductArtwork({ kind, locale }: { kind: ProductMockupKind; locale: Loc
             <path d="M98 20h153v224q-11-3-14 20H98Z" fill={PAPER} stroke="#ded7c9" strokeWidth=".7" />
             <path d="M98 20h153v10H98Z" fill={RED} />
             <path d="M100 33v228" stroke="white" strokeWidth="1.5" />
-            <text x="115" y="65" fill={NAVY} fontSize="6" letterSpacing="1.5">QR HELPER / 01</text>
+            <text x="115" y="65" fill={NAVY} fontSize="6" letterSpacing="1.5">QR HELPER</text>
             <text x="115" y="96" fill={NAVY} fontFamily="Georgia, serif" fontSize={locale === 'ua' ? 21 : 24}>{t.open}</text>
             <text x="115" y="124" fill={NAVY} fontFamily="Georgia, serif" fontSize={locale === 'ua' ? 21 : 24}>{t.more}</text>
             <QrPattern x={128} y={147} size={94} />

@@ -1,7 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Icon, type IconName } from '@/components/product/Icon';
-import { HeroProducts, ProductMockup } from '@/components/product/ProductMockup';
+import { ProductMockup } from '@/components/product/ProductMockup';
+import { HeroEnvironment } from '@/components/product/HeroEnvironment';
 import { SOLUTIONS, PHYSICAL_PRODUCTS, localized } from '@/lib/products/solutions';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -29,14 +30,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <p className="product-hero-description">{ua ? 'Відгук, Wi-Fi, меню чи контакт — на готових наліпках, табличках і стендах, які знаходяться саме там, де потрібні.' : 'Reviews, Wi-Fi, menus and contacts. Thoughtful stickers, signs and table stands that put the right action in the right place.'}</p>
             <div className="product-hero-actions">
               <a href="#solutions" className="product-button">{ua ? 'Обрати рішення' : 'Find your solution'}<Icon name="arrow" className="h-4 w-4" /></a>
-              <Link href="/how-it-works" className="product-button-secondary">{ua ? 'Як це працює' : 'How it works'}</Link>
+              <a href="#how-it-works" className="product-button-secondary">{ua ? 'Як це працює' : 'How it works'}</a>
             </div>
             <p className="product-hero-support"><Icon name="scan" className="h-4 w-4" />{ua ? 'Клієнт сканує. Ваша справа — поруч.' : 'A quick scan. A useful connection.'}</p>
           </div>
           <div className="product-hero-scene min-w-0">
-            <HeroProducts locale={lang} />
-            <div className="product-scene-caption"><span>01 / {ua ? 'У вашому просторі' : 'In your space'}</span><span>{ua ? 'На столі. Біля каси. На вході.' : 'Tables. Counters. Doorways.'}</span></div>
+            <HeroEnvironment locale={lang} />
+            <div className="product-scene-caption"><span>{ua ? 'У вашому просторі' : 'In your space'}</span><span>{ua ? 'На столі. Біля каси. На вході.' : 'Tables. Counters. Doorways.'}</span></div>
           </div>
+        </div>
+        <div className="product-container product-hero-scroll">
+          <a href="#solutions" className="product-scroll-cue">
+            <span>{ua ? 'Переглянути рішення' : 'Explore solutions'}</span>
+            <Icon name="arrow" className="h-4 w-4 rotate-90" />
+          </a>
         </div>
       </section>
 
@@ -50,13 +57,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <section id="solutions" className="product-container product-section">
         <div className="product-section-intro">
-          <div className="max-w-xl"><p className="product-kicker">01 / {ua ? 'Почнімо з вашої мети' : 'Start with the outcome'}</p><h2 className="product-section-heading">{ua ? 'Що має зробити клієнт?' : 'What should your customer do?'}</h2></div>
+          <div className="max-w-xl"><p className="product-kicker">{ua ? 'Рішення для вашого бізнесу' : 'Solutions for your business'}</p><h2 className="product-section-heading">{ua ? 'Що має зробити клієнт?' : 'What should your customer do?'}</h2></div>
           <p className="product-section-description">{ua ? 'Оберіть дію. Потім знайдемо для неї місце у вашому бізнесі.' : 'Choose an action. Then give it a place in your business.'}</p>
         </div>
         <div className="product-flagship-grid">
           {goals.slice(0, 3).map((solution, index) => (
             <Link key={solution.key} href={`/solutions/${solution.key}`} className={`product-flagship group ${index === 0 ? 'product-flagship-dark' : index === 1 ? 'product-flagship-cream' : 'product-flagship-red'}`}>
-              <div className="flex items-center justify-between"><Icon name={solution.icon} className="h-7 w-7" /><span className="text-xs opacity-60">0{index + 1}</span></div>
+              <Icon name={solution.icon} className="h-7 w-7" />
               <div className="product-flagship-art" aria-hidden="true"><ProductMockup kind={index === 0 ? 'stand' : index === 1 ? 'sticker' : 'sign'} locale={lang} className="h-full w-auto max-w-full" /></div>
               <h3 className="product-card-heading">{localized(solution.title, locale)}</h3>
               <p className="product-card-description">{localized(solution.description, locale)}</p>
@@ -64,19 +71,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </Link>
           ))}
         </div>
+        <h3 className="product-secondary-heading">{ua ? 'Інші рішення' : 'More solutions'}</h3>
         <div className="product-secondary-grid">
           {goals.slice(3).map((solution) => (
             <Link key={solution.key} href={`/solutions/${solution.key}`} className="product-solution-row group">
-              <Icon name={solution.icon} className="h-6 w-6 shrink-0 text-navy" /><div className="min-w-0 flex-1"><h3 className="font-semibold text-navy">{localized(solution.title, locale)}</h3><p className="mt-1 text-sm leading-6 text-slate-600">{localized(solution.description, locale)}</p></div><Icon name="arrow" className="h-4 w-4 shrink-0 text-navy transition group-hover:translate-x-1" />
+              <Icon name={solution.icon} className="h-6 w-6 shrink-0 text-navy" /><div className="min-w-0 flex-1"><h4 className="font-semibold text-navy">{localized(solution.title, locale)}</h4><p className="mt-1 text-sm leading-6 text-slate-600">{localized(solution.description, locale)}</p></div><Icon name="arrow" className="h-4 w-4 shrink-0 text-navy transition group-hover:translate-x-1" />
             </Link>
           ))}
-          <Link href="/solutions/online" className="product-solution-row group"><Icon name="globe" className="h-6 w-6 shrink-0 text-navy" /><div className="min-w-0 flex-1"><h3 className="font-semibold text-navy">{ua ? 'Сайт, магазин чи застосунок' : 'Website, listings or app'}</h3><p className="mt-1 text-sm leading-6 text-slate-600">{ua ? 'Уже маєте посилання? Приведімо до нього клієнта.' : 'Already have a link? Make it easy to reach.'}</p></div><Icon name="arrow" className="h-4 w-4 shrink-0 text-navy" /></Link>
+          <Link href="/solutions/online" className="product-solution-row group"><Icon name="globe" className="h-6 w-6 shrink-0 text-navy" /><div className="min-w-0 flex-1"><h4 className="font-semibold text-navy">{ua ? 'Сайт, магазин чи застосунок' : 'Website, listings or app'}</h4><p className="mt-1 text-sm leading-6 text-slate-600">{ua ? 'Уже маєте посилання? Приведімо до нього клієнта.' : 'Already have a link? Make it easy to reach.'}</p></div><Icon name="arrow" className="h-4 w-4 shrink-0 text-navy" /></Link>
         </div>
       </section>
 
       <section id="formats" className="product-format-section product-section">
         <div className="product-container">
-          <div className="max-w-2xl"><p className="product-kicker">02 / {ua ? 'Знайдіть своє місце' : 'Give it a place'}</p><h2 className="product-section-heading">{ua ? 'Той самий задум. Різні форми.' : 'One idea. Many ways to place it.'}</h2><p className="product-format-description">{ua ? 'Стенд на столику, наліпка на дверях чи картка після зустрічі. Оберіть формат під час налаштування рішення.' : 'A stand on the table, a sticker on the door, a card after a conversation. Choose a format as you set up your solution.'}</p></div>
+          <div className="max-w-2xl"><p className="product-kicker">{ua ? 'Фізичні формати' : 'Physical formats'}</p><h2 className="product-section-heading">{ua ? 'Де це буде розміщено?' : 'Where will you place it?'}</h2><p className="product-format-description">{ua ? 'Той самий задум. Різні форми. Стенд на столику, наліпка на дверях чи картка після зустрічі — оберіть носій для свого рішення.' : 'One idea, many forms. A stand on the table, a sticker on the door or a card after a conversation. Choose a format for your solution.'}</p></div>
           <div className="product-format-grid">
             {formats.map((product) => (
               <article key={product.key} className="min-w-0">
@@ -90,20 +98,36 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <section className="product-container product-section">
+      <section id="how-it-works" className="product-container product-section">
         <div className="product-process-grid">
-          <div><p className="product-kicker">03 / {ua ? 'Від ідеї до вашого столика' : 'From an idea to your counter'}</p><h2 className="product-section-heading">{ua ? 'Три кроки до готового виробу.' : 'Three steps. Ready for your space.'}</h2><Link href="/how-it-works" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-navy">{ua ? 'Детальніше про замовлення' : 'More about ordering'}<Icon name="arrow" className="h-4 w-4" /></Link></div>
+          <div><p className="product-kicker">{ua ? 'Як це працює' : 'How it works'}</p><h2 className="product-section-heading">{ua ? 'Три кроки до готового виробу.' : 'Three steps to your finished product.'}</h2><Link href="/how-it-works" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-navy">{ua ? 'Детальніше про замовлення' : 'More about ordering'}<Icon name="arrow" className="h-4 w-4" /></Link></div>
           <ol className="divide-y divide-navy/10 border-t border-navy/10">
             {[
-              [ua ? 'Визначте дію клієнта' : 'Choose the customer action', ua ? 'Відгук, підключення до Wi-Fi чи перехід до вашого меню.' : 'A review, a Wi-Fi connection or a visit to your menu.'],
-              [ua ? 'Налаштуйте вигляд і формат' : 'Make it yours', ua ? 'Додайте свої дані, оберіть носій, кольори й кількість.' : 'Add your content, choose the format, colors and quantity.'],
-              [ua ? 'Отримайте готовий виріб' : 'Receive a ready-to-use product', ua ? 'Узгодимо деталі замовлення, щоб виріб знайшов своє місце у вашому бізнесі.' : 'We’ll confirm the order details so your product fits the space you have in mind.'],
-            ].map(([title, description], index) => <li key={title} className="flex gap-4 py-6"><span className="pt-1 font-mono text-xs text-accent">0{index + 1}</span><div><h3 className="text-lg font-bold text-navy">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{description}</p></div></li>)}
+              [ua ? 'Оберіть дію' : 'Choose an action', ua ? 'Відгук, підключення до Wi-Fi чи перехід до вашого меню.' : 'A review, a Wi-Fi connection or a visit to your menu.'],
+              [ua ? 'Налаштуйте дизайн і формат' : 'Customize the design and format', ua ? 'Додайте свої дані, оберіть носій, кольори й кількість.' : 'Add your content, choose the format, colors and quantity.'],
+              [ua ? 'Оформіть замовлення' : 'Place your order', ua ? 'Узгодимо деталі замовлення. Після узгодження ви отримаєте готовий виріб для свого простору.' : 'We’ll confirm the order details with you. After confirmation, you’ll receive a finished product for your space.'],
+            ].map(([title, description], index) => <li key={title} className="flex gap-4 py-6"><span aria-hidden="true" className="product-step-number">{index + 1}</span><div><h3 className="text-lg font-bold text-navy">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{description}</p></div></li>)}
           </ol>
         </div>
       </section>
 
-      <section className="product-industries"><div className="product-container"><p className="product-kicker">{ua ? 'Для бізнесу, як ваш' : 'For a business like yours'}</p><div className="product-industry-grid">{industries.map((industry) => <div key={industry.icon} className="product-industry"><Icon name={industry.icon} className="h-6 w-6 shrink-0" /><h3>{ua ? industry.ua : industry.en}</h3><p>{ua ? industry.detailUa : industry.detailEn}</p></div>)}</div></div></section>
+      <section className="product-industries">
+        <div className="product-container">
+          <div className="product-industry-intro">
+            <h2 className="product-section-heading">{ua ? 'Для бізнесу, як ваш' : 'For a business like yours'}</h2>
+            <p>{ua ? 'Рішення для місць, де клієнти взаємодіють з вашим бізнесом наживо.' : 'Thoughtful solutions for places where customers connect with your business in person.'}</p>
+          </div>
+          <div className="product-industry-grid">
+            {industries.map((industry) => (
+              <div key={industry.icon} className="product-industry">
+                <Icon name={industry.icon} className="h-6 w-6 shrink-0" />
+                <h3>{ua ? industry.ua : industry.en}</h3>
+                <p>{ua ? industry.detailUa : industry.detailEn}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="product-container product-closing-section"><div className="product-final-cta"><div className="max-w-2xl"><p className="product-cta-kicker">{ua ? 'Маленька деталь. Щоденна користь.' : 'A small detail. An everyday connection.'}</p><h2>{ua ? 'Дайте клієнту простий привід взаємодіяти.' : 'Give your customers an easy next step.'}</h2></div><a href="#solutions" className="product-button shrink-0">{ua ? 'Обрати рішення' : 'Find your solution'}<Icon name="arrow" className="h-4 w-4" /></a></div></section>
     </div>
   );

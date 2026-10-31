@@ -30,10 +30,11 @@ export function Header() {
     return () => document.removeEventListener('keydown', closeOnEscape);
   }, [open]);
 
+  const isHome = pathname === '/';
   const links = [
-    { href: '/#solutions', label: t('nav.solutions') },
-    { href: '/#formats', label: t('nav.formats') },
-    { href: '/how-it-works', label: t('nav.howItWorks') },
+    { section: 'solutions', label: t('nav.solutions') },
+    { section: 'formats', label: t('nav.formats') },
+    { section: 'how-it-works', label: t('nav.howItWorks') },
   ];
 
   const orderLabel = (
@@ -60,13 +61,12 @@ export function Header() {
         </Link>
 
         <nav aria-label={t('nav.primary')} className={styles.desktopNav}>
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              aria-current={pathname === link.href ? 'page' : undefined}
-              className={styles.navLink}
-            >
+          {links.map((link) => isHome ? (
+            <a key={link.section} href={`#${link.section}`} className={styles.navLink} onClick={() => setOpen(false)}>
+              {link.label}
+            </a>
+          ) : (
+            <Link key={link.section} href={`/#${link.section}`} className={styles.navLink} onClick={() => setOpen(false)}>
               {link.label}
             </Link>
           ))}
@@ -100,10 +100,16 @@ export function Header() {
         <div className={`${styles.container} ${styles.menuInner}`}>
           <ul className={styles.menuLinks}>
             {links.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} onClick={() => setOpen(false)} className={styles.menuLink}>
-                  {link.label}<Icon name="arrow" className="h-4 w-4" />
-                </Link>
+              <li key={link.section}>
+                {isHome ? (
+                  <a href={`#${link.section}`} onClick={() => setOpen(false)} className={styles.menuLink}>
+                    {link.label}<Icon name="arrow" className="h-4 w-4" />
+                  </a>
+                ) : (
+                  <Link href={`/#${link.section}`} onClick={() => setOpen(false)} className={styles.menuLink}>
+                    {link.label}<Icon name="arrow" className="h-4 w-4" />
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
