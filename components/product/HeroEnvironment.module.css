@@ -1,0 +1,25 @@
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  isolation: isolate;
+}
+
+.image {
+  object-fit: cover;
+  object-position: var(--hero-position-desktop, 50% 50%);
+  border-radius: 16px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .image {
+    object-position: var(--hero-position-mobile, 50% 50%);
+  }
+}
