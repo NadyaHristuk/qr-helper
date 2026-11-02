@@ -21,7 +21,6 @@ import {
 type OrderResponse = { id: number; priceKop: number; status: string };
 type OrderErrorResponse = { error?: string };
 
-
 export function OrderCart() {
   const t = useTranslations('order');
   const tc = useTranslations('common');
@@ -44,14 +43,10 @@ export function OrderCart() {
         customerName: z.string().trim().min(1, t('errors.required')).max(120),
         customerPhone: z.string().trim().min(1, t('errors.required')).regex(/^\+?[\d\s().-]{10,24}$/, t('errors.required')),
         customerCity: z.string().trim().min(1, t('errors.required')).max(120),
-        customerNpOffice: z.string().trim().max(120),
+        customerNpOffice: z.string().trim().min(1, t('errors.required')).max(120),
         customerNote: z.string().trim().max(500).optional(),
-        deliveryMethod: z.enum(['nova_poshta', 'pickup', 'courier']),
-        paymentMethod: z.enum(['manager', 'online']),
-      }).superRefine((data, ctx) => {
-        if (data.deliveryMethod !== 'pickup' && !data.customerNpOffice) {
-          ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['customerNpOffice'], message: t('errors.required') });
-        }
+        deliveryMethod: z.literal('nova_poshta'),
+        paymentMethod: z.enum(['demo', 'online']),
       }),
     [t],
   );
@@ -59,15 +54,12 @@ export function OrderCart() {
 
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { customerNpOffice: '', deliveryMethod: 'nova_poshta', paymentMethod: 'manager' },
+    defaultValues: { customerNpOffice: '', deliveryMethod: 'nova_poshta', paymentMethod: 'demo' },
   });
-
-  const deliveryMethod = watch('deliveryMethod');
 
   const hasUnavailableProducts = items.some((item) => PHYSICAL_PRODUCTS.find((product) => product.key === item.productType)?.available === false);
 
@@ -196,17 +188,14 @@ export function OrderCart() {
           <CartField autoComplete="name" label={t('fields.customerName')} placeholder={t('placeholders.customerName')} error={errors.customerName?.message} {...register('customerName')} />
           <CartField type="tel" inputMode="tel" autoComplete="tel" label={t('fields.customerPhone')} placeholder={t('placeholders.customerPhone')} error={errors.customerPhone?.message} {...register('customerPhone')} />
           <CartField autoComplete="address-level2" label={t('fields.customerCity')} placeholder={t('placeholders.customerCity')} error={errors.customerCity?.message} {...register('customerCity')} />
-          {deliveryMethod !== 'pickup' && <CartField label={deliveryMethod === 'courier' ? (ua ? 'Адреса доставки' : 'Delivery address') : t('fields.customerNpOffice')} placeholder={deliveryMethod === 'courier' ? undefined : t('placeholders.customerNpOffice')} error={errors.customerNpOffice?.message} {...register('customerNpOffice')} />}
+          <CartField label={t('fields.customerNpOffice')} placeholder={t('placeholders.customerNpOffice')} error={errors.customerNpOffice?.message} {...register('customerNpOffice')} />
         </div>
 
         <div className="mt-6 border-t border-slate-200 pt-5">
           <h3 className="font-bold text-navy">{ua ? 'Доставка' : 'Delivery'}</h3>
+          <input type="hidden" {...register('deliveryMethod')} />
+          <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm font-semibold text-navy">{ua ? 'Відділення або поштомат' : 'Branch or parcel locker'}</div>
           <p className="mt-2 text-sm leading-6 text-slate-500">{t('demoDeliveryNote')}</p>
-          <div className="mt-3 grid gap-2">
-            <RadioOption label={ua ? 'Відділення або поштомат' : 'Branch or parcel locker'} value="nova_poshta" {...register('deliveryMethod')} />
-            <RadioOption label={ua ? 'Самовивіз' : 'Pickup'} value="pickup" {...register('deliveryMethod')} />
-            <RadioOption label={ua ? 'Курʼєрська доставка' : 'Courier delivery'} value="courier" {...register('deliveryMethod')} />
-          </div>
         </div>
 
         <div className="mt-6 border-t border-slate-200 pt-5">
@@ -217,7 +206,7 @@ export function OrderCart() {
 
         <div className="mt-6 border-t border-slate-200 pt-5">
           <label htmlFor="order-note" className="label">{ua ? 'Коментар до замовлення' : 'Order note'}</label>
-          <textarea id="order-note" className="input min-h-24 resize-y" maxLength={500} placeholder={ua ? 'Побажання щодо друку, доставки або замовлення' : 'Printing, delivery or order notes'} {...register('customerNote')} />
+          <textarea id="order-note" className="input min-h-24 resize-y" maxLength={500} placeholder={ua ? 'Побажання щодо друку або замовлення' : 'Printing or order notes'} {...register('customerNote')} />
         </div>
 
         {serverError && <p className="mt-5 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-accent">{serverError}</p>}
@@ -230,8 +219,4 @@ export function OrderCart() {
 
 const CartField = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string }>(function CartField({ label, error, ...props }, ref) {
   return <div><label htmlFor={props.name} className="label">{label}</label><input id={props.name} ref={ref} className={`input ${error ? 'border-accent focus:border-accent focus:ring-accent/10' : ''}`} {...props} />{error && <p className="mt-1 text-xs font-medium text-accent">{error}</p>}</div>;
-});
-
-const RadioOption = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement> & { label: string }>(function RadioOption({ label, ...props }, ref) {
-  return <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-slate-200 px-3 py-3 text-sm text-slate-700 hover:border-navy/30"><input ref={ref} type="radio" className="h-4 w-4" {...props} /><span>{label}</span></label>;
 });
