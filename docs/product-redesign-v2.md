@@ -37,7 +37,7 @@ Internal plans now live in [product-roadmap.md](product-roadmap.md). The admin d
 
 QR+NFC is Coming later and disabled; no hardware or provisioning is implemented. Dynamic QR's existing admin backend is retained, but customer Smart controls, ownership and anonymous creation are not added. Analytics, accounts, multi-location management, saved templates and reorder automation are roadmap items.
 
-Physical mockups are illustrative; the editor previews the printed artwork, not a manufacturing-accurate render of each carrier. S/M/L have no approved physical dimensions. The storefront says that price will be confirmed after format, material and quantity are agreed; the order API still records its internal UAH 1 placeholder. Material, dimensions, delivery and payment require manager confirmation. Online payment is visibly unavailable.
+Physical mockups are illustrative; the editor previews the printed artwork, not a manufacturing-accurate render of each carrier. Their demo QR codes resolve to the reserved `example.com` domain and do not represent customer destinations. S/M/L have no approved physical dimensions. The storefront says that price will be confirmed after format, material and quantity are agreed; the order API still records its internal UAH 1 placeholder. Material, dimensions, delivery and payment require manager confirmation. Online payment is visibly unavailable.
 
 QR quality is a computed screen-color contrast ratio with a caution for low contrast/reversed polarity. It is a heuristic, not a print-ready/scan-certification badge. There are no fabricated green checks for quiet zone, physical module size or production approval. See [quality boundaries](product-roadmap.md#product-quality-boundaries).
 

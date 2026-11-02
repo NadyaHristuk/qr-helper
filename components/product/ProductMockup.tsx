@@ -8,26 +8,54 @@ const NAVY = '#1d3557';
 const RED = '#d62828';
 const PAPER = '#fffdf7';
 
-// An intentionally decorative pattern: product illustrations never replace a customer's QR.
-const QR_PATTERN = Array.from({ length: 21 }, (_, y) =>
-  Array.from({ length: 21 }, (_, x) => {
-    const finder = (x < 8 && y < 8) || (x > 12 && y < 8) || (x < 8 && y > 12);
-    return !finder && ((x * 17 + y * 23 + x * y * 3) % 11 < 6)
-      ? `M${x} ${y}h1v1h-1Z`
-      : '';
-  }).join(''),
-).join('');
+// Valid demo QR for https://example.com/qr-helper-demo (reserved example domain).
+const DEMO_QR_ROWS = [
+  '11111110101011111111101111111',
+  '10000010001100010100001000001',
+  '10111010100010110011001011101',
+  '10111010111100111001001011101',
+  '10111010101111001011001011101',
+  '10000010100000100011101000001',
+  '11111110101010101010101111111',
+  '00000000000111001111100000000',
+  '00111111011110001000110111101',
+  '10001100001101101111111001010',
+  '00010111101010001100110100101',
+  '11110000010000011100101110001',
+  '00101010111100000101111100100',
+  '11100000011100000111000001101',
+  '11010011011010010110100101000',
+  '11111000011000110011101110110',
+  '01001011001101110111010101110',
+  '10011000100011001000100010101',
+  '10001111010001010011010000111',
+  '10101000010111001101101101001',
+  '00011110111100110111111111010',
+  '00000000001101010100100011101',
+  '11111110110001100100101010111',
+  '10000010111101100100100011111',
+  '10111010111001110110111110111',
+  '10111010100110101000011001110',
+  '10111010100010101110111011101',
+  '10000010000100010001110111110',
+  '11111110010001000100110101000',
+];
+
+const QR_PATH = DEMO_QR_ROWS.map((row, y) => {
+  const modules = [...row];
+  return modules.reduce((path, module, x) => {
+    if (module !== '1' || modules[x - 1] === '1') return path;
+    let width = 1;
+    while (modules[x + width] === '1') width += 1;
+    return `${path}M${x} ${y}h${width}v1h-${width}Z`;
+  }, '');
+}).join('');
 
 function QrPattern({ x, y, size, color = NAVY }: { x: number; y: number; size: number; color?: string }) {
   return (
-    <g transform={`translate(${x} ${y}) scale(${size / 21})`} fill={color} shapeRendering="crispEdges">
-      <path d={QR_PATTERN} />
-      {[['0', '0'], ['14', '0'], ['0', '14']].map(([left, top]) => (
-        <g key={`${left}-${top}`} transform={`translate(${left} ${top})`}>
-          <path d="M0 0h7v7H0Zm1 1v5h5V1Z" fillRule="evenodd" />
-          <path d="M2 2h3v3H2Z" />
-        </g>
-      ))}
+    <g transform={`translate(${x} ${y}) scale(${size / 37})`} shapeRendering="crispEdges">
+      <rect width="37" height="37" fill={PAPER} />
+      <path d={QR_PATH} transform="translate(4 4)" fill={color} />
     </g>
   );
 }
@@ -52,8 +80,8 @@ function Wifi({ x, y, size = 24, color = NAVY }: { x: number; y: number; size?: 
 }
 
 const text = {
-  ua: { reviews: 'Ваша думка', matters: 'має значення.', scan: 'ВІДСКАНУЙТЕ QR', google: 'ВІДГУКИ В GOOGLE', wifi: 'ТУТ Є WI-FI', connect: 'Підключайтесь.', welcome: 'Вітаємо.', menu: 'Меню поруч.', name: 'Олександра', role: 'ЗАЛИШАЙМОСЬ НА ЗВ’ЯЗКУ', open: 'Відкрийте', more: 'трохи більше.', hello: 'ПРИЄМНО ПОЗНАЙОМИТИСЬ' },
-  en: { reviews: 'Your opinion', matters: 'means a lot.', scan: 'SCAN THE QR CODE', google: 'REVIEWS ON GOOGLE', wifi: 'WI-FI IS HERE', connect: 'Make yourself at home.', welcome: 'Welcome.', menu: 'A menu to enjoy.', name: 'Alexandra', role: 'LET’S STAY CONNECTED', open: 'A little scan.', more: 'So much more.', hello: 'NICE TO MEET YOU' },
+  ua: { reviews: 'Відгуки', matters: 'важливі.', scan: 'ДЕМО QR', google: 'ВІДГУКИ', wifi: 'WI-FI', connect: 'Підключайтесь.', welcome: 'Вітаємо!', menu: 'Меню', name: 'Ваш бренд', role: 'КОНТАКТИ', open: 'Скануй', more: 'та переходь', hello: 'ВІТАЄМО' },
+  en: { reviews: 'Reviews', matters: 'matter.', scan: 'DEMO QR', google: 'REVIEWS', wifi: 'WI-FI', connect: 'Connect here.', welcome: 'Welcome!', menu: 'Menu', name: 'Your brand', role: 'CONTACTS', open: 'Scan here', more: 'to find out', hello: 'WELCOME' },
 };
 
 function GroundShadow({ x, y, width, depth = 10 }: { x: number; y: number; width: number; depth?: number }) {
@@ -90,9 +118,8 @@ function ProductArtwork({ kind, locale }: { kind: ProductMockupKind; locale: Loc
             <path d="M98 104a89 89 0 0 1 138-27" stroke="white" strokeWidth="2" strokeLinecap="round" opacity=".8" />
             <circle cx="180" cy="142" r="87" fill="none" stroke={NAVY} strokeWidth=".6" opacity=".35" />
             <Wifi x={168} y={65} size={24} />
-            <text x="180" y="101" textAnchor="middle" fill={NAVY} fontSize="9" fontWeight="600" letterSpacing="1.5">{t.wifi}</text>
-            <QrPattern x={141} y={116} size={78} />
-            <text x="177" y="214" textAnchor="middle" fill={NAVY} fontSize="6.5" letterSpacing="1.1">{t.scan}</text>
+            <text x="180" y="101" textAnchor="middle" fill={NAVY} fontSize="14" fontWeight="700" letterSpacing="1">{t.wifi}</text>
+            <QrPattern x={133} y={108} size={94} />
             <path d="m215 236 54-48c-16 2-36 18-43 30Z" fill={NAVY} opacity=".13" />
             <path d="M215 236c9-17 8-37 20-44 10-6 21-5 34-4-17 10-37 29-54 48Z" fill="#fffdf5" stroke="#d6cbb7" strokeWidth=".8" />
             <path d="M237 194c8-3 17-4 26-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
@@ -110,11 +137,11 @@ function ProductArtwork({ kind, locale }: { kind: ProductMockupKind; locale: Loc
           <path d="M113 35h108l25 213H89Z" fill={NAVY} />
           <path d="M117 40h99l24 203H94Z" fill="none" stroke="#fffdf7" strokeOpacity=".22" strokeWidth=".8" />
           <path d="m114 36-24 211m133-210 24 211" stroke="white" strokeWidth="1.5" opacity=".65" />
-          <text x="167" y="74" textAnchor="middle" fill={PAPER} fontFamily="Georgia, serif" fontSize="18">{t.reviews}</text>
-          <text x="167" y="95" textAnchor="middle" fill={PAPER} fontFamily="Georgia, serif" fontSize="18">{t.matters}</text>
+          <text x="167" y="74" textAnchor="middle" fill={PAPER} fontFamily="Georgia, serif" fontSize="24">{t.reviews}</text>
+          <text x="167" y="99" textAnchor="middle" fill={PAPER} fontFamily="Georgia, serif" fontSize="24">{t.matters}</text>
           <path d="M153 109h28" stroke={RED} strokeWidth="2" />
           <rect x="119" y="123" width="96" height="96" rx="1" fill={PAPER} />
-          <QrPattern x={127} y={131} size={80} />
+          <QrPattern x={123} y={127} size={88} />
           <Stars x={143} y={229} size={7} color="#f8edcf" />
           <path d="M90 249h156v3H89Z" fill="#102740" />
           <path d="M99 255h154" stroke="white" strokeWidth="1.3" opacity=".9" />
@@ -132,11 +159,9 @@ function ProductArtwork({ kind, locale }: { kind: ProductMockupKind; locale: Loc
             <path d="M56 66h242M53 69v152" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
             <path d="M56 226h243" stroke="#bfb7a6" strokeWidth=".6" />
             {[[63, 76], [291, 76], [63, 215], [291, 215]].map(([x, y]) => <Mount key={`${x}-${y}`} x={x} y={y} />)}
-            <QrPattern x={76} y={97} size={97} />
+            <QrPattern x={74} y={95} size={102} />
             <path d="M195 101h24" stroke={RED} strokeWidth="2" />
-            <text x="194" y="132" fill={NAVY} fontFamily="Georgia, serif" fontSize="21">{locale === 'ua' ? 'Ваше' : 'Our'}</text>
-            <text x="194" y="157" fill={NAVY} fontFamily="Georgia, serif" fontSize="21">{locale === 'ua' ? 'меню.' : 'menu.'}</text>
-            <text x="195" y="185" fill={NAVY} fontSize="6" letterSpacing=".65">{t.scan}</text>
+            <text x="194" y="147" fill={NAVY} fontFamily="Georgia, serif" fontSize="25">{t.menu}</text>
           </g>
         </>
       );
@@ -149,9 +174,8 @@ function ProductArtwork({ kind, locale }: { kind: ProductMockupKind; locale: Loc
           <path d="m94 35 156-8 4 229-156 8Z" fill="none" stroke="white" strokeWidth="1.5" opacity=".85" />
           <path d="m101 38 57-3-56 99Zm142 121 2 89-51 3Z" fill="white" opacity=".55" />
           <path d="m117 91 111-5 2 119-111 5Z" fill={PAPER} fillOpacity=".28" stroke="white" strokeWidth=".8" />
-          <text x="174" y="115" textAnchor="middle" fill={NAVY} fontFamily="Georgia, serif" fontSize="17">{t.welcome}</text>
-          <QrPattern x={143} y={129} size={64} />
-          <text x="175" y="222" textAnchor="middle" fill={NAVY} fontSize="6" letterSpacing=".8">{t.scan}</text>
+          <text x="174" y="115" textAnchor="middle" fill={NAVY} fontFamily="Georgia, serif" fontSize="20">{t.welcome}</text>
+          <QrPattern x={137} y={124} size={76} />
           <path d="m246 143 14-1 .4 38-14 1" stroke="#a4b6b2" strokeWidth="4" strokeLinejoin="round" />
           <path d="m248 142 12-.5.3 36" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
           <path d="m95 266 163-9" stroke="#9db6b2" strokeWidth="1" />
@@ -169,9 +193,8 @@ function ProductArtwork({ kind, locale }: { kind: ProductMockupKind; locale: Loc
             <path d="M52 80h241M49 84v131" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
             <path d="M70 104h25" stroke={RED} strokeWidth="2" />
             <text x="69" y="141" fill={NAVY} fontFamily="Georgia, serif" fontSize="21">{t.name}</text>
-            <text x="70" y="162" fill={NAVY} fontSize="6" letterSpacing=".6">{t.role}</text>
-            <text x="70" y="198" fill={NAVY} fontSize="6.5">qr-helper.com</text>
-            <QrPattern x={204} y={113} size={69} />
+            <text x="70" y="162" fill={NAVY} fontSize="9" fontWeight="600" letterSpacing=".5">{t.role}</text>
+            <QrPattern x={198} y={107} size={82} />
             <path d="M55 224h244m-241 5h241" stroke="#b5aa94" strokeWidth=".5" opacity=".7" />
           </g>
         </>
@@ -186,10 +209,9 @@ function ProductArtwork({ kind, locale }: { kind: ProductMockupKind; locale: Loc
             <path d="M98 20h153v224q-11-3-14 20H98Z" fill={PAPER} stroke="#ded7c9" strokeWidth=".7" />
             <path d="M98 20h153v10H98Z" fill={RED} />
             <path d="M100 33v228" stroke="white" strokeWidth="1.5" />
-            <text x="115" y="65" fill={NAVY} fontSize="6" letterSpacing="1.5">QR HELPER</text>
             <text x="115" y="96" fill={NAVY} fontFamily="Georgia, serif" fontSize={locale === 'ua' ? 21 : 24}>{t.open}</text>
             <text x="115" y="124" fill={NAVY} fontFamily="Georgia, serif" fontSize={locale === 'ua' ? 21 : 24}>{t.more}</text>
-            <QrPattern x={128} y={147} size={94} />
+            <QrPattern x={126} y={143} size={98} />
             <path d="M237 264c3-22 8-23 14-20l-14 20Z" fill="#eee5d5" stroke="#d9cfbe" strokeWidth=".7" />
             <path d="m149 17 51-2 2 13-53 2Z" fill="#e5ddcb" fillOpacity=".7" />
           </g>
@@ -204,13 +226,12 @@ function ProductArtwork({ kind, locale }: { kind: ProductMockupKind; locale: Loc
             <circle cx="180" cy="143" r="101" fill={NAVY} stroke="#122943" />
             <path d="M88 109a98 98 0 0 1 166-34" stroke="#8095ab" strokeWidth="1.5" strokeLinecap="round" opacity=".65" />
             <circle cx="180" cy="143" r="90" stroke={PAPER} strokeOpacity=".3" fill="none" strokeWidth=".6" />
-            <text x="180" y="84" textAnchor="middle" fill={PAPER} fontSize="7" letterSpacing="1.8">QR + NFC</text>
+            <text x="180" y="84" textAnchor="middle" fill={PAPER} fontSize="10" fontWeight="600" letterSpacing="1.2">QR + NFC</text>
             <rect x="124" y="107" width="88" height="88" rx="2" fill={PAPER} />
-            <QrPattern x={132} y={115} size={72} />
+            <QrPattern x={127} y={110} size={82} />
             <g transform="translate(225 129)" fill="none" stroke={PAPER} strokeWidth="1.6" strokeLinecap="round">
               <path d="M0 8a10 10 0 0 1 0 14M5 3a17 17 0 0 1 0 24m5-29a24 24 0 0 1 0 34" />
             </g>
-            <text x="180" y="218" textAnchor="middle" fill={PAPER} fontSize="6.5" letterSpacing=".8">{t.scan}</text>
           </g>
         </>
       );
@@ -247,7 +268,6 @@ export function HeroProducts({ locale }: { locale: Locale }) {
         {[[344, 130], [531, 130], [344, 289], [531, 289]].map(([x, y]) => <Mount key={`${x}-${y}`} x={x} y={y} />)}
         <path d="M355 148h25" stroke={RED} strokeWidth="2" />
         <text x="354" y="178" fill={NAVY} fontFamily="Georgia, serif" fontSize="26">{t.menu}</text>
-        <text x="355" y="199" fill={NAVY} fontSize="7" letterSpacing="1">{t.scan}</text>
         <QrPattern x={438} y={212} size={65} />
         <path d="M355 227h61m-61 11h48m-48 11h54m-54 11h39" stroke="#a5a79a" strokeWidth="1.2" opacity=".65" />
       </g>
@@ -267,7 +287,6 @@ export function HeroProducts({ locale }: { locale: Locale }) {
         <rect x="198" y="278" width="136" height="136" rx="2" fill={PAPER} />
         <QrPattern x={210} y={290} size={112} />
         <Stars x={230} y={429} size={10} color="#f8edce" />
-        <text x="266" y="454" textAnchor="middle" fill={PAPER} fontSize="7" letterSpacing="1.5">{t.google}</text>
         <path d="M150 472h237v4H150Z" fill="#10253e" />
         <path d="M158 483h228" stroke="white" strokeWidth="1.7" strokeOpacity=".9" />
         <path d="m166 489 216-1" stroke="#adc3b9" strokeWidth=".8" />
@@ -280,7 +299,7 @@ export function HeroProducts({ locale }: { locale: Locale }) {
         <path d="M45 385h148" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
         <path d="M48 392h143v124l-16 16H48Z" stroke={NAVY} strokeOpacity=".27" strokeWidth=".6" />
         <Wifi x={111} y={398} size={20} />
-        <text x="121" y="434" textAnchor="middle" fill={NAVY} fontSize="8" fontWeight="600" letterSpacing="1.2">{t.wifi}</text>
+        <text x="121" y="434" textAnchor="middle" fill={NAVY} fontSize="11" fontWeight="700" letterSpacing=".8">{t.wifi}</text>
         <QrPattern x={87} y={448} size={68} />
         <path d="m176 541 25-25c-10 0-20 4-25 16Z" fill={NAVY} opacity=".14" />
         <path d="M176 541c4-13-4-22 4-26 6-3 13-1 21 1-9 7-17 16-25 25Z" fill="#fffef7" stroke="#d4c6ad" strokeWidth=".8" />
