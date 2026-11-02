@@ -54,7 +54,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </div>
               }
             />
-            <div className="product-scene-caption"><span>{ua ? 'Згенерована візуалізація' : 'AI-generated visual'}</span><span>{ua ? 'Приклад QR-виробу в інтер’єрі' : 'Example QR product in a café'}</span></div>
+            <div className="product-scene-caption"><span>{ua ? 'Згенерована візуалізація' : 'AI-generated visual'}</span><span>{ua ? 'Приклад стенду з QR-кодом у кав’ярні' : 'Example QR stand in a café'}</span></div>
           </div>
         </div>
         <div className="product-container product-hero-scroll">
@@ -69,14 +69,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="product-container product-trust-strip">
           <Trust icon="smartphone" title={ua ? 'Звична камера телефона' : 'A familiar phone camera'} text={ua ? 'Для сканування сучасними смартфонами.' : 'Designed for modern smartphone cameras.'} />
           <Trust icon="palette" title={ua ? 'У стилі вашого бізнесу' : 'A design that feels like you'} text={ua ? 'Ваші кольори, напис і формат.' : 'Your colors, message and format.'} />
-          <Trust icon="package" title={ua ? 'Фізичний виріб' : 'A physical product'} text={ua ? 'Для вашого простору, а не лише файл.' : 'Made for your space, beyond a digital file.'} />
+          <Trust icon="package" title={ua ? 'Готовий формат для вашого простору' : 'Made for your space'} text={ua ? 'Наліпка, табличка, стенд або картка — не лише файл.' : 'A sticker, sign, stand or card — not just a file.'} />
         </div>
       </section>
 
       <section id="solutions" className="product-container product-section">
         <div className="product-section-intro">
           <div className="max-w-xl"><p className="product-kicker">{ua ? 'Рішення для вашого бізнесу' : 'Solutions for your business'}</p><h2 className="product-section-heading">{ua ? 'Що потрібно вашому бізнесу?' : 'What does your business need?'}</h2></div>
-          <p className="product-section-description">{ua ? 'Оберіть задачу, яку хочете зробити простішою для себе та клієнтів.' : 'Choose what you’d like to make easier for you and your customers.'}</p>
+          <p className="product-section-description">{ua ? 'Оберіть, що хочете зробити простішим для себе та клієнтів.' : 'Choose what you’d like to make easier for you and your customers.'}</p>
         </div>
         <div className="product-flagship-grid">
           {goals.slice(0, 3).map((solution, index) => (
@@ -118,12 +118,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <section id="how-it-works" className="product-container product-section">
         <div className="product-process-grid">
-          <div><p className="product-kicker">{ua ? 'Як це працює' : 'How it works'}</p><h2 className="product-section-heading">{ua ? 'Три кроки до готового виробу.' : 'Three steps to your finished product.'}</h2><Link href="/how-it-works" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-navy">{ua ? 'Детальніше про замовлення' : 'More about ordering'}<Icon name="arrow" className="h-4 w-4" /></Link></div>
+          <div><p className="product-kicker">{ua ? 'Як це працює' : 'How it works'}</p><h2 className="product-section-heading">{ua ? 'Три кроки до готового замовлення.' : 'Three steps to your finished order.'}</h2><Link href="/how-it-works" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-navy">{ua ? 'Детальніше про замовлення' : 'More about ordering'}<Icon name="arrow" className="h-4 w-4" /></Link></div>
           <ol className="divide-y divide-navy/10 border-t border-navy/10">
             {[
               [ua ? 'Оберіть і налаштуйте' : 'Choose and customize', ua ? 'Оберіть рішення, додайте свої дані та виберіть формат, розмір і вигляд.' : 'Choose a solution, add your details, then pick a format, size and design.'],
-              [ua ? 'Перевірте замовлення та оплатіть' : 'Review your order and pay', ua ? 'У фінальній версії повна вартість буде показана до оплати.' : 'In the finished service, you’ll see the full price before you pay.'],
-              [ua ? 'Отримайте готове замовлення' : 'Get your finished order', ua ? 'У фінальній версії після оплати замовлення піде у виробництво та доставку.' : 'In the finished service, your order will go to production and delivery after payment.'],
+              [ua ? 'Перевірте замовлення та оплатіть' : 'Review your order and pay', ua ? 'Перед оплатою ви бачите повну вартість замовлення.' : 'See the full order total before you pay.'],
+              [ua ? 'Отримайте готове замовлення' : 'Get your finished order', ua ? 'Після виготовлення замовлення відправляється у вибране відділення або поштомат.' : 'Once it is made, your order is sent to your chosen branch or parcel locker.'],
             ].map(([title, description], index) => <li key={title} className="flex gap-4 py-6"><span aria-hidden="true" className="product-step-number">{index + 1}</span><div><h3 className="text-lg font-bold text-navy">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{description}</p></div></li>)}
           </ol>
         </div>
