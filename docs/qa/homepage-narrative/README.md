@@ -37,32 +37,31 @@ At 1440×900 the hero ends at approximately **836 px**, the cue ends at **820 px
 
 A centered normal section heading and supporting sentence introduce the six industries. The grid is **3 columns × 2 rows** at ≥1024 px, two columns at 640–1023 px, and one column below 640 px. Every item has an icon, title and supporting line. Vertical dividers were removed. Browser measurements confirm equal column widths, the expected row count and a grid centered within one pixel of the content viewport.
 
-## 6. Hero asset architecture
+## 6. Hero image integration
 
-`components/product/HeroEnvironment.tsx` is a server-compatible wrapper around the current SVG fallback. Pass a single local image or static import to replace the visual without changing the page layout:
+`components/product/HeroEnvironment.tsx` is a server-compatible wrapper around the environment visual. The selected café review-stand photo is integrated at `public/images/hero/cafe-review-stand.webp`:
 
 ```tsx
 <HeroEnvironment
   locale={lang}
   image={{
-    src: '/images/hero/environment.webp', // Future selected asset, not supplied yet.
-    alt: ua ? 'QR-стенд на стійці кав’ярні' : 'A QR stand on a café counter',
-    objectPosition: { desktop: '60% 50%', mobile: '50% 50%' },
+    src: '/images/hero/cafe-review-stand.webp',
+    alt: ua ? 'Клієнт сканує QR-стенд для відгуків у кав’ярні' : 'A customer scans a café review QR stand',
+    objectPosition: { desktop: '50% 50%', mobile: '46% 51%' },
   }}
 />
 ```
 
-The square frame preserves layout geometry. `next/image` supplies responsive image loading; CSS controls `object-fit: cover` and separate desktop/mobile crop positions. An optional `overlay` accepts localized HTML/SVG details. Essential copy stays in HTML/SVG rather than embedded in raster artwork. The active page continues to use the existing SVG; no stock image or temporary generated image is published.
+The square frame preserves layout geometry. `next/image` supplies responsive image loading; CSS controls `object-fit: cover` and separate desktop/mobile crop positions. The photo stays within a 440 px desktop scene so it does not outweigh the left-side copy. An optional `overlay` accepts localized HTML/SVG details. Essential copy stays in HTML/SVG rather than embedded in raster artwork.
 
-Future generation is a separate comparison pass, as requested:
+The selected photograph was supplied by the user; no alternative environments were generated or substituted.
 
-1. **Café:** warm, restrained counter interior; review stand, small Wi-Fi sticker/sign and a customer's phone aimed at the code.
-2. **Salon / reception:** calm reception desk and tactile materials; the same product/scan interaction, without making people the main subject.
-3. **Universal business counter:** neutral setting suitable across industries, with the physical products as the focal point.
 
 Use matching product scale/framing across candidates, neutral artwork without readable localized wording, and enough crop room for mobile. Select the strongest candidate only after comparing desktop and mobile compositions. These variants have **not been generated in this pass**.
 
 ## 7. QA results
+
+The selected hero image and the four requested integration screenshots are documented in [hero image integration QA](../hero-image-integration/README.md).
 
 Passed `npm run typecheck`, `npm test` (three files / 34 checks), `npm run build`, and `git diff --check`.
 

@@ -35,7 +35,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <p className="product-hero-support"><Icon name="scan" className="h-4 w-4" />{ua ? 'Клієнт сканує. Ваша справа — поруч.' : 'A quick scan. A useful connection.'}</p>
           </div>
           <div className="product-hero-scene min-w-0">
-            <HeroEnvironment locale={lang} />
+            <HeroEnvironment
+              locale={lang}
+              image={{
+                src: '/images/hero/cafe-review-stand.webp',
+                alt: ua
+                  ? 'Клієнт сканує QR-стенд для відгуків у кав’ярні'
+                  : 'A customer scans a café review QR stand',
+                objectPosition: { desktop: '50% 50%', mobile: '46% 51%' },
+              }}
+            />
             <div className="product-scene-caption"><span>{ua ? 'У вашому просторі' : 'In your space'}</span><span>{ua ? 'На столі. Біля каси. На вході.' : 'Tables. Counters. Doorways.'}</span></div>
           </div>
         </div>

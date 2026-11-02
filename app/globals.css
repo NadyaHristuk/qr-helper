@@ -84,7 +84,7 @@ button {
 .product-button-secondary { color: #1d3557; border: 1px solid #1d355733; background: transparent; }
 .product-button-secondary:hover { background: #fffefa; }
 .hero-products-art { display: block; width: 100%; height: auto; }
-.product-hero-scene { position: relative; max-width: 600px; width: 100%; margin-inline: auto; }
+.product-hero-scene { position: relative; max-width: 440px; width: 100%; margin-inline: auto; }
 .product-scene-caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; border-top: 1px solid #1d35571f; padding-top: 12px; font-size: 12px; line-height: 1.5; color: #526070; }
 .product-hero-scroll { display: flex; justify-content: center; padding-bottom: 16px; }
 .product-scroll-cue { display: inline-flex; min-height: 44px; align-items: center; gap: 12px; padding-inline: 12px; color: #526070; font-size: 12px; line-height: 1.5; font-weight: 600; }
