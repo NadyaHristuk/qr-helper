@@ -1,13 +1,14 @@
 {
   "meta": {
-    "title": "QR Helper — customer interactions, made physical",
-    "description": "Help customers review, connect, browse and stay in touch. Personalized stickers, table stands and signs for your offline business."
+    "title": "QR Helper — simple QR products for everyday business",
+    "description": "Wi-Fi, menus, reviews and contacts on ready-to-use QR products. Choose a solution, add your details and get a printed product for your business."
   },
   "common": {
     "siteName": "QR-Helper",
     "orderCta": "Place your order",
     "scanMe": "Scan me",
-    "customize": "Find your solution"
+    "customize": "Choose a solution",
+    "pricingNote": "Price will be confirmed after agreeing on the format, material and quantity. We will share it before confirming production."
   },
   "nav": {
     "howItWorks": "How it works",
@@ -22,10 +23,10 @@
     "closeMenu": "Close menu"
   },
   "home": {
-    "title": "Make the next step easy for your customers.",
-    "intro": "Useful customer interactions, on physical products made for your business.",
-    "kindsTitle": "Choose the customer action",
-    "kindsHint": "Start with the goal, then choose an interaction and physical format.",
+    "title": "QR solutions that make everyday business easier.",
+    "intro": "Wi-Fi, menus, reviews and contacts — ready-to-use QR products for everyday business needs.",
+    "kindsTitle": "Choose a solution for your business",
+    "kindsHint": "Choose the QR product you need and add your details.",
     "stickers": {
       "socials": {
         "title": "We're on socials",
@@ -155,23 +156,23 @@
       "q3": "What do I need for a menu, document or booking?",
       "a3": "An existing link to your published content or service. This flow does not host files or manage reservations.",
       "q4": "When and how do I pay?",
-      "a4": "This is a demo storefront with a UAH 1 order price. A manager confirms production, payment and delivery. An online payment gateway is not connected.",
+      "a4": "The price will be confirmed after you choose a format and quantity. After you place the order, a manager will confirm the price, production, payment and delivery. Online payment is not available yet.",
       "q5": "Can I order just one product?",
       "a5": "Yes. Choose the format, size and quantity in the editor.",
       "q6": "Can the details change after printing?",
       "a6": "Changing the information encoded in a QR requires a reprint. Editable-destination links are currently managed separately by an administrator; customer self-service is not available here."
     },
     "eyebrow": "From an idea to your space",
-    "intro": "Start with what your customer needs to do. Give that interaction a physical place in your business.",
-    "cta": "Find a solution",
+    "intro": "Start with what your business needs. Choose a QR solution and give it a place in your space.",
+    "cta": "Choose a solution",
     "stepsLabel": "Three steps to your product",
     "readyTitle": "A product for your space, beyond a file.",
     "readyBody": "A sticker for the door, a stand for the table or a card after a conversation. We’ll confirm materials, dimensions, delivery and payment before production.",
     "faqIntro": "A few useful details about content, design and ordering.",
     "steps": {
       "1": {
-        "title": "Choose the customer action",
-        "body": "Invite a review, a Wi-Fi connection, a visit to your menu or a saved contact."
+        "title": "Choose a business solution",
+        "body": "Wi-Fi, menus, reviews or contacts — choose what will be useful in your space."
       },
       "2": {
         "title": "Choose a design and format",
@@ -218,7 +219,7 @@
     }
   },
   "footer": {
-    "tagline": "Customer interactions, made physical.",
+    "tagline": "Simple QR products for everyday business.",
     "rights": "© {year} QR-Helper. All rights reserved.",
     "navigation": "Footer navigation"
   }

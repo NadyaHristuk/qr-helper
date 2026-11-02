@@ -1,6 +1,6 @@
 # Homepage narrative and hero preparation
 
-Branch: `product-redesign-v2`. Before screenshots: `127f53f`. This pass clarifies the existing storefront story and prepares a replaceable hero visual. It does not generate the future environment images or change the product/order architecture.
+Branch: `product-redesign-v2`. Before screenshots: `127f53f`. This pass clarifies the existing storefront story, integrates the selected café review-stand photo, and refines the visual hierarchy without changing the product/order architecture.
 
 ## 1. Misleading numbers removed
 
@@ -31,7 +31,7 @@ The before and after use the same browser, routes and sizes, with an empty cart.
 
 Checked 1366×768, 1440×900, 1600×900 and 1920×1080 in both languages. The 1280 px main container is retained; the centered industry grid is capped at 1056 px. Hero copy, visual, solution cards, CTA and footer remain aligned to their existing container.
 
-At 1440×900 the hero ends at approximately **836 px**, the cue ends at **820 px**, and the trust strip begins within the viewport. There is no artificial `100vh` height. On short landscape the existing compact hero/header behavior remains in place and the document scrolls normally.
+The visual review pass keeps the hero editorial and asymmetrical: the copy and primary action stay on the left, while the 500 px photo anchors the right. At 1440×900 the hero ends at approximately **753 px**; the trust strip and start of solutions remain visible. There is no artificial `100vh` height. On short landscape the compact two-column hero remains scrollable.
 
 ## 5. Industry layout
 
@@ -52,12 +52,9 @@ A centered normal section heading and supporting sentence introduce the six indu
 />
 ```
 
-The square frame preserves layout geometry. `next/image` supplies responsive image loading; CSS controls `object-fit: cover` and separate desktop/mobile crop positions. The photo stays within a 440 px desktop scene so it does not outweigh the left-side copy. An optional `overlay` accepts localized HTML/SVG details. Essential copy stays in HTML/SVG rather than embedded in raster artwork.
+The square frame preserves layout geometry. `next/image` supplies responsive image loading; CSS controls `object-fit: cover` and separate desktop/mobile crop positions. The photo stays within a 500 px desktop scene so it does not outweigh the left-side copy. An optional `overlay` accepts localized HTML/SVG details; the scan hint is rendered as localized HTML with an SVG icon. Essential copy stays in HTML/SVG rather than embedded in raster artwork.
 
 The selected photograph was supplied by the user; no alternative environments were generated or substituted.
-
-
-Use matching product scale/framing across candidates, neutral artwork without readable localized wording, and enough crop room for mobile. Select the strongest candidate only after comparing desktop and mobile compositions. These variants have **not been generated in this pass**.
 
 ## 7. QA results
 
@@ -67,8 +64,12 @@ Passed `npm run typecheck`, `npm test` (three files / 34 checks), `npm run build
 
 UA/EN browser QA covered 11 sizes each: 320×740, 390×844, 568×320, 667×375, 768×1024, 844×390, 1024×600, 1366×768, 1440×900, 1600×900 and 1920×1080. Verified no horizontal overflow, exact section order, only three real step numbers, industry breakpoints/centering, desktop cue visibility, native in-page navigation, mobile menu bounds/close behavior, localized returns from the cart and the separate detailed page link.
 
-A server-render probe checked both the SVG fallback and the supplied-image branch, desktop/mobile crop properties and a localized overlay. The final environment photograph and its crops still need visual review when an asset is selected. Browser QA used Chrome viewport emulation, not physical devices.
+A server-render probe checked both the SVG fallback and the supplied-image branch, desktop/mobile crop properties and a localized overlay. The selected photograph and responsive crops were visually reviewed at the requested sizes. Browser QA used Chrome viewport emulation, not physical devices.
 
 [Viewport measurements](viewport-matrix.json) · [Browser log](console-events.json) · [Verification summary](verification-summary.json)
 
 Changed source files: `app/[locale]/page.tsx`, `app/globals.css`, `components/Header.tsx`, `components/product/ProductMockup.tsx`, and new `HeroEnvironment.tsx` / `HeroEnvironment.module.css`. Backend/order/admin logic and database schema are unchanged. The pre-existing staged `package-lock.json` change is excluded. No merge, push or production deployment was performed; protected branches retain their original refs.
+
+## 8. Visual review update
+
+The selected café photo was reviewed in the live homepage and retained. The hero now gives it a stronger but balanced frame, with an HTML/SVG scan hint over secondary foreground; the QR code and phone screen stay clear. Solution and industry cards, format mockups, and the final CTA use more consistent rounded surfaces, depth and hover states. Motion respects reduced-motion preferences. No new raster image or product architecture was needed for this visual pass.

@@ -8,7 +8,8 @@
 .image {
   object-fit: cover;
   object-position: var(--hero-position-desktop, 50% 50%);
-  border-radius: 16px;
+  border-radius: 26px;
+  box-shadow: 0 28px 64px rgb(29 53 87 / 18%), 0 3px 8px rgb(29 53 87 / 8%);
 }
 
 .overlay {

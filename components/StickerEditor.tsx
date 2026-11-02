@@ -131,7 +131,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
           </div>
         </aside>
         <div className={styles.sections}>
-          <EditorSection number="01" title={ua ? 'Дія клієнта' : 'Customer action'}>
+          <EditorSection number="01" title={ua ? 'Рішення для бізнесу' : 'Business solution'}>
             <div className={styles.context}>
               <span className={styles.contextIcon}><Icon name={goal?.icon ?? 'scan'} className="h-6 w-6" /></span>
               <div className="min-w-0">

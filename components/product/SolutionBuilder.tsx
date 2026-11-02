@@ -5,9 +5,11 @@ import { Link } from '@/i18n/navigation';
 import { Icon } from './Icon';
 import { ProductMockup } from './ProductMockup';
 import { PHYSICAL_PRODUCTS, localized, type Solution } from '@/lib/products/solutions';
+import { useTranslations } from 'next-intl';
 
 export function SolutionBuilder({ solution, locale }: { solution: Solution; locale: string }) {
   const ua = locale === 'ua';
+  const tc = useTranslations('common');
   const [variant, setVariant] = useState(solution.variants[0]);
   const [product, setProduct] = useState(solution.suggestedFormat);
   const selected = PHYSICAL_PRODUCTS.find((item) => item.key === product)!;
@@ -32,7 +34,7 @@ export function SolutionBuilder({ solution, locale }: { solution: Solution; loca
           <h2 className="text-xl font-semibold">{localized(solution.title, locale)}</h2><p className="mt-3 text-sm text-white/80">{localized(variant.title, locale)} · {localized(selected.title, locale)}</p>
           <p className="mt-4 text-xs leading-6 text-white/65">{ua ? 'Далі додамо ваші дані, оберемо оформлення, розмір і кількість.' : 'Next, add your content and choose the design, size and quantity.'}</p>
           <Link href={`/stickers/${variant.catalogKey}?goal=${solution.key}&productType=${product}`} className="product-button mt-5 w-full">{ua ? 'Налаштувати виріб' : 'Customize product'}<Icon name="arrow" className="h-4 w-4" /></Link>
-          <p className="mt-4 text-xs leading-5 text-white/60">{ua ? 'Демонстраційна ціна — 1 грн за замовлення. Деталі виготовлення узгоджуємо перед підтвердженням.' : 'Demo price: UAH 1 per order. Production details are agreed before confirmation.'}</p>
+          <p className="mt-4 text-xs leading-5 text-white/60">{tc('pricingNote')}</p>
         </aside>
       </div>
     </div>
