@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "QR Helper — simple QR products for everyday business",
+    "title": "QR Helper — simple ways to connect with customers",
     "description": "Wi-Fi, menus, reviews and contacts on ready-to-use stickers, signs and table stands. Choose what your business needs and make it your own."
   },
   "common": {
@@ -8,7 +8,7 @@
     "orderCta": "Order",
     "scanMe": "Scan me",
     "customize": "Choose a solution",
-    "pricingNote": "Demo version: pricing is illustrative. In the finished service, the full price will be calculated automatically before payment."
+    "pricingNote": "Demo version: pricing is illustrative, and online payment and delivery are not connected yet."
   },
   "nav": {
     "howItWorks": "How it works",
@@ -28,66 +28,18 @@
     "kindsTitle": "Choose a solution for your business",
     "kindsHint": "Choose what you’d like to make easier for you and your customers.",
     "stickers": {
-      "socials": {
-        "title": "Find us on social media",
-        "caption": "Open your business profiles on social media.",
-        "label": "FOLLOW US"
-      },
-      "wifi": {
-        "title": "Connect to Wi-Fi",
-        "caption": "Join the network without typing the password.",
-        "label": "WI-FI HERE"
-      },
-      "vcard": {
-        "title": "Save our contact",
-        "caption": "Add your business contact to your phone.",
-        "label": "SAVE CONTACT"
-      },
-      "email": {
-        "title": "Email us",
-        "caption": "Open an email to your business.",
-        "label": "EMAIL US"
-      },
-      "sms": {
-        "title": "Send a text",
-        "caption": "Open a message to your business.",
-        "label": "TEXT US"
-      },
-      "google": {
-        "title": "Review us on Google",
-        "caption": "Open your business’s Google review page.",
-        "label": "RATE US"
-      },
-      "privat24": {
-        "title": "Pay with Privat24",
-        "caption": "Coming later. This payment option isn’t available yet.",
-        "label": "PAY BY QR"
-      },
-      "carPhone": {
-        "title": "Call us",
-        "caption": "Open your business phone number.",
-        "label": "SCAN & CALL"
-      },
-      "site": {
-        "title": "Visit our website",
-        "caption": "Open your business website.",
-        "label": "OUR WEBSITE"
-      },
-      "youtube": {
-        "title": "Open YouTube",
-        "caption": "Visit your business channel or video.",
-        "label": "OUR YOUTUBE"
-      },
-      "olx": {
-        "title": "Shop on OLX",
-        "caption": "Open your OLX listings.",
-        "label": "WE'RE ON OLX"
-      },
-      "app": {
-        "title": "Open the app",
-        "caption": "Follow a link to your business app.",
-        "label": "OUR APP"
-      }
+      "socials": { "title": "Find us on social media", "caption": "Open your business profiles on social media.", "label": "FOLLOW US" },
+      "wifi": { "title": "Connect to Wi-Fi", "caption": "Join the network without typing the password.", "label": "WI-FI HERE" },
+      "vcard": { "title": "Save our contact", "caption": "Add your business contact to your phone.", "label": "SAVE CONTACT" },
+      "email": { "title": "Email us", "caption": "Open an email to your business.", "label": "EMAIL US" },
+      "sms": { "title": "Send a text", "caption": "Open a message to your business.", "label": "TEXT US" },
+      "google": { "title": "Review us on Google", "caption": "Open your business’s Google review page.", "label": "RATE US" },
+      "privat24": { "title": "Pay with Privat24", "caption": "Coming later. This payment option isn’t available yet.", "label": "PAY BY QR" },
+      "carPhone": { "title": "Call us", "caption": "Open your business phone number.", "label": "SCAN & CALL" },
+      "site": { "title": "Visit our website", "caption": "Open your business website.", "label": "OUR WEBSITE" },
+      "youtube": { "title": "Open YouTube", "caption": "Visit your business channel or video.", "label": "OUR YOUTUBE" },
+      "olx": { "title": "Shop on OLX", "caption": "Open your OLX listings.", "label": "WE'RE ON OLX" },
+      "app": { "title": "Open the app", "caption": "Follow a link to your business app.", "label": "OUR APP" }
     },
     "ctaHint": "Choose what you need, add your details and make it your own."
   },
@@ -98,34 +50,16 @@
     "appearanceSection": "Design",
     "formatSection": "Format",
     "fields": {
-      "value": "Link",
-      "ssid": "Wi-Fi network name",
-      "password": "Wi-Fi password",
-      "name": "Name",
-      "phone": "Phone",
-      "email": "Email",
-      "site": "Website",
-      "subject": "Email subject",
-      "message": "Message"
+      "value": "Link", "ssid": "Wi-Fi network name", "password": "Wi-Fi password", "name": "Name", "phone": "Phone", "email": "Email", "site": "Website", "subject": "Email subject", "message": "Message"
     },
     "labelField": "Product message",
     "shapeSection": "Sticker shape",
-    "shapes": {
-      "rect": "Rectangle",
-      "circle": "Circle",
-      "phone": "Phone"
-    },
+    "shapes": { "rect": "Rectangle", "circle": "Circle", "phone": "Phone" },
     "templateSection": "Template",
     "templateStandard": "Standard",
     "templateIndividual": "Custom",
     "colorsSection": "Colors",
-    "colors": {
-      "text": "Text",
-      "frame": "Frame",
-      "bg": "Background",
-      "icon": "Icon",
-      "qr": "QR code"
-    },
+    "colors": { "text": "Text", "frame": "Frame", "bg": "Background", "icon": "Icon", "qr": "QR code" },
     "previewSection": "Preview",
     "fillHint": "Fill in the data to generate the QR code",
     "addToOrder": "Add to order",
@@ -136,8 +70,8 @@
   "howItWorks": {
     "title": "How it works",
     "step1": "Choose a solution, add your details, then pick a format, size and design.",
-    "step2": "Review your order and pay.",
-    "step3": "In the finished service, your order will be sent to your chosen branch or parcel locker once it’s made.",
+    "step2": "See the full order total before you pay.",
+    "step3": "Once it is made, your order is sent to your chosen branch or parcel locker.",
     "step3Items": {
       "wifi": "quickly connect to the Wi-Fi access point;",
       "feedback": "send reviews and suggestions to your email or via SMS;",
@@ -149,7 +83,7 @@
       "site": "open your website and YouTube channel;",
       "olx": "open your OLX page with all your goods."
     },
-    "step4": "In the finished service, your order will go to production and delivery after payment.",
+    "step4": "After payment, the order moves into production and delivery.",
     "faqTitle": "Frequently asked questions",
     "faq": {
       "q1": "What can I order?",
@@ -170,65 +104,48 @@
     "eyebrow": "From an idea to your space",
     "intro": "Choose what your business needs, add your details and preview the finished design.",
     "cta": "Choose a solution",
-    "stepsLabel": "Three steps to your product",
-    "readyTitle": "From a design to a finished product.",
-    "readyBody": "In the finished service, your order will go to production and delivery after payment. Choose a sticker, stand, sign, card or poster.",
+    "stepsLabel": "Three steps to your order",
+    "readyTitle": "From a design to a finished order.",
+    "readyBody": "After payment, the order moves into production and delivery. Choose a sticker, stand, sign, card or poster.",
     "faqIntro": "A few useful details about content, design and ordering.",
     "steps": {
-      "1": {
-        "title": "Choose and customize",
-        "body": "Choose a solution, add your details, then pick a format, size and design."
-      },
-      "2": {
-        "title": "Review your order and pay",
-        "body": "In the finished service, you’ll see the full order total before payment."
-      },
-      "3": {
-        "title": "Get your finished order",
-        "body": "In the finished service, your order will go to production and delivery after payment."
-      }
+      "1": { "title": "Choose and customize", "body": "Choose a solution, add your details, then pick a format, size and design." },
+      "2": { "title": "Review your order and pay", "body": "See the full order total before you pay." },
+      "3": { "title": "Get your finished order", "body": "Once it is made, your order is sent to your chosen branch or parcel locker." }
     }
   },
   "order": {
     "title": "Your order",
-    "intro": "Review your selected products, quantities and delivery option.",
+    "intro": "Review your selected products, quantities and delivery details.",
     "cartTitle": "Your products",
     "cartEmpty": "Choose a solution for your business and your product will appear here.",
     "cartEmptyCta": "Find a solution",
     "remove": "Remove",
     "addMore": "Add another product",
     "sectionCustomer": "Your contact details",
-    "demoDeliveryNote": "Delivery options are shown for illustration. Carrier integration isn’t available yet.",
-    "demoPaymentNote": "Online payment isn’t available in this demo. No payment will be taken.",
+    "demoDeliveryNote": "Demo version: delivery is not connected yet; this shows the intended checkout flow.",
+    "demoPaymentNote": "Demo version: online payment is unavailable and no payment will be taken.",
     "demoSuccess": "Demo order created, number {number}",
-    "demoSuccessNote": "This is how order confirmation will look once real payment and delivery are available.",
+    "demoSuccessNote": "This is how order confirmation will look once payment and delivery are connected.",
     "submitDemoOrder": "Complete demo order",
     "yourDesign": "Your design",
     "opensAfterScan": "Opens after scanning",
     "templateStandard": "Standard design",
     "templateIndividual": "Custom colors",
     "fields": {
-      "customerName": "Name",
-      "customerPhone": "Phone",
-      "customerCity": "City",
-      "customerNpOffice": "Branch or parcel locker"
+      "customerName": "Name", "customerPhone": "Phone", "customerCity": "City", "customerNpOffice": "Branch or parcel locker"
     },
     "placeholders": {
-      "customerName": "Full name",
-      "customerPhone": "+380 50 123 45 67",
-      "customerCity": "Kyiv",
-      "customerNpOffice": "For example, branch #1"
+      "customerName": "Full name", "customerPhone": "+380 50 123 45 67", "customerCity": "Kyiv", "customerNpOffice": "For example, branch #1"
     },
     "submitting": "Submitting…",
     "newOrder": "Create another demo order",
     "errors": {
-      "required": "Required field",
-      "noItems": "Add at least one product first.",
-      "submitFailed": "Failed to submit the order. Please try again."
+      "required": "Required field", "noItems": "Add at least one product first.", "submitFailed": "Failed to submit the order. Please try again."
     }
   },
   "footer": {
-    "tagline": "Simple QR products for everyday business.",
+    "tagline": "Simple ways to make everyday customer interactions easier.",
     "rights": "© {year} QR-Helper. All rights reserved.",
     "navigation": "Footer navigation"
   }
