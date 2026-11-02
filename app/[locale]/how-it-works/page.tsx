@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { Icon } from '@/components/product/Icon';
 
 const STEPS = ['1', '2', '3'] as const;
-const FAQ_ITEMS = ['1', '2', '3', '4', '5', '6'] as const;
+const FAQ_ITEMS = ['1', '2', '3', '4', '5', '6', '7'] as const;
 
 export default async function HowItWorksPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

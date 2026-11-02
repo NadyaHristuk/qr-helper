@@ -136,8 +136,8 @@ export function OrderCart() {
     return (
       <div className="mx-auto max-w-xl rounded-3xl border border-green-200 bg-white p-5 text-center shadow-xl shadow-slate-200/50 sm:p-10">
         <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-green-600 text-3xl text-white shadow-lg shadow-green-100">✓</div>
-        <h2 className="text-2xl font-black text-navy sm:text-3xl">{t('success', { number: result.id })}</h2>
-        <p className="mt-3 leading-7 text-slate-600">{t('successNote')}</p>
+        <h2 className="text-2xl font-black text-navy sm:text-3xl">{t('demoSuccess', { number: result.id })}</h2>
+        <p className="mt-3 leading-7 text-slate-600">{t('demoSuccessNote')}</p>
         <div className="mt-6"><Link href="/" className="btn-outline w-full sm:w-auto">{t('newOrder')}</Link></div>
       </div>
     );
@@ -172,13 +172,13 @@ export function OrderCart() {
             return <li key={i.id} className="rounded-2xl border border-slate-200 p-3 sm:p-4">
               <div className="grid grid-cols-[72px_minmax(0,1fr)] items-start gap-4">
                 <div className="flex items-center justify-center rounded-xl bg-[#f0ede8] p-2"><StickerDesign type={i.payloadType} value={i.value} shape={i.shape} colors={i.colors} label={i.label} subtitle={i.subtitle} icon={i.icon} visualIcon={goal?.icon ?? 'scan'} width={72} /></div>
-                <div className="min-w-0"><p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{ua ? 'Рішення для бізнесу' : 'Business solution'}</p><h3 className="mt-1 break-words text-base font-bold text-navy">{goal ? localized(goal.title, locale) : ua ? 'Ваш виріб' : 'Your product'}</h3><p className="mt-2 break-words text-xs leading-5 text-slate-500">{ua ? 'Напис' : 'Message'}: {i.label}</p></div>
+                <div className="min-w-0"><p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{ua ? 'Рішення для бізнесу' : 'Business solution'}</p><h3 className="mt-1 break-words text-base font-bold text-navy">{goal ? localized(goal.title, locale) : ua ? 'Ваш виріб' : 'Your product'}</h3><p className="mt-2 break-words text-xs leading-5 text-slate-500">{t('yourDesign')}: {i.label}</p></div>
               </div>
               <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-3 border-t border-slate-100 pt-3 text-xs leading-5">
                 <div><dt className="text-slate-500">{ua ? 'Формат' : 'Format'}</dt><dd className="font-semibold text-navy">{physical ? localized(physical.title, locale) : ua ? 'Наліпка' : 'Sticker'}{physical && !physical.available && <span className="block font-normal text-accent">{ua ? 'Поки недоступно' : 'Not available yet'}</span>}</dd></div>
                 <div><dt className="text-slate-500">{ua ? 'Розмір · кількість' : 'Size · quantity'}</dt><dd className="font-semibold text-navy">{i.size} · ×{i.quantity}</dd></div>
                 <div className="col-span-2"><dt className="text-slate-500">{ua ? 'Дизайн' : 'Design'}</dt><dd className="text-navy">{t(i.template === 'individual' ? 'templateIndividual' : 'templateStandard')}</dd></div>
-                <div className="col-span-2 min-w-0"><dt className="text-slate-500">{ua ? 'Призначення QR' : 'QR destination'}</dt><dd className="break-all font-medium text-navy">{destinationSummary(i.payloadType, i.value, locale)}</dd></div>
+                <div className="col-span-2 min-w-0"><dt className="text-slate-500">{t('opensAfterScan')}</dt><dd className="break-all font-medium text-navy">{destinationSummary(i.payloadType, i.value, locale)}</dd></div>
               </dl>
               <button type="button" onClick={() => removeFromCart(i.id)} className="mt-3 min-h-11 rounded-lg px-2 text-sm font-semibold text-accent hover:bg-red-50">{t('remove')}</button>
             </li>;
@@ -201,19 +201,18 @@ export function OrderCart() {
 
         <div className="mt-6 border-t border-slate-200 pt-5">
           <h3 className="font-bold text-navy">{ua ? 'Доставка' : 'Delivery'}</h3>
+          <p className="mt-2 text-sm leading-6 text-slate-500">{t('demoDeliveryNote')}</p>
           <div className="mt-3 grid gap-2">
-            <RadioOption label={ua ? 'Нова Пошта' : 'Nova Poshta'} value="nova_poshta" {...register('deliveryMethod')} />
+            <RadioOption label={ua ? 'Відділення або поштомат' : 'Branch or parcel locker'} value="nova_poshta" {...register('deliveryMethod')} />
             <RadioOption label={ua ? 'Самовивіз' : 'Pickup'} value="pickup" {...register('deliveryMethod')} />
-            <RadioOption label={ua ? 'Курʼєр' : 'Courier'} value="courier" {...register('deliveryMethod')} />
+            <RadioOption label={ua ? 'Курʼєрська доставка' : 'Courier delivery'} value="courier" {...register('deliveryMethod')} />
           </div>
         </div>
 
         <div className="mt-6 border-t border-slate-200 pt-5">
           <h3 className="font-bold text-navy">{ua ? 'Оплата' : 'Payment'}</h3>
-          <div className="mt-3 grid gap-2">
-            <RadioOption label={ua ? 'Після підтвердження менеджером' : 'After manager confirmation'} value="manager" {...register('paymentMethod')} />
-            <RadioOption disabled label={ua ? 'Онлайн-оплата — згодом' : 'Online payment — coming later'} value="online" {...register('paymentMethod')} />
-          </div>
+          <input type="hidden" {...register('paymentMethod')} />
+          <p className="mt-2 text-sm leading-6 text-slate-500">{t('demoPaymentNote')}</p>
         </div>
 
         <div className="mt-6 border-t border-slate-200 pt-5">
@@ -223,7 +222,7 @@ export function OrderCart() {
 
         {serverError && <p className="mt-5 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-accent">{serverError}</p>}
 
-        <button type="submit" disabled={isSubmitting || hasUnavailableProducts} className="btn-accent mt-6 w-full py-3 text-base disabled:cursor-not-allowed disabled:opacity-60">{isSubmitting ? t('submitting') : tc('orderCta')}</button>
+        <button type="submit" disabled={isSubmitting || hasUnavailableProducts} className="btn-accent mt-6 w-full py-3 text-base disabled:cursor-not-allowed disabled:opacity-60">{isSubmitting ? t('submitting') : t('submitDemoOrder')}</button>
       </form>
     </div>
   );

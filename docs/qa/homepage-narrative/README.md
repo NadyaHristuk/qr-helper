@@ -12,7 +12,7 @@ Solutions now has a semantic business-solutions label and a clearly headed “І
 
 Hero → trust strip → solutions (flagship + other solutions) → physical formats → how it works → industries → final CTA → footer.
 
-The real steps are choose an action, customize the design/format, then place an order. The last description explains that details are confirmed before the finished product is received.
+The product story is choose and customize, review the order and pay, then receive the finished order. Copy identifies pricing, online payment and delivery as future production features while the storefront remains a demo.
 
 The hero's secondary link and header navigation use `#solutions`, `#formats`, `#how-it-works` on the current landing page. From other routes, navigation returns to the same locale's homepage section. The detailed `/how-it-works` page remains linked from the explanatory section and footer. Mobile anchor selection closes the menu.
 

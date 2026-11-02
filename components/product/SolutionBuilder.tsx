@@ -5,11 +5,9 @@ import { Link } from '@/i18n/navigation';
 import { Icon } from './Icon';
 import { ProductMockup } from './ProductMockup';
 import { PHYSICAL_PRODUCTS, localized, type Solution } from '@/lib/products/solutions';
-import { useTranslations } from 'next-intl';
 
 export function SolutionBuilder({ solution, locale }: { solution: Solution; locale: string }) {
   const ua = locale === 'ua';
-  const tc = useTranslations('common');
   const [variant, setVariant] = useState(solution.variants[0]);
   const [product, setProduct] = useState(solution.suggestedFormat);
   const selected = PHYSICAL_PRODUCTS.find((item) => item.key === product)!;
@@ -21,10 +19,10 @@ export function SolutionBuilder({ solution, locale }: { solution: Solution; loca
       </div></div>
       <div className="product-container mt-8 grid gap-8 lg:grid-cols-[1fr_300px] lg:items-start">
         <div className="min-w-0">
-          <section aria-labelledby="interaction-heading"><p className="product-kicker">01 / {ua ? 'Дія' : 'Interaction'}</p><h2 id="interaction-heading" className="mt-2 text-xl font-bold text-navy">{ua ? 'Що відкриється після сканування?' : 'What should happen after the scan?'}</h2>
+          <section aria-labelledby="interaction-heading"><p className="product-kicker">01 / {ua ? 'Рішення' : 'Solution'}</p><h2 id="interaction-heading" className="mt-2 text-xl font-bold text-navy">{ua ? 'Що відкриється після сканування?' : 'What will open when someone scans it?'}</h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">{solution.variants.map((item) => <button key={item.key} type="button" className="product-choice" aria-pressed={variant.key === item.key} onClick={() => setVariant(item)}><span className="flex w-full items-center justify-between gap-2 font-semibold"><span>{localized(item.title, locale)}</span>{variant.key === item.key && <Icon name="check" className="h-5 w-5 shrink-0" />}</span><span className="mt-2 text-xs leading-6 text-slate-600">{localized(item.description, locale)}</span></button>)}</div>
           </section>
-          <section aria-labelledby="format-heading" className="mt-10"><p className="product-kicker">02 / {ua ? 'Формат' : 'Format'}</p><h2 id="format-heading" className="mt-2 text-xl font-bold text-navy">{ua ? 'Де клієнт побачить запрошення?' : 'Where will your customer see it?'}</h2><p className="mt-2 text-sm leading-6 text-slate-600">{ua ? 'Вибір можна змінити в редакторі.' : 'You can change this in the editor.'}</p>
+          <section aria-labelledby="format-heading" className="mt-10"><p className="product-kicker">02 / {ua ? 'Формат' : 'Format'}</p><h2 id="format-heading" className="mt-2 text-xl font-bold text-navy">{ua ? 'Оберіть формат' : 'Choose a format'}</h2><p className="mt-2 text-sm leading-6 text-slate-600">{ua ? 'Де розмістите наліпку, стенд або табличку?' : 'Where will you put the sticker, stand or sign?'}</p>
             <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">{PHYSICAL_PRODUCTS.map((item) => <button key={item.key} type="button" aria-pressed={product === item.key} disabled={!item.available} onClick={() => setProduct(item.key)} className="product-choice !p-3"><ProductMockup kind={item.mockup} locale={ua ? 'ua' : 'en'} className="h-auto w-full" /><span className="mt-1 text-sm font-semibold">{localized(item.title, locale)}</span>{!item.available && <span className="mt-1 text-[10px] uppercase tracking-wide">{ua ? 'Згодом' : 'Coming later'}</span>}</button>)}</div>
           </section>
         </div>
@@ -33,8 +31,7 @@ export function SolutionBuilder({ solution, locale }: { solution: Solution; loca
           <ProductMockup kind={selected.mockup} locale={ua ? 'ua' : 'en'} className="my-2 h-auto w-full" />
           <h2 className="text-xl font-semibold">{localized(solution.title, locale)}</h2><p className="mt-3 text-sm text-white/80">{localized(variant.title, locale)} · {localized(selected.title, locale)}</p>
           <p className="mt-4 text-xs leading-6 text-white/65">{ua ? 'Далі додамо ваші дані, оберемо оформлення, розмір і кількість.' : 'Next, add your content and choose the design, size and quantity.'}</p>
-          <Link href={`/stickers/${variant.catalogKey}?goal=${solution.key}&productType=${product}`} className="product-button mt-5 w-full">{ua ? 'Налаштувати виріб' : 'Customize product'}<Icon name="arrow" className="h-4 w-4" /></Link>
-          <p className="mt-4 text-xs leading-5 text-white/60">{tc('pricingNote')}</p>
+          <Link href={`/stickers/${variant.catalogKey}?goal=${solution.key}&productType=${product}`} className="product-button mt-5 w-full">{ua ? 'Додати свої дані' : 'Add your details'}<Icon name="arrow" className="h-4 w-4" /></Link>
         </aside>
       </div>
     </div>

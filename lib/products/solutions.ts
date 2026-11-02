@@ -20,35 +20,35 @@ export function localized(value: Localized, locale: string): string {
 export const SOLUTIONS: Solution[] = [
   {
     key: 'reviews', icon: 'reviews',
-    title: { ua: 'Отримувати відгуки', en: 'Turn visits into reviews' },
+    title: { ua: 'Отримувати більше відгуків', en: 'Get more customer reviews' },
     description: { ua: 'Запросіть залишити відгук, поки враження ще свіжі.', en: 'Invite feedback while the experience is still fresh.' },
-    detail: { ua: 'На столику, біля каси чи на рецепції — зробіть наступний крок зрозумілим для гостя.', en: 'At the table, counter or reception desk, make the next step easy for your customer.' },
+    detail: { ua: 'На столику, біля каси чи на рецепції — допоможіть гостю швидко залишити відгук.', en: 'Make it easy for customers to leave a review at the table, counter or reception desk.' },
     suggestedFormat: 'stand',
     variants: [
-      { key: 'google', catalogKey: 'google', title: { ua: 'Відгук у Google', en: 'Google review' }, description: { ua: 'Посилання на відгуки вашого закладу.', en: 'Link to your business’s Google review page.' } },
+      { key: 'google', catalogKey: 'google', title: { ua: 'Сторінка відгуків у Google', en: 'Google reviews page' }, description: { ua: 'Відкриває сторінку, де гості можуть оцінити ваш заклад.', en: 'Opens the page where customers can review your business.' } },
       { key: 'email', catalogKey: 'email', title: { ua: 'Відгук на пошту', en: 'Private email feedback' }, description: { ua: 'Відкрити лист із вашою адресою та темою.', en: 'Open an email addressed to your team.' } },
       { key: 'sms', catalogKey: 'sms', title: { ua: 'Зворотний зв’язок SMS', en: 'Feedback by text' }, description: { ua: 'Підготувати SMS на ваш номер.', en: 'Prepare a text message to your number.' } },
     ],
   },
   {
     key: 'wifi', icon: 'wifi',
-    title: { ua: 'Підключати до Wi-Fi', en: 'Welcome guests to Wi-Fi' },
+    title: { ua: 'Підключати гостей до Wi-Fi', en: 'Give guests easy Wi-Fi access' },
     description: { ua: 'Пароль на видному місці. Менше запитань до команди.', en: 'Put connection details within reach, without the back-and-forth.' },
     detail: { ua: 'Для столиків, номерів і зони очікування. Вкажіть назву гостьової мережі та пароль.', en: 'For tables, guest rooms and waiting areas. Add your guest network name and password.' },
     suggestedFormat: 'sticker',
-    variants: [{ key: 'wifi', catalogKey: 'wifi', title: { ua: 'Гостьова мережа', en: 'Guest network' }, description: { ua: 'QR містить дані для підключення до мережі.', en: 'A QR code containing the network connection details.' } }],
+    variants: [{ key: 'wifi', catalogKey: 'wifi', title: { ua: 'Підключення до Wi-Fi', en: 'Connect to Wi-Fi' }, description: { ua: 'Гість зможе підключитися до вашої мережі без ручного введення пароля.', en: 'Guests can join your network without typing the password.' } }],
   },
   {
     key: 'menu', icon: 'menu',
-    title: { ua: 'Показувати меню чи прайс', en: 'Put your menu on the table' },
+    title: { ua: 'Показувати меню або прайс', en: 'Share your menu or price list' },
     description: { ua: 'Актуальне меню або перелік послуг — у телефоні клієнта.', en: 'Make your menu or service list easy to open on a phone.' },
-    detail: { ua: 'Додайте посилання на вже опубліковане меню, прайс або PDF. Завантаження файлів тут не потрібне.', en: 'Use a link to your published menu, price list or PDF. This flow does not upload or host files.' },
+    detail: { ua: 'Додайте посилання на меню, прайс або PDF, який уже опубліковано в інтернеті.', en: 'Add a link to a menu, price list or PDF that’s already online.' },
     suggestedFormat: 'stand',
     variants: [{ key: 'menu', catalogKey: 'site', title: { ua: 'Онлайн-меню або прайс', en: 'Published menu or price list' }, description: { ua: 'Перехід за вашим готовим посиланням.', en: 'Open the menu at your existing link.' } }],
   },
   {
     key: 'contacts', icon: 'contacts',
-    title: { ua: 'Ділитися контактами', en: 'Stay in their contacts' },
+    title: { ua: 'Поділитися контактами', en: 'Share your contact details' },
     description: { ua: 'Нехай ваш номер і контакти залишаться під рукою.', en: 'Help customers keep your details for their next visit.' },
     detail: { ua: 'Візитка після консультації або контакти біля входу — оберіть потрібну дію.', en: 'A card after a consultation or contact details by the door. Choose the action that fits.' },
     suggestedFormat: 'business_card',
@@ -61,12 +61,12 @@ export const SOLUTIONS: Solution[] = [
   },
   {
     key: 'social', icon: 'social',
-    title: { ua: 'Запрошувати в соцмережі', en: 'Keep the conversation going' },
+    title: { ua: 'Додати соцмережі', en: 'Share your social pages' },
     description: { ua: 'Від знайомства у закладі — до вашого профілю.', en: 'Connect an in-person visit with your social profile.' },
     detail: { ua: 'Додайте посилання на сторінку вашого бізнесу. Соцмережа відкриється у браузері або застосунку гостя.', en: 'Add your business profile link. It opens in the guest’s browser or social app.' },
     suggestedFormat: 'transparent',
     variants: [
-      { key: 'socials', catalogKey: 'socials', title: { ua: 'Instagram, Facebook та інші', en: 'Instagram, Facebook and more' }, description: { ua: 'Будь-яке HTTPS-посилання на ваш профіль.', en: 'Your profile’s HTTPS link.' } },
+      { key: 'socials', catalogKey: 'socials', title: { ua: 'Instagram, Facebook та інші', en: 'Instagram, Facebook and more' }, description: { ua: 'Посилання на профіль вашого бізнесу.', en: 'A link to your business profile.' } },
       { key: 'youtube', catalogKey: 'youtube', title: { ua: 'YouTube', en: 'YouTube' }, description: { ua: 'Канал або відео про ваш бізнес.', en: 'A channel or video about your business.' } },
     ],
   },
@@ -80,7 +80,7 @@ export const SOLUTIONS: Solution[] = [
   },
   {
     key: 'booking', icon: 'booking',
-    title: { ua: 'Запрошувати на запис', en: 'Make the next booking easy' },
+    title: { ua: 'Запис на послугу', en: 'Make booking easy' },
     description: { ua: 'Запис на послугу без пошуку потрібної сторінки.', en: 'Take customers straight to your existing booking page.' },
     detail: { ua: 'Використайте посилання вашого сервісу запису. Ми відкриваємо сторінку, а бронювання обробляє ваш сервіс.', en: 'Use your booking service’s link. The QR opens the page; your existing service handles appointments.' },
     suggestedFormat: 'sign',
@@ -88,17 +88,17 @@ export const SOLUTIONS: Solution[] = [
   },
   {
     key: 'documents', icon: 'document',
-    title: { ua: 'Давати корисну інформацію', en: 'Put useful information in reach' },
+    title: { ua: 'Поділитися інструкцією або документом', en: 'Share a guide or document' },
     description: { ua: 'Інструкція, пам’ятка чи документ у потрібний момент.', en: 'Share instructions, guides or documents at the right moment.' },
-    detail: { ua: 'Посилання на опублікований документ, інструкцію або відео. Зберігання файлів залишається у вашому сервісі.', en: 'Link to a published document, guide or video. Files stay with your existing hosting service.' },
+    detail: { ua: 'Додайте посилання на інструкцію, документ або відео, яке вже є в інтернеті.', en: 'Add a link to a guide, document or video that’s already online.' },
     suggestedFormat: 'poster',
     variants: [{ key: 'document', catalogKey: 'site', title: { ua: 'Документ або інструкція', en: 'Published document or guide' }, description: { ua: 'HTTPS-посилання на готовий матеріал.', en: 'An HTTPS link to the material you already host.' } }],
   },
   {
     key: 'online', icon: 'globe',
-    title: { ua: 'Вести до ваших сторінок', en: 'Connect to your online business' },
+    title: { ua: 'Сайт, магазин чи застосунок', en: 'Website, shop or app' },
     description: { ua: 'Сайт, товари чи застосунок — за одним посиланням.', en: 'Bring your website, listings or app link into your space.' },
-    detail: { ua: 'Використайте сторінку, яку вже має ваш бізнес.', en: 'Use a destination your business already has.' },
+    detail: { ua: 'Додайте посилання на сторінку, якою вже користується ваш бізнес.', en: 'Add a link to a page your business already uses.' },
     suggestedFormat: 'sticker',
     variants: [
       { key: 'site', catalogKey: 'site', title: { ua: 'Сайт', en: 'Website' }, description: { ua: 'Головна сторінка або конкретна пропозиція.', en: 'Your homepage or a specific offer.' } },
@@ -123,7 +123,7 @@ export const PHYSICAL_PRODUCTS: PhysicalProduct[] = [
   { key: 'transparent', mockup: 'glass', title: { ua: 'Наліпка на скло', en: 'Glass sticker' }, description: { ua: 'Для вітрини або скляних дверей.', en: 'For windows and glass doors.' }, available: true },
   { key: 'business_card', mockup: 'card', title: { ua: 'Картка', en: 'Business card' }, description: { ua: 'Контакти, які можна взяти із собою.', en: 'Useful details to take away.' }, available: true },
   { key: 'poster', mockup: 'poster', title: { ua: 'Постер', en: 'Poster' }, description: { ua: 'Інформація у просторі вашого бізнесу.', en: 'A visible invitation in your space.' }, available: true },
-  { key: 'vinyl', mockup: 'sticker', title: { ua: 'Вінілова наліпка', en: 'Vinyl sticker' }, description: { ua: 'Матеріал і нанесення узгодимо перед друком.', en: 'Material and application confirmed before production.' }, available: true },
+  { key: 'vinyl', mockup: 'sticker', title: { ua: 'Вінілова наліпка', en: 'Vinyl sticker' }, description: { ua: 'Для використання на гладких поверхнях.', en: 'For use on smooth surfaces.' }, available: true },
   { key: 'qr_nfc', mockup: 'qr_nfc', title: { ua: 'QR + NFC', en: 'QR + NFC' }, description: { ua: 'Сканування або дотик. Згодом.', en: 'Scan or tap. Coming later.' }, available: false },
 ];
 

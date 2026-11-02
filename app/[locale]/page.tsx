@@ -26,13 +26,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="product-container product-hero-layout">
           <div className="relative z-10 min-w-0">
             <p className="product-eyebrow"><span />{ua ? 'Для бізнесу, куди приходять люди' : 'For businesses people walk into'}</p>
-            <h1 className="product-headline">{ua ? <>QR-рішення, що спрощують <em>роботу бізнесу.</em></> : <>QR solutions that make <em>everyday business easier.</em></>}</h1>
-            <p className="product-hero-description">{ua ? 'Wi-Fi, меню, відгуки чи контакти — готові QR-вироби для щоденних потреб вашого бізнесу.' : 'Wi-Fi, menus, reviews and contacts — ready-to-use QR products for everyday business needs.'}</p>
+            <h1 className="product-headline">{ua ? <>Зробіть взаємодію з клієнтами <em>простішою.</em></> : <>Make it easier for customers <em>to connect with your business.</em></>}</h1>
+            <p className="product-hero-description">{ua ? 'Wi-Fi, меню, відгуки, контакти та інші рішення для вашого бізнесу — на готових наліпках, табличках і стендах.' : 'Wi-Fi, menus, reviews and contacts on ready-to-use stickers, signs and table stands for your business.'}</p>
             <div className="product-hero-actions">
               <a href="#solutions" className="product-button">{ua ? 'Обрати рішення' : 'Choose a solution'}<Icon name="arrow" className="h-4 w-4" /></a>
               <a href="#how-it-works" className="product-button-secondary">{ua ? 'Як це працює' : 'How it works'}</a>
             </div>
-            <p className="product-hero-support"><Icon name="scan" className="h-4 w-4" />{ua ? 'Оберіть рішення, додайте свої дані — готовий QR на виробі.' : 'Choose a solution, add your details — your QR, ready on a product.'}</p>
+            <p className="product-hero-support"><Icon name="scan" className="h-4 w-4" />{ua ? 'Оберіть потрібне, додайте свої дані та налаштуйте вигляд.' : 'Choose what you need, add your details and make it your own.'}</p>
           </div>
           <div className="product-hero-scene min-w-0">
             <HeroEnvironment
@@ -76,7 +76,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section id="solutions" className="product-container product-section">
         <div className="product-section-intro">
           <div className="max-w-xl"><p className="product-kicker">{ua ? 'Рішення для вашого бізнесу' : 'Solutions for your business'}</p><h2 className="product-section-heading">{ua ? 'Що потрібно вашому бізнесу?' : 'What does your business need?'}</h2></div>
-          <p className="product-section-description">{ua ? 'Wi-Fi, меню, відгуки чи контакти — оберіть, що хочете спростити.' : 'Wi-Fi, menus, reviews or contacts — choose what you want to make easier.'}</p>
+          <p className="product-section-description">{ua ? 'Оберіть задачу, яку хочете зробити простішою для себе та клієнтів.' : 'Choose what you’d like to make easier for you and your customers.'}</p>
         </div>
         <div className="product-flagship-grid">
           {goals.slice(0, 3).map((solution, index) => (
@@ -102,7 +102,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <section id="formats" className="product-format-section product-section">
         <div className="product-container">
-          <div className="max-w-2xl"><p className="product-kicker">{ua ? 'Фізичні формати' : 'Physical formats'}</p><h2 className="product-section-heading">{ua ? 'Де це буде розміщено?' : 'Where will you place it?'}</h2><p className="product-format-description">{ua ? 'Той самий задум. Різні форми. Стенд на столику, наліпка на дверях чи картка після зустрічі — оберіть носій для свого рішення.' : 'One idea, many forms. A stand on the table, a sticker on the door or a card after a conversation. Choose a format for your solution.'}</p></div>
+          <div className="max-w-2xl"><p className="product-kicker">{ua ? 'Формати' : 'Formats'}</p><h2 className="product-section-heading">{ua ? 'Оберіть, як це буде виглядати' : 'Choose the format that works for you'}</h2><p className="product-format-description">{ua ? 'Наліпка на дверях, стенд на столику, табличка біля каси або картка після зустрічі.' : 'A sticker on the door, a stand on the table, a sign by the counter or a card to take away.'}</p></div>
           <div className="product-format-grid">
             {formats.map((product) => (
               <article key={product.key} className="min-w-0">
@@ -121,9 +121,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div><p className="product-kicker">{ua ? 'Як це працює' : 'How it works'}</p><h2 className="product-section-heading">{ua ? 'Три кроки до готового виробу.' : 'Three steps to your finished product.'}</h2><Link href="/how-it-works" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-navy">{ua ? 'Детальніше про замовлення' : 'More about ordering'}<Icon name="arrow" className="h-4 w-4" /></Link></div>
           <ol className="divide-y divide-navy/10 border-t border-navy/10">
             {[
-              [ua ? 'Оберіть рішення для бізнесу' : 'Choose a business solution', ua ? 'Wi-Fi, меню, відгуки, контакти чи інше посилання.' : 'Wi-Fi, menus, reviews, contacts or another link.'],
-              [ua ? 'Додайте дані й оберіть вигляд' : 'Add your details and choose a design', ua ? 'Перегляньте макет, оберіть готове оформлення, формат і кількість.' : 'Preview your design, choose a format and quantity.'],
-              [ua ? 'Отримайте готовий виріб' : 'Get your finished product', ua ? 'Оформіть замовлення — і отримайте надрукований QR-виріб для свого бізнесу.' : 'Place your order and receive a printed QR product for your business.'],
+              [ua ? 'Оберіть і налаштуйте' : 'Choose and customize', ua ? 'Оберіть рішення, додайте свої дані та виберіть формат, розмір і вигляд.' : 'Choose a solution, add your details, then pick a format, size and design.'],
+              [ua ? 'Перевірте замовлення та оплатіть' : 'Review your order and pay', ua ? 'У фінальній версії повна вартість буде показана до оплати.' : 'In the finished service, you’ll see the full price before you pay.'],
+              [ua ? 'Отримайте готове замовлення' : 'Get your finished order', ua ? 'У фінальній версії після оплати замовлення піде у виробництво та доставку.' : 'In the finished service, your order will go to production and delivery after payment.'],
             ].map(([title, description], index) => <li key={title} className="flex gap-4 py-6"><span aria-hidden="true" className="product-step-number">{index + 1}</span><div><h3 className="text-lg font-bold text-navy">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{description}</p></div></li>)}
           </ol>
         </div>
@@ -146,7 +146,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </section>
-      <section className="product-container product-closing-section"><div className="product-final-cta"><div className="max-w-2xl"><p className="product-cta-kicker">{ua ? 'Менше рутини. Більше зручності.' : 'Less back-and-forth. More convenience.'}</p><h2>{ua ? 'Спрощуйте щоденні справи свого бізнесу.' : 'Make everyday business easier.'}</h2></div><a href="#solutions" className="product-button shrink-0">{ua ? 'Обрати рішення' : 'Choose a solution'}<Icon name="arrow" className="h-4 w-4" /></a></div></section>
+      <section className="product-container product-closing-section"><div className="product-final-cta"><div className="max-w-2xl"><p className="product-cta-kicker">{ua ? 'Рішення для щоденних справ' : 'For the everyday things'}</p><h2>{ua ? 'Оберіть рішення для свого бізнесу.' : 'Find the right fit for your business.'}</h2><p className="mt-4 max-w-xl text-sm leading-6 text-white/75">{ua ? 'Налаштуйте його під себе та подивіться, як виглядатиме готовий результат.' : 'Make it your own and preview how the finished design will look.'}</p></div><a href="#solutions" className="product-button shrink-0">{ua ? 'Обрати рішення' : 'Choose a solution'}<Icon name="arrow" className="h-4 w-4" /></a></div></section>
     </div>
   );
 }

@@ -98,7 +98,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
         <Icon name="arrow" className="h-4 w-4 rotate-180" />{ua ? 'Усі рішення' : 'All solutions'}
       </Link>
       <div className={styles.intro}>
-        <p className={styles.eyebrow}>{ua ? 'Налаштуйте свій виріб' : 'Make it yours'}</p>
+        <p className={styles.eyebrow}>{ua ? 'Додайте свої дані' : 'Add your details'}</p>
         <h1>{goal ? localized(goal.title, locale) : th(`stickers.${stickerKey}.title`)}</h1>
         <p className={styles.description}>{goal ? localized(goal.description, locale) : ua ? 'Цей варіант наразі недоступний для замовлення.' : 'This option is currently unavailable to order.'}</p>
       </div>
@@ -120,7 +120,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
           <div className={styles.attributes} aria-label={ua ? 'Обрані параметри' : 'Selected options'}>
             <span>{localized(selectedProduct.title, locale)}</span><span>{size}</span><span>×{quantity}</span><span>{template === 'standard' ? t('templateStandard') : t('templateIndividual')}</span>
           </div>
-          <p className={styles.previewNote}>{ua ? 'Макет друкованої частини. Вигляд носія та масштаб можуть відрізнятися.' : 'Printed artwork preview. Product construction and scale may vary.'}</p>
+          <p className={styles.previewNote}>{ua ? 'Тут показано макет друку. Вигляд і розмір готового виробу можуть відрізнятися.' : 'This is a print preview. The finished product may look different in size and construction.'}</p>
           <div className={`${styles.quality} ${contrastWarning ? styles.qualityWarning : ''}`} aria-live="polite">
             <h3><Icon name={contrastWarning ? 'scan' : 'check'} className="h-4 w-4 shrink-0" /><span>{contrastWarning ? ua ? 'Поліпшіть контраст' : 'Improve contrast' : ua ? 'Добрий контраст' : 'Good contrast'}</span>{contrast && <span className={styles.ratio}>{contrast.ratio.toFixed(1)}:1</span>}</h3>
             <p>{contrastWarning ? ua ? 'Спробуйте темніший код на світлому фоні: такий макет може бути складно відсканувати.' : 'Try a darker code on a light background: this design may be difficult to scan.' : ua ? 'Розрахунок за кольорами екрана. Перед використанням перевірте готовий виріб камерою телефона.' : 'Calculated from screen colors. Test the finished product with a phone camera before use.'}</p>
@@ -131,7 +131,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
           </div>
         </aside>
         <div className={styles.sections}>
-          <EditorSection number="01" title={ua ? 'Рішення для бізнесу' : 'Business solution'}>
+          <EditorSection number="01" title={t('scanSection')}>
             <div className={styles.context}>
               <span className={styles.contextIcon}><Icon name={goal?.icon ?? 'scan'} className="h-6 w-6" /></span>
               <div className="min-w-0">
@@ -141,7 +141,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
             </div>
             <p className={styles.sectionNote}>{ua ? 'Дані записуються у виріб. Якщо вони зміняться, знадобиться новий друк.' : 'The QR contains these details or this link. Changing the encoded content requires a new print.'}</p>
           </EditorSection>
-          <EditorSection number="02" title={ua ? 'Посилання та дані' : 'Destination and details'}>
+          <EditorSection number="02" title={t('dataSection')}>
             {def.payloadType === 'privat24' && <p role="status" className="text-sm leading-6 text-slate-600">{ua ? 'Цей спосіб оплати ще недоступний. Не вводьте реквізити картки.' : 'This payment option is not available yet. Do not enter card details.'}</p>}
             <div className="grid gap-4 sm:grid-cols-2">
               {def.fields.map((field) => {
@@ -159,7 +159,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
             </div>
             {def.fields.some((field) => field.kind === 'url') && <p className="mt-3 text-xs leading-5 text-slate-500">{ua ? 'Додайте чинне посилання, яке вже доступне вашим клієнтам.' : 'Use an existing published link that your customers can open.'}</p>}
           </EditorSection>
-          <EditorSection number="03" title={ua ? 'Дизайн' : 'Design'}>
+          <EditorSection number="03" title={t('appearanceSection')}>
             <label htmlFor="editor-label" className="label">{ua ? 'Напис на виробі' : 'Text on your product'}</label>
             <input id="editor-label" className="input" value={label} onChange={(event) => setLabel(event.target.value)} maxLength={40} />
             <fieldset className={styles.fieldGroup}>
@@ -182,7 +182,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
               </label>)}
             </div>}
           </EditorSection>
-          <EditorSection number="04" title={ua ? 'Фізичний формат' : 'Physical format'}>
+          <EditorSection number="04" title={t('formatSection')}>
             <fieldset>
               <legend className="sr-only">{ua ? 'Оберіть формат виробу' : 'Choose a product format'}</legend>
               <div className={styles.productChoices}>
@@ -206,7 +206,7 @@ function ConfiguredStickerEditor({ stickerKey, def, initialGoal, initialProductT
               </fieldset>
               <div><label htmlFor="editor-quantity" className="label">{ua ? 'Кількість' : 'Quantity'}</label><input id="editor-quantity" className="input" type="number" min={1} max={999} value={quantity} onChange={(event) => setQuantity(Math.max(1, Math.min(999, Math.floor(Number(event.target.value)) || 1)))} /></div>
             </div>
-            <p className="mt-4 text-xs leading-5 text-slate-500">{ua ? 'Точні розміри в сантиметрах, матеріал і вартість узгодимо перед виготовленням.' : 'Exact dimensions, materials and price are confirmed before production.'}</p>
+            <p className="mt-4 text-xs leading-5 text-slate-500">{ua ? 'Точні розміри та матеріали для кожного формату ще визначаються.' : 'Exact dimensions and materials for each format are still being defined.'}</p>
           </EditorSection>
         </div>
         <div className={styles.mobileAction}>
