@@ -36,7 +36,7 @@ const orderSchema = z.object({
   }),
   template: z.enum(['standard', 'individual']),
   deliveryMethod: z.enum(['nova_poshta', 'pickup', 'courier']).default('nova_poshta'),
-  paymentMethod: z.enum(['manager', 'online']).default('manager'),
+  paymentMethod: z.enum(['demo', 'online', 'manager']).default('demo'),
   items: z.array(itemSchema).min(1, 'Добавьте хотя бы одну наклейку').max(50, 'Слишком много позиций в одном заказе'),
 }).superRefine((order, ctx) => {
   if (order.deliveryMethod !== 'pickup' && !order.customer.npOffice) {
@@ -57,7 +57,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Проверьте заполнение формы', details: parsed.error.flatten() }, { status: 400 });
   }
 
-  const { customer, template, deliveryMethod, paymentMethod, items } = parsed.data;
+  const { customer, template, deliveryMethod, items } = parsed.data;
+  const paymentMethod = parsed.data.paymentMethod === 'manager' ? 'demo' : parsed.data.paymentMethod;
 
   try {
     for (const item of items) {
